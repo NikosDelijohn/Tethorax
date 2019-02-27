@@ -1,0 +1,141 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+//#pragma file_not_in_maxplusii_format
+(header "graphic" (version "1.3"))
+(pin
+	(input)
+	(rect 88 88 256 104)
+	(text "INPUT" (rect 133 0 161 10)(font "Arial" (color 255 0 0)(font_size 6)))
+	(text "TYPE[2..0]" (rect 5 0 59 12)(font "Arial" (color 255 0 0)))
+	(pt 168 8)
+	(drawing
+		(line (pt 92 12)(pt 117 12)(color 255 0 0)(line_width 1))
+		(line (pt 92 4)(pt 117 4)(color 255 0 0)(line_width 1))
+		(line (pt 121 8)(pt 168 8)(color 255 0 0)(line_width 1))
+		(line (pt 92 12)(pt 92 4)(color 255 0 0)(line_width 1))
+		(line (pt 117 4)(pt 121 8)(color 255 0 0)(line_width 1))
+		(line (pt 117 12)(pt 121 8)(color 255 0 0)(line_width 1))
+	)
+	(text "VCC" (rect 136 7 156 17)(font "Arial" (color 255 0 0)(font_size 6)))
+)
+(pin
+	(input)
+	(rect 88 104 256 120)
+	(text "INPUT" (rect 133 0 161 10)(font "Arial" (color 255 0 0)(font_size 6)))
+	(text "WORD[31..0]" (rect 5 0 72 12)(font "Arial" (color 255 0 0)))
+	(pt 168 8)
+	(drawing
+		(line (pt 92 12)(pt 117 12)(color 255 0 0)(line_width 1))
+		(line (pt 92 4)(pt 117 4)(color 255 0 0)(line_width 1))
+		(line (pt 121 8)(pt 168 8)(color 255 0 0)(line_width 1))
+		(line (pt 92 12)(pt 92 4)(color 255 0 0)(line_width 1))
+		(line (pt 117 4)(pt 121 8)(color 255 0 0)(line_width 1))
+		(line (pt 117 12)(pt 121 8)(color 255 0 0)(line_width 1))
+	)
+	(text "VCC" (rect 136 7 156 17)(font "Arial" (color 255 0 0)(font_size 6)))
+)
+(pin
+	(output)
+	(rect 512 88 697 104)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (color 0 128 0)(font_size 6)))
+	(text "IMMEDIATE[31..0]" (rect 90 0 180 12)(font "Arial" (color 0 128 0)))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8)(color 0 128 0)(line_width 1))
+		(line (pt 52 4)(pt 78 4)(color 0 128 0)(line_width 1))
+		(line (pt 52 12)(pt 78 12)(color 0 128 0)(line_width 1))
+		(line (pt 52 12)(pt 52 4)(color 0 128 0)(line_width 1))
+		(line (pt 78 4)(pt 82 8)(color 0 128 0)(line_width 1))
+		(line (pt 82 8)(pt 78 12)(color 0 128 0)(line_width 1))
+		(line (pt 78 12)(pt 82 8)(color 0 128 0)(line_width 1))
+	)
+)
+(symbol
+	(rect 272 64 496 160)
+	(text "ID_IMM_GENERATOR" (rect 5 0 117 12)(font "Arial" ))
+	(text "inst" (rect 8 80 25 92)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "IMM_TYPE[2..0]" (rect 0 0 80 12)(font "Arial" ))
+		(text "IMM_TYPE[2..0]" (rect 21 27 101 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 3))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "IF_WORD[31..0]" (rect 0 0 83 12)(font "Arial" ))
+		(text "IF_WORD[31..0]" (rect 21 43 104 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 224 32)
+		(output)
+		(text "IMMEDIATE[31..0]" (rect 0 0 90 12)(font "Arial" ))
+		(text "IMMEDIATE[31..0]" (rect 113 27 203 39)(font "Arial" ))
+		(line (pt 224 32)(pt 208 32)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 208 80)(line_width 1))
+	)
+)
+(connector
+	(pt 272 96)
+	(pt 256 96)
+	(bus)
+	(color 255 0 0)
+)
+(connector
+	(pt 272 112)
+	(pt 256 112)
+	(bus)
+	(color 255 0 0)
+)
+(connector
+	(pt 496 96)
+	(pt 512 96)
+	(bus)
+	(color 0 128 0)
+)
+(text "At .vwf file I assume that the word is:" (rect 536 -176 750 -162)(font "Arial" (font_size 8)))
+(text "1   001100   1111  0  11111  000  0110  1  0011111" (rect 536 -160 826 -146)(font "Arial" (font_size 8)))
+(text "S - IMMEDIATE  111111111111111111111 001100 0110 1" (rect 824 -144 1150 -130)(font "Arial" (font_size 8)))
+(text "I - IMMEDIATE : 111111111111111111111 001100 1111 0" (rect 824 -168 1148 -154)(font "Arial" (font_size 8)))
+(text "B - IMMEDIATE  11111111111111111111 1 001100 0110 0" (rect 824 -128 1154 -114)(font "Arial" (font_size 8)))
+(text "U - IMMEDIATE  1 00110011110 11111000 000000000000" (rect 824 -112 1150 -98)(font "Arial" (font_size 8)))
+(text "J - IMMEDIATE  11111111111111111 0000001100 1111 0" (rect 824 -96 1148 -82)(font "Arial" (font_size 8)))
+(text "EXPECTING ==>" (rect 656 -120 745 -106)(font "Arial" (font_size 8)))
+(rectangle (rect 528 -184 1112 -80))
+(arc (pt 528 -136)(pt 264 112)(rect 264 -136 792 360))
+(title_block
+	(rect 376 -72 744 48)
+	(section (rect 0 0 368 24)(text "TITLE" (rect 2 0 30 12)(font "Arial" ))(text "RV32I(M)" (rect 56 2 133 20)(font "Arial" (font_size 12)))(border))
+	(section (rect 0 24 368 48)(text "INFO" (rect 2 0 29 12)(font "Arial" ))(text "2/5: ID PARTS TESTING [IMM GEN]" (rect 56 2 352 20)(font "Arial" (font_size 12)))(border))
+	(section (rect 0 48 368 72)(text "NAME" (rect 2 0 32 12)(font "Arial" ))(text "NICK" (rect 56 2 99 20)(font "Arial" (font_size 12)))(border))
+	(section (rect 0 72 280 96)(text "LASTNAME" (rect 2 0 58 12)(font "Arial" ))(text "1.00" (rect 56 1 85 17)(font "Arial" (font_size 10)))(border))
+	(section (rect 280 72 368 96)(text "REV" (rect 2 1 24 13)(font "Arial" ))(text "A" (rect 43 1 53 17)(font "Arial" (font_size 10)))(border))
+	(section (rect 0 96 240 120)(text "DATE" (rect 2 0 30 12)(font "Arial" ))(text "Wed Feb 27 16:12:10 2019" (rect 56 3 241 19)(font "Arial" (font_size 10)))(date)(border))
+	(section (rect 240 96 310 120)(text "SHEET" (rect 2 0 37 12)(font "Arial" ))(text "1" (rect 55 5 63 21)(font "Arial" (font_size 10))))
+	(section (rect 310 96 368 120)(text "OF" (rect 10 0 25 12)(font "Arial" ))(text "1" (rect 34 4 42 20)(font "Arial" (font_size 10))))
+	(drawing
+	)
+	(fill (color 255 255 0))
+)

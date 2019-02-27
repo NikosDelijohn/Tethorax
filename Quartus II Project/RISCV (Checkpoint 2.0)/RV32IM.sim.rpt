@@ -1,0 +1,299 @@
+Simulator report for RV32IM
+Wed Feb 27 16:09:58 2019
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 1.0 us       ;
+; Simulation Netlist Size     ; 104 nodes    ;
+; Simulation Coverage         ;      43.30 % ;
+; Total Number of Transitions ; 1023         ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; Cyclone II   ;
+; Device                      ; EP2C35F672C6 ;
++-----------------------------+--------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                    ;
++--------------------------------------------------------------------------------------------+--------------------------+---------------+
+; Option                                                                                     ; Setting                  ; Default Value ;
++--------------------------------------------------------------------------------------------+--------------------------+---------------+
+; Simulation mode                                                                            ; Timing                   ; Timing        ;
+; Start time                                                                                 ; 0 ns                     ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                     ;               ;
+; Vector input source                                                                        ; ID_IMM_GENERATORTEST.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                       ; On            ;
+; Check outputs                                                                              ; Off                      ; Off           ;
+; Report simulation coverage                                                                 ; On                       ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                       ; On            ;
+; Display missing 1-value coverage report                                                    ; On                       ; On            ;
+; Display missing 0-value coverage report                                                    ; On                       ; On            ;
+; Detect setup and hold time violations                                                      ; Off                      ; Off           ;
+; Detect glitches                                                                            ; Off                      ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                      ; Off           ;
+; Generate Signal Activity File                                                              ; Off                      ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                      ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                      ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                       ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE               ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                      ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off                      ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                     ; Auto          ;
++--------------------------------------------------------------------------------------------+--------------------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      43.30 % ;
+; Total nodes checked                                 ; 104          ;
+; Total output ports checked                          ; 97           ;
+; Total output ports with complete 1/0-value coverage ; 42           ;
+; Total output ports with no 1/0-value coverage       ; 40           ;
+; Total output ports with no 1-value coverage         ; 44           ;
+; Total output ports with no 0-value coverage         ; 51           ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                  ;
++-----------------------------------------------------+-----------------------------------------------------+------------------+
+; Node Name                                           ; Output Port Name                                    ; Output Port Type ;
++-----------------------------------------------------+-----------------------------------------------------+------------------+
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux32~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux32~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux32~1 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux32~1 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux31~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux31~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux30~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux30~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux27~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux27~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux26~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux26~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux21~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux21~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux13~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux13~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux15~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux15~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux14~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux14~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux13~1 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux13~1 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux11~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux11~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux11~1 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux11~1 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux8~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux8~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux7~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux7~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux0~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux0~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux4~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux4~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux3~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux3~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux2~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux2~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux0~1  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux0~1  ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux11~2 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux11~2 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux1~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux1~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[31]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[31]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[30]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[30]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[29]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[29]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[26]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[26]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[25]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[25]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[20]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[20]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[14]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[14]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[13]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[13]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[12]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[12]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[11]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[11]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[8]                  ; |ID_IMM_GENERATORTEST|IMMEDIATE[8]                  ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[7]                  ; |ID_IMM_GENERATORTEST|IMMEDIATE[7]                  ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[4]                  ; |ID_IMM_GENERATORTEST|IMMEDIATE[4]                  ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[3]                  ; |ID_IMM_GENERATORTEST|IMMEDIATE[3]                  ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[2]                  ; |ID_IMM_GENERATORTEST|IMMEDIATE[2]                  ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[1]                  ; |ID_IMM_GENERATORTEST|IMMEDIATE[1]                  ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[0]                  ; |ID_IMM_GENERATORTEST|IMMEDIATE[0]                  ; padio            ;
+; |ID_IMM_GENERATORTEST|TYPE[1]                       ; |ID_IMM_GENERATORTEST|TYPE[1]~corein                ; combout          ;
+; |ID_IMM_GENERATORTEST|TYPE[0]                       ; |ID_IMM_GENERATORTEST|TYPE[0]~corein                ; combout          ;
+; |ID_IMM_GENERATORTEST|TYPE[2]                       ; |ID_IMM_GENERATORTEST|TYPE[2]~corein                ; combout          ;
++-----------------------------------------------------+-----------------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++------------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                     ;
++-----------------------------------------------------+-----------------------------------------------------+------------------+
+; Node Name                                           ; Output Port Name                                    ; Output Port Type ;
++-----------------------------------------------------+-----------------------------------------------------+------------------+
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux29~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux29~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux28~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux28~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux25~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux25~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux24~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux24~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux23~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux23~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux22~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux22~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux20~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux20~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux19~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux19~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux18~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux18~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux17~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux17~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux16~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux16~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux10~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux10~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux9~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux9~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux6~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux6~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux5~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux5~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[10]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[10]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[9]                  ; |ID_IMM_GENERATORTEST|IMMEDIATE[9]                  ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[6]                  ; |ID_IMM_GENERATORTEST|IMMEDIATE[6]                  ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[5]                  ; |ID_IMM_GENERATORTEST|IMMEDIATE[5]                  ; padio            ;
+; |ID_IMM_GENERATORTEST|WORD[31]                      ; |ID_IMM_GENERATORTEST|WORD[31]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[30]                      ; |ID_IMM_GENERATORTEST|WORD[30]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[29]                      ; |ID_IMM_GENERATORTEST|WORD[29]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[28]                      ; |ID_IMM_GENERATORTEST|WORD[28]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[27]                      ; |ID_IMM_GENERATORTEST|WORD[27]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[26]                      ; |ID_IMM_GENERATORTEST|WORD[26]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[25]                      ; |ID_IMM_GENERATORTEST|WORD[25]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[24]                      ; |ID_IMM_GENERATORTEST|WORD[24]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[23]                      ; |ID_IMM_GENERATORTEST|WORD[23]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[22]                      ; |ID_IMM_GENERATORTEST|WORD[22]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[21]                      ; |ID_IMM_GENERATORTEST|WORD[21]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[20]                      ; |ID_IMM_GENERATORTEST|WORD[20]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[19]                      ; |ID_IMM_GENERATORTEST|WORD[19]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[18]                      ; |ID_IMM_GENERATORTEST|WORD[18]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[17]                      ; |ID_IMM_GENERATORTEST|WORD[17]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[16]                      ; |ID_IMM_GENERATORTEST|WORD[16]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[15]                      ; |ID_IMM_GENERATORTEST|WORD[15]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[14]                      ; |ID_IMM_GENERATORTEST|WORD[14]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[13]                      ; |ID_IMM_GENERATORTEST|WORD[13]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[12]                      ; |ID_IMM_GENERATORTEST|WORD[12]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[7]                       ; |ID_IMM_GENERATORTEST|WORD[7]~corein                ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[11]                      ; |ID_IMM_GENERATORTEST|WORD[11]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[10]                      ; |ID_IMM_GENERATORTEST|WORD[10]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[9]                       ; |ID_IMM_GENERATORTEST|WORD[9]~corein                ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[8]                       ; |ID_IMM_GENERATORTEST|WORD[8]~corein                ; combout          ;
++-----------------------------------------------------+-----------------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++------------------------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                                     ;
++-----------------------------------------------------+-----------------------------------------------------+------------------+
+; Node Name                                           ; Output Port Name                                    ; Output Port Type ;
++-----------------------------------------------------+-----------------------------------------------------+------------------+
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux29~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux29~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux28~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux28~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux25~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux25~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux24~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux24~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux23~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux23~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux22~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux22~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux20~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux20~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux19~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux19~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux18~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux18~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux17~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux17~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux16~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux16~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux10~0 ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux10~0 ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux9~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux9~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux6~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux6~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux5~0  ; |ID_IMM_GENERATORTEST|ID_IMM_GENERATOR:inst|Mux5~0  ; combout          ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[28]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[28]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[27]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[27]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[24]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[24]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[23]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[23]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[22]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[22]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[21]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[21]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[19]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[19]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[18]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[18]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[17]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[17]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[16]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[16]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|IMMEDIATE[15]                 ; |ID_IMM_GENERATORTEST|IMMEDIATE[15]                 ; padio            ;
+; |ID_IMM_GENERATORTEST|WORD[31]                      ; |ID_IMM_GENERATORTEST|WORD[31]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[30]                      ; |ID_IMM_GENERATORTEST|WORD[30]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[29]                      ; |ID_IMM_GENERATORTEST|WORD[29]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[28]                      ; |ID_IMM_GENERATORTEST|WORD[28]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[27]                      ; |ID_IMM_GENERATORTEST|WORD[27]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[26]                      ; |ID_IMM_GENERATORTEST|WORD[26]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[25]                      ; |ID_IMM_GENERATORTEST|WORD[25]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[24]                      ; |ID_IMM_GENERATORTEST|WORD[24]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[23]                      ; |ID_IMM_GENERATORTEST|WORD[23]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[22]                      ; |ID_IMM_GENERATORTEST|WORD[22]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[21]                      ; |ID_IMM_GENERATORTEST|WORD[21]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[20]                      ; |ID_IMM_GENERATORTEST|WORD[20]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[19]                      ; |ID_IMM_GENERATORTEST|WORD[19]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[18]                      ; |ID_IMM_GENERATORTEST|WORD[18]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[17]                      ; |ID_IMM_GENERATORTEST|WORD[17]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[16]                      ; |ID_IMM_GENERATORTEST|WORD[16]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[15]                      ; |ID_IMM_GENERATORTEST|WORD[15]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[14]                      ; |ID_IMM_GENERATORTEST|WORD[14]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[13]                      ; |ID_IMM_GENERATORTEST|WORD[13]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[12]                      ; |ID_IMM_GENERATORTEST|WORD[12]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[7]                       ; |ID_IMM_GENERATORTEST|WORD[7]~corein                ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[11]                      ; |ID_IMM_GENERATORTEST|WORD[11]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[10]                      ; |ID_IMM_GENERATORTEST|WORD[10]~corein               ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[9]                       ; |ID_IMM_GENERATORTEST|WORD[9]~corein                ; combout          ;
+; |ID_IMM_GENERATORTEST|WORD[8]                       ; |ID_IMM_GENERATORTEST|WORD[8]~corein                ; combout          ;
++-----------------------------------------------------+-----------------------------------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Wed Feb 27 16:09:58 2019
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off RV32IM -c RV32IM
+Info: Using vector source file "D:/Academic/Software/QuartusWebEdition/quartus/RISCV/ID_IMM_GENERATORTEST.vwf"
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      43.30 %
+Info: Number of transitions in simulation is 1023
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 170 megabytes
+    Info: Processing ended: Wed Feb 27 16:09:58 2019
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
+
+
