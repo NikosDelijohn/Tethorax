@@ -41,7 +41,7 @@ PACKAGE TOOLBOX IS
 -------------------------------------------------------------------------
 	-- Defined @ "MUX8X1.vhd" file.
 	COMPONENT MUX8X1 IS 
-		-- Defined @ "MUX8X1.vhd" file.
+
 		GENERIC ( INSIZE : INTEGER := 10 );
 		
 		PORT (	
@@ -138,12 +138,33 @@ PACKAGE TOOLBOX IS
 	-- Defined @ "ID_IMM_GENERATOR.vhd" file.
 	COMPONENT ID_IMM_GENERATOR IS
 
-			PORT(
-					IMM_TYPE  : IN  STD_LOGIC_VECTOR(2  DOWNTO 0);
-					IF_WORD   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-					IMMEDIATE : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)	
-				);
+		PORT(
+				IMM_TYPE  : IN  STD_LOGIC_VECTOR(2  DOWNTO 0);
+				IF_WORD   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				IMMEDIATE : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)	
+			);
 		 
 	END COMPONENT ID_IMM_GENERATOR;
 -------------------------------------------------------------------------	
+	-- Defined @ "REG_32B_ZERO.vhd" file.
+	COMPONENT REG_32B_ZERO IS
+
+		PORT(
+				CLK   : IN  STD_LOGIC;
+				Q_OUT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			);
+
+	END COMPONENT REG_32B_ZERO;
+-------------------------------------------------------------------------	
+	-- Defined @ "REG_32B_CASUAL.vhd" file.
+	COMPONENT REG_32B_CASUAL IS
+
+		PORT(
+				LOAD, CLK, RST : IN  STD_LOGIC;
+				DATA		   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				Q_OUT 		   : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			);
+
+	END COMPONENT REG_32B_CASUAL;
+-------------------------------------------------------------------------		
 END PACKAGE TOOLBOX;
