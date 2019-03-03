@@ -167,4 +167,19 @@ PACKAGE TOOLBOX IS
 
 	END COMPONENT REG_32B_CASUAL;
 -------------------------------------------------------------------------		
+	-- Defined @ "REGISTER_FILE.vhd" file.
+	COMPONENT REGISTER_FILE IS 
+
+		PORT ( 
+				CLK,RST  : IN  STD_LOGIC;
+				LOAD_REG : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				DATA_IN  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				ADDR_RS1 : IN  STD_LOGIC_VECTOR(4  DOWNTO 0);
+				ADDR_RS2 : IN  STD_LOGIC_VECTOR(4  DOWNTO 0) := NULL;
+				DATA_RS1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+				DATA_RS2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) := NULL
+			 );
+			 
+	END COMPONENT REGISTER_FILE;
+-------------------------------------------------------------------------	
 END PACKAGE TOOLBOX;
