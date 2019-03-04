@@ -5,7 +5,6 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
 PACKAGE TOOLBOX IS
-
 -- ================== INSTRUCTION FETCH COMPONENTS ================== --
 ------------------------------------------------------------------------
 	-- Defined @ "I_F_RAM.vhd" file. 
@@ -39,6 +38,19 @@ PACKAGE TOOLBOX IS
 	END COMPONENT MUX2X1;
 	
 -------------------------------------------------------------------------
+	-- Defined @ "MUX2X1_BIT.vhd" file.
+	COMPONENT MUX2X1_BIT IS
+
+		PORT ( 
+				D0  : IN  STD_LOGIC;
+				D1  : IN  STD_LOGIC;
+				SEL : IN  STD_LOGIC;
+				O   : OUT STD_LOGIC
+			 );
+		 
+	END COMPONENT MUX2X1_BIT;
+-------------------------------------------------------------------------
+
 	-- Defined @ "MUX8X1.vhd" file.
 	COMPONENT MUX8X1 IS 
 
@@ -181,5 +193,19 @@ PACKAGE TOOLBOX IS
 			 );
 			 
 	END COMPONENT REGISTER_FILE;
--------------------------------------------------------------------------	
+-------------------------------------------------------------------------
+	-- Defined @ "BARREL_CELL.vhd" file.
+	COMPONENT BARREL_CELL IS
+	
+		PORT (
+				D0    : IN  STD_LOGIC;
+				D1    : IN  STD_LOGIC;
+				D2    : IN  STD_LOGIC;
+				SEL   : IN  STD_LOGIC_VECTOR(1 DOWNTO 0);
+				O     : OUT STD_LOGIC
+			 );
+
+	END COMPONENT BARREL_CELL;
+-------------------------------------------------------------------------
+
 END PACKAGE TOOLBOX;
