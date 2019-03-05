@@ -50,7 +50,6 @@ PACKAGE TOOLBOX IS
 		 
 	END COMPONENT MUX2X1_BIT;
 -------------------------------------------------------------------------
-
 	-- Defined @ "MUX8X1.vhd" file.
 	COMPONENT MUX8X1 IS 
 
@@ -207,5 +206,30 @@ PACKAGE TOOLBOX IS
 
 	END COMPONENT BARREL_CELL;
 -------------------------------------------------------------------------
+	-- Defined @ "BARREL_SHIFTER.vhd" file.
+	COMPONENT BARREL_SHIFTER IS
+	
+		PORT (
+				VALUE_A : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				SHAMT_B : IN  STD_LOGIC_VECTOR(4  DOWNTO 0);
+				OPCODE  : IN  STD_LOGIC_VECTOR(1  DOWNTO 0); 
+				RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			 );
+		 
+	END COMPONENT BARREL_SHIFTER;
+-------------------------------------------------------------------------
+	-- Defined @ "ADDER_2B.vhd" file.
+	COMPONENT ADDER_2B IS
+			
+			  PORT ( 
+					A  : IN STD_LOGIC;
+					B  : IN STD_LOGIC;
+					CI : IN STD_LOGIC;
+					S  : OUT STD_LOGIC;
+					CO : OUT STD_LOGIC 
+				   );
 
+	END COMPONENT ADDER_2B;
+-------------------------------------------------------------------------
+	
 END PACKAGE TOOLBOX;
