@@ -65,7 +65,7 @@ ARCHITECTURE STRUCTURAL OF BARREL_SHIFTER IS
 						SEL => OPCODE(1),
 						O   => SRA_BUF
 					  );
-					  
+					  					  
 	SHIFT_STAGES: FOR I IN 4 DOWNTO 0 GENERATE
 		
 		SHIFT_BY_16: IF I = 4 GENERATE
@@ -159,7 +159,7 @@ ARCHITECTURE STRUCTURAL OF BARREL_SHIFTER IS
 									 D1  => STAGE_8_SHIFT(J-4),
 									 D2  => SRA_BUF,
 									 SEL => (NOT(R_L_SHIFT) AND SHAMT_B(I)) & (R_L_SHIFT AND SHAMT_B(I)),
-									 O   => RESULT(J)
+									 O   => STAGE_4_SHIFT(J)
 								   );
 								   
 				END GENERATE TOP_4_BITS;
@@ -172,7 +172,7 @@ ARCHITECTURE STRUCTURAL OF BARREL_SHIFTER IS
 									 D1  => STAGE_8_SHIFT(J-4),
 									 D2  => STAGE_8_SHIFT(J+4),
 									 SEL => (NOT(R_L_SHIFT) AND SHAMT_B(I)) & (R_L_SHIFT AND SHAMT_B(I)),
-									 O   => RESULT(J)
+									 O   => STAGE_4_SHIFT(J)
 									);
 									
 				END GENERATE MID_24_BITS;
@@ -185,7 +185,7 @@ ARCHITECTURE STRUCTURAL OF BARREL_SHIFTER IS
 									 D1  => SRA_BUF,
 									 D2  => STAGE_8_SHIFT(J+4),
 									 SEL => (NOT(R_L_SHIFT) AND SHAMT_B(I)) & (R_L_SHIFT AND SHAMT_B(I)),
-									 O   => RESULT(J)
+									 O   => STAGE_4_SHIFT(J)
 									);
 									
 				END GENERATE BOT_4_BITS;
@@ -194,8 +194,104 @@ ARCHITECTURE STRUCTURAL OF BARREL_SHIFTER IS
 			
 		END GENERATE SHIFT_BY_4;
 		
-	END GENERATE SHIFT_STAGES;
+		SHIFT_BY_2: IF I = 1 GENERATE
+	
+			CELLS: FOR J IN 31 DOWNTO 0 GENERATE
+	
+				TOP_2_BITS: IF J >=30 GENERATE
+	
+					MSBS: BARREL_CELL
+						  PORT MAP (
+									 D0  => STAGE_4_SHIFT(J),
+									 D1  => STAGE_4_SHIFT(J-2),
+									 D2  => SRA_BUF,
+									 SEL => (NOT(R_L_SHIFT) AND SHAMT_B(I)) & (R_L_SHIFT AND SHAMT_B(I)),
+									 O   => STAGE_2_SHIFT(J)
+									);
+									
+				END GENERATE TOP_2_BITS;
+				
+				MID_28_BITS: IF J < 30 AND J > 1 GENERATE
+				
+					MIDS: BARREL_CELL
+						  PORT MAP ( 
+								     D0  => STAGE_4_SHIFT(J),
+								     D1  => STAGE_4_SHIFT(J-2),
+								     D2  => STAGE_4_SHIFT(J+2),
+								     SEL => (NOT(R_L_SHIFT) AND SHAMT_B(I)) & (R_L_SHIFT AND SHAMT_B(I)),
+								     O   => STAGE_2_SHIFT(J)
+								   );
+								   
+				END GENERATE MID_28_BITS;
+				
+				BOT_2_BITS: IF J <= 1 GENERATE
+					
+					LSBS: BARREL_CELL
+						  PORT MAP (
+								     D0  => STAGE_4_SHIFT(J),
+								     D1  => SRA_BUF,
+								     D2  => STAGE_4_SHIFT(J+2),
+								     SEL => (NOT(R_L_SHIFT) AND SHAMT_B(I)) & (R_L_SHIFT AND SHAMT_B(I)),
+								     O   => STAGE_2_SHIFT(J)
+								   );
+								   
+				END GENERATE BOT_2_BITS;
+				
+			END GENERATE CELLS;
 			
+		END GENERATE SHIFT_BY_2;
+		
+		SHIFT_BY_1: IF I = 0 GENERATE
+		
+			CELLS: FOR J IN 31 DOWNTO 0 GENERATE
+	
+				TOP_1_BIT: IF J = 31 GENERATE
+	
+					MSB: BARREL_CELL
+						 PORT MAP ( 
+									D0  => STAGE_2_SHIFT(J),
+									D1  => STAGE_2_SHIFT(J-1),
+									D2  => SRA_BUF,
+									SEL => (NOT(R_L_SHIFT) AND SHAMT_B(I)) & (R_L_SHIFT AND SHAMT_B(I)),
+									O   => STAGE_1_SHIFT(J)
+								  );
+								  
+				END GENERATE TOP_1_BIT;
+				
+				MID_29_BITS: IF J < 31 AND J > 0 GENERATE
+	
+					MIDS: BARREL_CELL
+						  PORT MAP ( 
+									 D0  => STAGE_2_SHIFT(J),
+									 D1  => STAGE_2_SHIFT(J-1),
+									 D2  => STAGE_2_SHIFT(J+1),
+									 SEL => (NOT(R_L_SHIFT) AND SHAMT_B(I)) & (R_L_SHIFT AND SHAMT_B(I)),
+									 O   => STAGE_1_SHIFT(J)
+								   );
+				
+				END GENERATE MID_29_BITS;
+				
+				BOT_1_BIT: IF J = 0 GENERATE
+	
+					LSB: BARREL_CELL
+						 PORT MAP (
+									D0  => STAGE_2_SHIFT(J),
+									D1  => SRA_BUF,
+									D2  => STAGE_2_SHIFT(J+1),
+									SEL => (NOT(R_L_SHIFT) AND SHAMT_B(I)) & (R_L_SHIFT AND SHAMT_B(I)),
+									O   => STAGE_1_SHIFT(J)
+								  );
+				
+				END GENERATE BOT_1_BIT;
+				
+			END GENERATE CELLS;
+			
+		END GENERATE SHIFT_BY_1;				 
+						 
+	END GENERATE SHIFT_STAGES;
+	
+	RESULT <= STAGE_1_SHIFT;
+		
 END STRUCTURAL;
 				
 	
