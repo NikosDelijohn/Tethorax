@@ -1,25 +1,47 @@
 -- =============================================================
--- |		RISC-V RV32I(M) ISA IMPLEMENTATION             |
+-- |				RISC-V RV32I(M) ISA IMPLEMENTATION  	   |
 -- =============================================================
--- |student:    Deligiannis Nikos			       |
--- |supervisor: Aristides Efthymiou			       |
+-- |student:    Deligiannis Nikos							   |
+-- |supervisor: Aristides Efthymiou						       |
 -- =============================================================
--- |		UNIVERSITY OF IOANNINA - 2019 		       |
--- |  			VCAS LABORATORY 	               |
+-- |			    UNIVERSITY OF IOANNINA - 2019 			   |
+-- |  					 VCAS LABORATORY 					   |
 -- =============================================================
 
 
 -- *** 2/5: INSTRUCTION DECODE (ID) MODULE DESIGN ***
----------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- PART#1: DECODER
 -- " Given specific bit segments from the instruction
 --   fetched word, this Decoder "classifies" the command
 --   as R/I/S/U/B/J by providing the necessary control
---   signals to the following units (e.g. ALU). "
----------------------------------------------------------
+--   signals to the following units (e.g. ALU). 
+--							 				
+--   CONTROL WORD TRANSLATION: X|XXX|X|X|XXX|XX|XX|X|X|X|X|X 
+--     |              
+--     | => BIT[0]     : JUMP   (0  : No  | 1  : Yes)
+--     | => BIT[1]     : PC	    (0  : RS1 | 1  : PC) ** ALSO IMM = 4 for ALU for JUMPS **
+--     | => BIT[2]     : IMM	(0  : RS2 | 1  : IMM)
+--	   | => BIT[3]     : SLT    (0  : No  | 1  : Yes)
+--	   | => BIT[4]     : BRANCH (0  : No  | 1  : Yes)
+--     | => BIT[6..5]  : ALU OP (00 : Add | 01 : Sub | 10: Logic | 11: Shift)  --\  Since the bits [3..2] determine the ALU's output, there
+--     | => BIT[8..7]  : BAS OP (00 : Srl | 01 : Sll | 10: Sra   | 11: Error)     \ is no problem using the same bits [5..4] to represent different
+-- 	   | 			     LOG OP (00 : And | 01 : Or  | 10: Xor   | 11: Error)     / operations in different ALU modules. Note for AUIPC command the bit[4]
+--	   |                 ADD OP (0X : Sgn | 1X : Unsg)                         --/  will be used to set the ALU result's LSB to zero. XOR = 1.
+--     | => BIT[11..9] : MEM OP (000: LB  | 001: LH | 010: LW  --\ 
+--	   |				         100: SB  | 101: SH | 110: SW     | The MSB signifies the operation when
+--	   |				 	     111: MEM-FREE-OP)             --/  the bits[6..5] define the byte enable. 
+--	   | => BIT[12]    : MEM U  (0  : Sgn | 1  : Unsg)
+--     | => BIT[13]    : WB  OP (0  : No  | 1  : Yes)
+--     | => BIT[16..14]: IMMGEN (000: I   | 001: S  | 010: B
+--     |                         011: U   | 100: J)
+--     | => BIT[17]    : BGE U  (0  : No  | 1  : Yes)
+--
+-- " Bits [15..12] will be used for ID controlling while [11..0] are about EXE,MEM and WB stages.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- TODO:
--- * REPLACE THE SIGNALS' TEST VALUES WITH THE CORRECT ONES.
+-- * REPLACE THE SIGNALS' TEST VALUES WITH THE CORRECT ONES. ==> DONE
 
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
@@ -29,7 +51,7 @@ USE WORK.TOOLBOX.ALL;
 
 ENTITY ID_DECODER IS
 			
-	GENERIC ( CTRL_WORD_SIZE : INTEGER := 10 );
+	GENERIC ( CTRL_WORD_SIZE : INTEGER := 18 );
 	
 	PORT(
 			MUX_2X1_SEL  : IN  STD_LOGIC;                    -- funct7 bit
@@ -41,50 +63,50 @@ ENTITY ID_DECODER IS
 END ID_DECODER;
 
 ARCHITECTURE STRUCTURAL OF ID_DECODER IS
-	
-    -- LOAD COMANDS --------------------------------------------    TESTING VALS <= TO BE CHANGED ~ ALU / MEM / WB NEEDS
-	SIGNAL L_LB    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000000001"; 
-	SIGNAL L_LH    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000000010";
-	SIGNAL L_LW    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000000011";
-	SIGNAL L_LBU   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000000100";
-	SIGNAL L_LHU   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000000101";
-	-- I COMMANDS ----------------------------------------------
-	SIGNAL I_ADDI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000000110";
-	SIGNAL I_SLLI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000000111";
-	SIGNAL I_SLTI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000001000";
-	SIGNAL I_SLTIU : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000001001";
-	SIGNAL I_XORI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000001010";
-	SIGNAL I_SRLI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000001011";
-	SIGNAL I_SRAI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000001100";
-	SIGNAL I_ORI   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000001101";
-	SIGNAL I_ANDI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000001110";
+	                      
+    -- LOAD COMANDS --------------------------------------------    BGE IMGEN WB  MEU  MEM  ALOPS ALU BR  SLT IMM PC  J    
+	SIGNAL L_LB    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"0"&"000"&"00"&"00"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:0 | MEM OP:000 | ADD OP:0X | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 8196]
+	SIGNAL L_LH    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"0"&"001"&"00"&"00"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:0 | MEM OP:001 | ADD OP:0X | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 8708]
+	SIGNAL L_LW    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"0"&"010"&"00"&"00"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:0 | MEM OP:010 | ADD OP:0X | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 9220]
+	SIGNAL L_LBU   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"1"&"000"&"00"&"00"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:1 | MEM OP:000 | ADD OP:0X | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 12292]
+	SIGNAL L_LHU   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"1"&"001"&"00"&"00"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:1 | MEM OP:001 | ADD OP:0X | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 12804]
+	-- I COMMANDS ----------------------------------------------    						
+	SIGNAL I_ADDI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"0"&"111"&"00"&"00"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 11780]
+	SIGNAL I_SLLI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"0"&"111"&"01"&"11"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:X | MEM OP:111 | BAS OP:01 | ALU OP:11 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 12004]
+	SIGNAL I_SLTI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"0"&"111"&"00"&"01"&"0"&"1"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:01 | BRANCH:0 | SLT:1 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 11820]
+	SIGNAL I_SLTIU : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"0"&"111"&"11"&"01"&"0"&"1"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:X | MEM OP:111 | ADD OP:1X | ALU OP:01 | BRANCH:0 | SLT:1 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 12204]
+	SIGNAL I_XORI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"0"&"111"&"10"&"10"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:X | MEM OP:111 | LOG OP:10 | ALU OP:10 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 12100]
+	SIGNAL I_SRLI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"0"&"111"&"00"&"11"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:X | MEM OP:111 | BAS OP:00 | ALU OP:11 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 11876]
+	SIGNAL I_SRAI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"0"&"111"&"10"&"11"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:X | MEM OP:111 | BAS OP:10 | ALU OP:11 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 12132]
+	SIGNAL I_ORI   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"0"&"111"&"01"&"10"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:X | MEM OP:111 | LOG OP:01 | ALU OP:10 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 11972]
+	SIGNAL I_ANDI  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"1"&"0"&"111"&"00"&"10"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:1 | MEM U:X | MEM OP:111 | LOG OP:00 | ALU OP:10 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 11844]
 	-- STORE COMMANDS ------------------------------------------
-	SIGNAL S_SB    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000001111"; 
-	SIGNAL S_SH    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000010000";
-	SIGNAL S_SW    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000010001";
+	SIGNAL S_SB    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"001"&"0"&"0"&"100"&"00"&"00"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:001 | WB OP:0 | MEM U:0 | MEM OP:100 | ADD OP:0X | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 18436]
+	SIGNAL S_SH    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"001"&"0"&"0"&"101"&"00"&"00"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:001 | WB OP:0 | MEM U:0 | MEM OP:101 | ADD OP:0X | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 18948]
+	SIGNAL S_SW    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"001"&"0"&"0"&"110"&"00"&"00"&"0"&"0"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:001 | WB OP:0 | MEM U:0 | MEM OP:110 | ADD OP:0X | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:1 | PC:0 | JUMP:0 -- [DECIMAL: 19460]
 	-- R COMMANDS ----------------------------------------------
-	SIGNAL R_ADD   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000010010";
-	SIGNAL R_SUB   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000010011";
-	SIGNAL R_SLL   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000010100";
-	SIGNAL R_SLT   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000010101";
-	SIGNAL R_SLTU  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000010110";
-	SIGNAL R_XOR   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000010111";
-	SIGNAL R_SRL   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000011000";
-	SIGNAL R_SRA   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000011001";
-	SIGNAL R_OR    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000011010";
-	SIGNAL R_AND   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000011100";
+	SIGNAL R_ADD   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"111"&"1"&"0"&"111"&"00"&"00"&"0"&"0"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:XXX | WB OP:1 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 126464]
+	SIGNAL R_SUB   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"111"&"1"&"0"&"111"&"00"&"01"&"0"&"0"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:XXX | WB OP:1 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:01 | BRANCH:0 | SLT:0 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 126496]
+	SIGNAL R_SLL   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"111"&"1"&"0"&"111"&"01"&"11"&"0"&"0"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:XXX | WB OP:1 | MEM U:X | MEM OP:111 | BAS OP:01 | ALU OP:11 | BRANCH:0 | SLT:0 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 126688]
+	SIGNAL R_SLT   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"111"&"1"&"0"&"111"&"00"&"01"&"0"&"1"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:XXX | WB OP:1 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:01 | BRANCH:0 | SLT:0 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 126504]
+	SIGNAL R_SLTU  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"111"&"1"&"0"&"111"&"11"&"01"&"0"&"1"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:XXX | WB OP:1 | MEM U:X | MEM OP:111 | ADD OP:1X | ALU OP:01 | BRANCH:0 | SLT:1 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 126888]
+	SIGNAL R_XOR   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"111"&"1"&"0"&"111"&"10"&"10"&"0"&"0"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:XXX | WB OP:1 | MEM U:X | MEM OP:111 | LOG OP:10 | ALU OP:10 | BRANCH:0 | SLT:0 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 126784]
+	SIGNAL R_SRL   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"111"&"1"&"0"&"111"&"00"&"11"&"0"&"0"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:XXX | WB OP:1 | MEM U:X | MEM OP:111 | BAS OP:00 | ALU OP:11 | BRANCH:0 | SLT:0 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 126560]
+	SIGNAL R_SRA   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"111"&"1"&"0"&"111"&"10"&"11"&"0"&"0"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:XXX | WB OP:1 | MEM U:X | MEM OP:111 | BAS OP:10 | ALU OP:11 | BRANCH:0 | SLT:0 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 126816]
+	SIGNAL R_OR    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"111"&"1"&"0"&"111"&"01"&"10"&"0"&"0"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:XXX | WB OP:1 | MEM U:X | MEM OP:111 | LOG OP:01 | ALU OP:10 | BRANCH:0 | SLT:0 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 126656]
+	SIGNAL R_AND   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"111"&"1"&"0"&"111"&"00"&"10"&"0"&"0"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:XXX | WB OP:1 | MEM U:X | MEM OP:111 | LOG OP:00 | ALU OP:10 | BRANCH:0 | SLT:0 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 126528]
 	-- BRANCH COMMANDS -----------------------------------------
-	SIGNAL B_BEQ   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000011101";
-	SIGNAL B_BNE   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000011110";
-	SIGNAL B_BLT   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000011111";
-	SIGNAL B_BGE   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000100000";
-	SIGNAL B_BLTU  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000100001";
-	SIGNAL B_BGEU  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000100010";
+	SIGNAL B_BEQ   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"010"&"0"&"0"&"111"&"00"&"01"&"1"&"0"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:010 | WB OP:0 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:01 | BRANCH:1 | SLT:0 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 36400] == problem
+	SIGNAL B_BNE   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"010"&"0"&"0"&"111"&"00"&"01"&"1"&"0"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:010 | WB OP:0 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:01 | BRANCH:1 | SLT:0 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 36400] == here ??? what is alu doin with branches?
+	SIGNAL B_BLT   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"010"&"0"&"0"&"111"&"00"&"01"&"1"&"1"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:010 | WB OP:0 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:01 | BRANCH:1 | SLT:1 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 36408]
+	SIGNAL B_BGE   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "1"&"010"&"0"&"0"&"111"&"00"&"01"&"1"&"1"&"0"&"0"&"0"; -- BGE U:1 | IMMGEN:010 | WB OP:0 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:01 | BRANCH:1 | SLT:1 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 167480]
+	SIGNAL B_BLTU  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"010"&"0"&"0"&"111"&"11"&"01"&"1"&"1"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:010 | WB OP:0 | MEM U:X | MEM OP:111 | ADD OP:1X | ALU OP:01 | BRANCH:1 | SLT:1 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 36792]
+	SIGNAL B_BGEU  : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "1"&"010"&"0"&"0"&"111"&"11"&"01"&"1"&"1"&"0"&"0"&"0"; -- BGE U:1 | IMMGEN:010 | WB OP:0 | MEM U:X | MEM OP:111 | ADD OP:1X | ALU OP:01 | BRANCH:1 | SLT:1 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 167864] 
 	-- OTHERS --------------------------------------------------
-	SIGNAL AUIPC   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000100011";
-	SIGNAL LUI     : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000100100";
-	SIGNAL JALR    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000100101";
-	SIGNAL JAL     : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0000100110";
+	SIGNAL AUIPC   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"011"&"1"&"0"&"111"&"00"&"00"&"0"&"0"&"1"&"1"&"0"; -- BGE U:0 | IMMGEN:011 | WB OP:1 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:1 | PC:1 | JUMP:0 -- [DECIMAL: 60934]
+	SIGNAL LUI     : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"011"&"1"&"0"&"111"&"00"&"00"&"0"&"0"&"0"&"0"&"0"; -- BGE U:0 | IMMGEN:011 | WB OP:1 | MEM U:X | MEM OP:111 | ADD OP:XX | ALU OP:XX | BRANCH:0 | SLT:0 | IMM:0 | PC:0 | JUMP:0 -- [DECIMAL: 60928]
+	SIGNAL JALR    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"000"&"0"&"0"&"111"&"01"&"00"&"0"&"0"&"1"&"1"&"1"; -- BGE U:0 | IMMGEN:000 | WB OP:0 | MEM U:X | MEM OP:111 | ADD OP:01 | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:1 | PC:1 | JUMP:1 -- [DECIMAL: 3719]  <= LSB = 0 [XOR ADDOP TRICK]
+	SIGNAL JAL     : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "0"&"100"&"0"&"0"&"111"&"00"&"00"&"0"&"0"&"1"&"1"&"1"; -- BGE U:0 | IMMGEN:100 | WB OP:0 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:00 | BRANCH:0 | SLT:0 | IMM:1 | PC:1 | JUMP:1 -- [DECIMAL: 69127]
 	-- CARRIERS ------------------------------------------------
 	SIGNAL BUF_2A   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0);
 	SIGNAL BUF_2B   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0);
