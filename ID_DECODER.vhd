@@ -37,7 +37,7 @@
 --     |                         011: U   | 100: J)
 --     | => BIT[17]    : BGE U  (0  : No  | 1  : Yes)
 --
--- " Bits [15..12] will be used for ID controlling while [11..0] are about EXE,MEM and WB stages.
+-- " Bits [17..14] will be used for ID controlling while [13..0] are about EXE,MEM and WB stages.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- TODO:
