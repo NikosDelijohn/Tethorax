@@ -27,7 +27,7 @@
 --     | => BIT[6..5]  : ALU OP (00 : Add | 01 : Sub | 10: Logic | 11: Shift)  --\  Since the bits [3..2] determine the ALU's output, there
 --     | => BIT[8..7]  : BAS OP (00 : Srl | 01 : Sll | 10: Sra   | 11: Error)     \ is no problem using the same bits [5..4] to represent different
 --     | 		 LOG OP (00 : And | 01 : Or  | 10: Xor   | 11: Error)     / operations in different ALU modules. Note for AUIPC command the bit[4]
---     |                ADD OP (0X : Sgn | 1X : Unsg)                         --/  will be used to set the ALU result's LSB to zero. XOR = 1.
+--     |                 ADD OP (0X : Sgn | 1X : Unsg)                         --/  will be used to set the ALU result's LSB to zero. XOR = 1.
 --     | => BIT[11..9] : MEM OP (000: LB  | 001: LH | 010: LW  --\ 
 --     |		         100: SB  | 101: SH | 110: SW     | The MSB signifies the operation when
 --     |			 111: MEM-FREE-OP)             --/  the bits[6..5] define the byte enable. 
