@@ -20,7 +20,7 @@
 --   CONTROL WORD TRANSLATION: X|XXX|X|X|XXX|XX|XX|X|X|X|X|X 
 --     |              
 --     | => BIT[0]     : JUMP   (0  : No  | 1  : Yes)
---     | => BIT[1]     : PC	    (0  : RS1 | 1  : PC) ** ALSO IMM = 4 for ALU for JUMPS **
+--     | => BIT[1]     : PC	(0  : RS1 | 1  : PC) ** ALSO IMM = 4 for ALU for JUMPS **
 --     | => BIT[2]     : IMM	(0  : RS2 | 1  : IMM)
 --     | => BIT[3]     : SLT    (0  : No  | 1  : Yes)
 --     | => BIT[4]     : BRANCH (0  : No  | 1  : Yes)
