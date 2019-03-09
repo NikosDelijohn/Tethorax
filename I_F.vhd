@@ -1,11 +1,11 @@
 -- +===========================================================+
--- |			RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
+-- |	        RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
 -- |===========================================================|
--- |student:    Deligiannis Nikos							   |
--- |supervisor: Aristides Efthymiou						       |
+-- |student:    Deligiannis Nikos	                       |
+-- |supervisor: Aristides Efthymiou			       |
 -- |===========================================================|
--- |			    UNIVERSITY OF IOANNINA - 2019 			   |
--- |  					 VCAS LABORATORY 					   |
+-- |		   UNIVERSITY OF IOANNINA - 2019 	       |
+-- |  		      VCAS LABORATORY 			       |
 -- +===========================================================+
 
 -- *** 1/5: INSTRUCTION FETCH (IF) MODULE DESIGN ***
@@ -19,8 +19,8 @@
 ----------------------------------------------------------------------
 
 -- FUTURE ADDITIONS - TODO:
--- * STALL SIGNAL IMPLEMENTATION: ADD CLK ENABLE TO MEMORY
--- * REMOVE ALL THE TEST SIGNALS
+-- 1] STALL SIGNAL IMPLEMENTATION: ADD CLK ENABLE TO MEMORY
+-- 2] REMOVE ALL THE TEST SIGNALS
 
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
