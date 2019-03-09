@@ -1,11 +1,11 @@
 -- +===========================================================+
--- |	        RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
+-- |			RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
 -- |===========================================================|
--- |student:    Deligiannis Nikos	                       |
--- |supervisor: Aristides Efthymiou			       |
+-- |student:    Deligiannis Nikos							   |
+-- |supervisor: Aristides Efthymiou						       |
 -- |===========================================================|
--- |		   UNIVERSITY OF IOANNINA - 2019 	       |
--- |  		      VCAS LABORATORY 			       |
+-- |			    UNIVERSITY OF IOANNINA - 2019 			   |
+-- |  					 VCAS LABORATORY 					   |
 -- +===========================================================+
 
 -- *** 1/5: INSTRUCTION FETCH (IF) MODULE DESIGN ***
