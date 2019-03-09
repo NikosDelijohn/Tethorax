@@ -10,7 +10,7 @@
 
 
 -- *** 2/5: INSTRUCTION DECODE (ID) MODULE DESIGN ***
-----------------------------------------------------------
+------------------------------------------------------------
 
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
@@ -113,7 +113,7 @@ BEGIN
 					  O   => RS2_NEW
 					);
 	-- ID ADDER -------------------
-	JALR <= NOT(DEC_BUF(CTRL_WORD_TOTAL-2)) AND DEC_BUF(0); -- In case of JALR adder's input 1 is RS1 value
+	JALR <= NOT(DEC_BUF(CTRL_WORD_TOTAL-2)) AND DEC_BUF(0);
 		
 	MXC: MUX2X1
 		 GENERIC MAP( INSIZE => 32 )
