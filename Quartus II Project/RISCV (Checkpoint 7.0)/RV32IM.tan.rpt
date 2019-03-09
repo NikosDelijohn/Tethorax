@@ -1,0 +1,1047 @@
+Classic Timing Analyzer report for RV32IM
+Sat Mar 09 14:02:11 2019
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. tsu
+  7. tco
+  8. tpd
+  9. th
+ 10. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                                                      ;
++------------------------------+-------+---------------+-------------+-------------------------------------------------------------------------+------------------------------------------------------------------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time ; From                                                                    ; To                                                                     ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+-------------+-------------------------------------------------------------------------+------------------------------------------------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 5.956 ns    ; REG_LOAD[11]                                                            ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[6] ; --         ; CLK      ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 18.132 ns   ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[23] ; RS1[23]                                                                ; CLK        ; --       ; 0            ;
+; Worst-case tpd               ; N/A   ; None          ; 43.132 ns   ; MEMWORD[2]                                                              ; JUMPAT[31]                                                             ; --         ; --       ; 0            ;
+; Worst-case th                ; N/A   ; None          ; -3.509 ns   ; REG_DATA[7]                                                             ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[7] ; --         ; CLK      ; 0            ;
+; Total number of failed paths ;       ;               ;             ;                                                                         ;                                                                        ;            ;          ; 0            ;
++------------------------------+-------+---------------+-------------+-------------------------------------------------------------------------+------------------------------------------------------------------------+------------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                                                            ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                                                               ; Setting            ; From ; To ; Entity Name ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                                                          ; EP2C35F672C6       ;      ;    ;             ;
+; Timing Models                                                                                        ; Final              ;      ;    ;             ;
+; Default hold multicycle                                                                              ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                                                            ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                                                               ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                                                       ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                                                     ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                                                                ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                                                              ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                                                     ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                                                 ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                                                        ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                                                    ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                                                    ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node                                                ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                                                                ; 10                 ;      ;    ;             ;
+; Number of paths to report                                                                            ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                                                         ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                                                               ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                                                           ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                                                         ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis                                       ; Off                ;      ;    ;             ;
+; Reports worst-case timing paths for each clock domain and analysis                                   ; On                 ;      ;    ;             ;
+; Specifies the maximum number of worst-case timing paths to report for each clock domain and analysis ; 100                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation                                  ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                                                           ; Near End           ;      ;    ;             ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; CLK             ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; tsu                                                                                                                                                                                                            ;
++-----------------------------------------+-----------------------------------------------------+------------+--------------+-------------------------------------------------------------------------+----------+
+; Slack                                   ; Required tsu                                        ; Actual tsu ; From         ; To                                                                      ; To Clock ;
++-----------------------------------------+-----------------------------------------------------+------------+--------------+-------------------------------------------------------------------------+----------+
+; N/A                                     ; None                                                ; 5.956 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[6]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.859 ns   ; REG_DATA[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[11] ; CLK      ;
+; N/A                                     ; None                                                ; 5.859 ns   ; REG_DATA[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[11] ; CLK      ;
+; N/A                                     ; None                                                ; 5.828 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[9]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.817 ns   ; REG_DATA[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS|BUF[11] ; CLK      ;
+; N/A                                     ; None                                                ; 5.816 ns   ; REG_DATA[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:27:CASE1:CASUALS|BUF[11] ; CLK      ;
+; N/A                                     ; None                                                ; 5.754 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.740 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[20]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.739 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[20] ; CLK      ;
+; N/A                                     ; None                                                ; 5.702 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:18:CASE1:CASUALS|BUF[20] ; CLK      ;
+; N/A                                     ; None                                                ; 5.699 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:2:CASE1:CASUALS|BUF[20]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.688 ns   ; REG_DATA[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[23] ; CLK      ;
+; N/A                                     ; None                                                ; 5.688 ns   ; REG_LOAD[8]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:8:CASE1:CASUALS|BUF[17]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.688 ns   ; REG_LOAD[8]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:8:CASE1:CASUALS|BUF[16]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.688 ns   ; REG_LOAD[8]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:8:CASE1:CASUALS|BUF[5]   ; CLK      ;
+; N/A                                     ; None                                                ; 5.687 ns   ; REG_DATA[6]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[6]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.687 ns   ; REG_DATA[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[23] ; CLK      ;
+; N/A                                     ; None                                                ; 5.686 ns   ; REG_DATA[6]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[6]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.670 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.670 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:14:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.650 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[5]   ; CLK      ;
+; N/A                                     ; None                                                ; 5.649 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.608 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[20] ; CLK      ;
+; N/A                                     ; None                                                ; 5.607 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[20] ; CLK      ;
+; N/A                                     ; None                                                ; 5.595 ns   ; REG_DATA[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[11] ; CLK      ;
+; N/A                                     ; None                                                ; 5.592 ns   ; REG_DATA[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[11]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.590 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[28] ; CLK      ;
+; N/A                                     ; None                                                ; 5.590 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[19] ; CLK      ;
+; N/A                                     ; None                                                ; 5.590 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[18] ; CLK      ;
+; N/A                                     ; None                                                ; 5.590 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[17] ; CLK      ;
+; N/A                                     ; None                                                ; 5.590 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[15] ; CLK      ;
+; N/A                                     ; None                                                ; 5.590 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[14] ; CLK      ;
+; N/A                                     ; None                                                ; 5.590 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[13] ; CLK      ;
+; N/A                                     ; None                                                ; 5.590 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[2]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.542 ns   ; REG_DATA[28] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:7:CASE1:CASUALS|BUF[28]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.540 ns   ; REG_DATA[28] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[28]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.535 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[15] ; CLK      ;
+; N/A                                     ; None                                                ; 5.535 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[14] ; CLK      ;
+; N/A                                     ; None                                                ; 5.535 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[13] ; CLK      ;
+; N/A                                     ; None                                                ; 5.535 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[12] ; CLK      ;
+; N/A                                     ; None                                                ; 5.535 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[11] ; CLK      ;
+; N/A                                     ; None                                                ; 5.535 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; 5.535 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[0]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.517 ns   ; REG_DATA[14] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:27:CASE1:CASUALS|BUF[14] ; CLK      ;
+; N/A                                     ; None                                                ; 5.517 ns   ; REG_DATA[14] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS|BUF[14] ; CLK      ;
+; N/A                                     ; None                                                ; 5.512 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.508 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.505 ns   ; REG_DATA[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[17] ; CLK      ;
+; N/A                                     ; None                                                ; 5.504 ns   ; REG_DATA[10] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; 5.504 ns   ; REG_DATA[10] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; 5.502 ns   ; REG_DATA[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[17] ; CLK      ;
+; N/A                                     ; None                                                ; 5.498 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[8]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.480 ns   ; REG_DATA[25] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; 5.480 ns   ; REG_DATA[25] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; 5.473 ns   ; REG_LOAD[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[31]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.473 ns   ; REG_LOAD[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[30]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.473 ns   ; REG_LOAD[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[6]   ; CLK      ;
+; N/A                                     ; None                                                ; 5.468 ns   ; REG_DATA[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:22:CASE1:CASUALS|BUF[23] ; CLK      ;
+; N/A                                     ; None                                                ; 5.468 ns   ; REG_DATA[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[23] ; CLK      ;
+; N/A                                     ; None                                                ; 5.467 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[20] ; CLK      ;
+; N/A                                     ; None                                                ; 5.464 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[20] ; CLK      ;
+; N/A                                     ; None                                                ; 5.442 ns   ; REG_DATA[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[11] ; CLK      ;
+; N/A                                     ; None                                                ; 5.438 ns   ; REG_DATA[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[11] ; CLK      ;
+; N/A                                     ; None                                                ; 5.412 ns   ; REG_DATA[6]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[6]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.412 ns   ; REG_DATA[6]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:15:CASE1:CASUALS|BUF[6]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.406 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[20] ; CLK      ;
+; N/A                                     ; None                                                ; 5.402 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[20] ; CLK      ;
+; N/A                                     ; None                                                ; 5.394 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; 5.394 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[9]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.394 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[8]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.394 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[7]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.394 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[4]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.394 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.394 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[2]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.394 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[1]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.391 ns   ; REG_DATA[6]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[6]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.389 ns   ; REG_DATA[6]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[6]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.385 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; 5.385 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[16] ; CLK      ;
+; N/A                                     ; None                                                ; 5.385 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.377 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:7:CASE1:CASUALS|BUF[20]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.375 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[20]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.359 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.358 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:16:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.351 ns   ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[20] ; CLK      ;
+; N/A                                     ; None                                                ; 5.341 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[1]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.329 ns   ; REG_DATA[21] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[21] ; CLK      ;
+; N/A                                     ; None                                                ; 5.328 ns   ; REG_DATA[21] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[21] ; CLK      ;
+; N/A                                     ; None                                                ; 5.327 ns   ; REG_DATA[16] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:18:CASE1:CASUALS|BUF[16] ; CLK      ;
+; N/A                                     ; None                                                ; 5.327 ns   ; REG_DATA[16] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:2:CASE1:CASUALS|BUF[16]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.327 ns   ; REG_DATA[18] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[18] ; CLK      ;
+; N/A                                     ; None                                                ; 5.324 ns   ; REG_DATA[18] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[18] ; CLK      ;
+; N/A                                     ; None                                                ; 5.324 ns   ; REG_DATA[28] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[28]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.323 ns   ; REG_DATA[28] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:2:CASE1:CASUALS|BUF[28]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.317 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[9]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.317 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[8]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.317 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[7]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.317 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[4]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.317 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.317 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[2]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.317 ns   ; REG_LOAD[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[1]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.310 ns   ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[0]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.309 ns   ; REG_DATA[12] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[12]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.309 ns   ; REG_DATA[12] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:7:CASE1:CASUALS|BUF[12]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.309 ns   ; REG_DATA[14] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[14]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.308 ns   ; REG_DATA[14] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:15:CASE1:CASUALS|BUF[14] ; CLK      ;
+; N/A                                     ; None                                                ; 5.307 ns   ; REG_DATA[14] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[14] ; CLK      ;
+; N/A                                     ; None                                                ; 5.307 ns   ; REG_DATA[14] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[14] ; CLK      ;
+; N/A                                     ; None                                                ; 5.297 ns   ; REG_DATA[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:27:CASE1:CASUALS|BUF[17] ; CLK      ;
+; N/A                                     ; None                                                ; 5.296 ns   ; REG_DATA[14] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[14]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.296 ns   ; REG_DATA[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS|BUF[17] ; CLK      ;
+; N/A                                     ; None                                                ; 5.295 ns   ; REG_DATA[14] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:7:CASE1:CASUALS|BUF[14]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.287 ns   ; REG_DATA[8]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:26:CASE1:CASUALS|BUF[8]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.278 ns   ; REG_DATA[12] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[12]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.278 ns   ; REG_DATA[12] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[12]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.255 ns   ; REG_LOAD[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[31] ; CLK      ;
+; N/A                                     ; None                                                ; 5.255 ns   ; REG_LOAD[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; 5.255 ns   ; REG_LOAD[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[29] ; CLK      ;
+; N/A                                     ; None                                                ; 5.255 ns   ; REG_LOAD[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[28] ; CLK      ;
+; N/A                                     ; None                                                ; 5.255 ns   ; REG_LOAD[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[27] ; CLK      ;
+; N/A                                     ; None                                                ; 5.255 ns   ; REG_LOAD[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[26] ; CLK      ;
+; N/A                                     ; None                                                ; 5.255 ns   ; REG_LOAD[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; 5.255 ns   ; REG_LOAD[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.251 ns   ; REG_DATA[27] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[27]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.248 ns   ; REG_DATA[27] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:7:CASE1:CASUALS|BUF[27]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.244 ns   ; REG_LOAD[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[14]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.244 ns   ; REG_LOAD[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[13]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.244 ns   ; REG_LOAD[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[12]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.244 ns   ; REG_LOAD[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[11]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.244 ns   ; REG_LOAD[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[10]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.244 ns   ; REG_LOAD[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[9]   ; CLK      ;
+; N/A                                     ; None                                                ; 5.244 ns   ; REG_LOAD[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[8]   ; CLK      ;
+; N/A                                     ; None                                                ; 5.244 ns   ; REG_LOAD[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[0]   ; CLK      ;
+; N/A                                     ; None                                                ; 5.243 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[31] ; CLK      ;
+; N/A                                     ; None                                                ; 5.243 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; 5.243 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[29] ; CLK      ;
+; N/A                                     ; None                                                ; 5.243 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[28] ; CLK      ;
+; N/A                                     ; None                                                ; 5.243 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[27] ; CLK      ;
+; N/A                                     ; None                                                ; 5.243 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[26] ; CLK      ;
+; N/A                                     ; None                                                ; 5.243 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; 5.243 ns   ; REG_LOAD[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[6]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.237 ns   ; REG_DATA[14] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:6:CASE1:CASUALS|BUF[14]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.236 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:2:CASE1:CASUALS|BUF[5]   ; CLK      ;
+; N/A                                     ; None                                                ; 5.234 ns   ; REG_DATA[8]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:14:CASE1:CASUALS|BUF[8]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.234 ns   ; REG_DATA[16] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:26:CASE1:CASUALS|BUF[16] ; CLK      ;
+; N/A                                     ; None                                                ; 5.233 ns   ; REG_DATA[14] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:14:CASE1:CASUALS|BUF[14] ; CLK      ;
+; N/A                                     ; None                                                ; 5.231 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:10:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.226 ns   ; REG_DATA[25] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:8:CASE1:CASUALS|BUF[25]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.225 ns   ; REG_DATA[25] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:16:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; 5.222 ns   ; REG_DATA[10] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:15:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; 5.221 ns   ; REG_DATA[10] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; 5.218 ns   ; REG_LOAD[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[31]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.218 ns   ; REG_LOAD[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[30]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.218 ns   ; REG_LOAD[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[29]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.218 ns   ; REG_LOAD[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[28]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.218 ns   ; REG_LOAD[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[27]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.218 ns   ; REG_LOAD[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[26]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.218 ns   ; REG_LOAD[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[25]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.218 ns   ; REG_LOAD[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[5]   ; CLK      ;
+; N/A                                     ; None                                                ; 5.207 ns   ; REG_LOAD[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[22] ; CLK      ;
+; N/A                                     ; None                                                ; 5.207 ns   ; REG_LOAD[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[21] ; CLK      ;
+; N/A                                     ; None                                                ; 5.207 ns   ; REG_LOAD[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[4]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.207 ns   ; REG_LOAD[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.207 ns   ; REG_LOAD[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[2]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.207 ns   ; REG_LOAD[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[1]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.204 ns   ; REG_DATA[18] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[18]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.203 ns   ; REG_DATA[18] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[18] ; CLK      ;
+; N/A                                     ; None                                                ; 5.201 ns   ; REG_LOAD[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[29]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.201 ns   ; REG_LOAD[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[28]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.201 ns   ; REG_LOAD[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[27]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.201 ns   ; REG_LOAD[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[26]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.201 ns   ; REG_LOAD[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[25]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.201 ns   ; REG_LOAD[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[24]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.201 ns   ; REG_LOAD[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[23]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.201 ns   ; REG_LOAD[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[5]   ; CLK      ;
+; N/A                                     ; None                                                ; 5.199 ns   ; REG_DATA[26] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[26]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.198 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[5]   ; CLK      ;
+; N/A                                     ; None                                                ; 5.198 ns   ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[5]   ; CLK      ;
+; N/A                                     ; None                                                ; 5.198 ns   ; REG_DATA[26] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[26]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.196 ns   ; REG_LOAD[8]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:8:CASE1:CASUALS|BUF[23]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.196 ns   ; REG_LOAD[8]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:8:CASE1:CASUALS|BUF[15]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.191 ns   ; REG_LOAD[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[16]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.191 ns   ; REG_LOAD[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[14]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.191 ns   ; REG_LOAD[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[13]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.191 ns   ; REG_LOAD[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[12]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.191 ns   ; REG_LOAD[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[11]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.191 ns   ; REG_LOAD[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[0]   ; CLK      ;
+; N/A                                     ; None                                                ; 5.189 ns   ; REG_DATA[26] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:8:CASE1:CASUALS|BUF[26]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.188 ns   ; REG_DATA[26] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:16:CASE1:CASUALS|BUF[26] ; CLK      ;
+; N/A                                     ; None                                                ; 5.186 ns   ; REG_DATA[0]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[0]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.186 ns   ; REG_DATA[0]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:15:CASE1:CASUALS|BUF[0]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.186 ns   ; REG_DATA[25] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:22:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; 5.185 ns   ; REG_DATA[25] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; 5.185 ns   ; REG_LOAD[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[17] ; CLK      ;
+; N/A                                     ; None                                                ; 5.185 ns   ; REG_LOAD[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[16] ; CLK      ;
+; N/A                                     ; None                                                ; 5.185 ns   ; REG_LOAD[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; 5.184 ns   ; REG_DATA[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[11] ; CLK      ;
+; N/A                                     ; None                                                ; 5.184 ns   ; REG_DATA[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[11] ; CLK      ;
+; N/A                                     ; None                                                ; 5.184 ns   ; REG_DATA[26] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[26] ; CLK      ;
+; N/A                                     ; None                                                ; 5.183 ns   ; REG_DATA[0]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[0]   ; CLK      ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;            ;              ;                                                                         ;          ;
++-----------------------------------------+-----------------------------------------------------+------------+--------------+-------------------------------------------------------------------------+----------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; tco                                                                                                                                                                                                         ;
++-----------------------------------------+-----------------------------------------------------+------------+-------------------------------------------------------------------------+---------+------------+
+; Slack                                   ; Required tco                                        ; Actual tco ; From                                                                    ; To      ; From Clock ;
++-----------------------------------------+-----------------------------------------------------+------------+-------------------------------------------------------------------------+---------+------------+
+; N/A                                     ; None                                                ; 18.132 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[23] ; RS1[23] ; CLK        ;
+; N/A                                     ; None                                                ; 17.662 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[23]  ; RS1[23] ; CLK        ;
+; N/A                                     ; None                                                ; 17.587 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[6]   ; RS1[6]  ; CLK        ;
+; N/A                                     ; None                                                ; 17.458 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[6]  ; RS1[6]  ; CLK        ;
+; N/A                                     ; None                                                ; 17.453 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[23] ; RS2[23] ; CLK        ;
+; N/A                                     ; None                                                ; 17.407 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[6]   ; RS2[6]  ; CLK        ;
+; N/A                                     ; None                                                ; 17.278 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[6]  ; RS2[6]  ; CLK        ;
+; N/A                                     ; None                                                ; 17.271 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[25]  ; RS2[25] ; CLK        ;
+; N/A                                     ; None                                                ; 17.150 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[16] ; RS2[16] ; CLK        ;
+; N/A                                     ; None                                                ; 16.983 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[23]  ; RS2[23] ; CLK        ;
+; N/A                                     ; None                                                ; 16.783 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[24]  ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 16.614 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[30]  ; RS2[30] ; CLK        ;
+; N/A                                     ; None                                                ; 16.557 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[24] ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 16.491 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[30] ; RS2[30] ; CLK        ;
+; N/A                                     ; None                                                ; 16.472 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[10]  ; RS2[10] ; CLK        ;
+; N/A                                     ; None                                                ; 16.443 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[25]  ; RS1[25] ; CLK        ;
+; N/A                                     ; None                                                ; 16.401 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[24]  ; RS2[24] ; CLK        ;
+; N/A                                     ; None                                                ; 16.344 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[14] ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 16.299 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[16] ; RS1[16] ; CLK        ;
+; N/A                                     ; None                                                ; 16.288 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[13]  ; RS2[13] ; CLK        ;
+; N/A                                     ; None                                                ; 16.287 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[29]  ; RS2[29] ; CLK        ;
+; N/A                                     ; None                                                ; 16.223 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[31]  ; RS2[31] ; CLK        ;
+; N/A                                     ; None                                                ; 16.217 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[16]  ; RS2[16] ; CLK        ;
+; N/A                                     ; None                                                ; 16.196 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[31] ; RS2[31] ; CLK        ;
+; N/A                                     ; None                                                ; 16.183 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[24] ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 16.171 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[24] ; RS2[24] ; CLK        ;
+; N/A                                     ; None                                                ; 16.154 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[24]  ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 16.128 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[23] ; RS1[23] ; CLK        ;
+; N/A                                     ; None                                                ; 16.088 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[16] ; RS2[16] ; CLK        ;
+; N/A                                     ; None                                                ; 16.061 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[30]  ; RS1[30] ; CLK        ;
+; N/A                                     ; None                                                ; 16.042 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[7]  ; RS2[7]  ; CLK        ;
+; N/A                                     ; None                                                ; 16.016 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[17] ; RS2[17] ; CLK        ;
+; N/A                                     ; None                                                ; 16.016 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[19]  ; RS1[19] ; CLK        ;
+; N/A                                     ; None                                                ; 15.980 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[19]  ; RS2[19] ; CLK        ;
+; N/A                                     ; None                                                ; 15.938 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[30] ; RS1[30] ; CLK        ;
+; N/A                                     ; None                                                ; 15.931 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[12]  ; RS1[12] ; CLK        ;
+; N/A                                     ; None                                                ; 15.908 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[14]  ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 15.907 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[14] ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 15.896 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[13] ; RS2[13] ; CLK        ;
+; N/A                                     ; None                                                ; 15.875 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[7]  ; RS2[7]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.846 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[17]  ; RS2[17] ; CLK        ;
+; N/A                                     ; None                                                ; 15.831 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[24]  ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 15.801 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[24] ; RS2[24] ; CLK        ;
+; N/A                                     ; None                                                ; 15.799 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[12]  ; RS1[12] ; CLK        ;
+; N/A                                     ; None                                                ; 15.775 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[10]  ; RS1[10] ; CLK        ;
+; N/A                                     ; None                                                ; 15.768 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[24]  ; RS2[24] ; CLK        ;
+; N/A                                     ; None                                                ; 15.767 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[29] ; RS2[29] ; CLK        ;
+; N/A                                     ; None                                                ; 15.742 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[14] ; RS2[14] ; CLK        ;
+; N/A                                     ; None                                                ; 15.717 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[11] ; RS2[11] ; CLK        ;
+; N/A                                     ; None                                                ; 15.712 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[30] ; RS2[30] ; CLK        ;
+; N/A                                     ; None                                                ; 15.703 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[1]   ; RS1[1]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.700 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[21]  ; RS2[21] ; CLK        ;
+; N/A                                     ; None                                                ; 15.688 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[9]   ; RS2[9]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.678 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[28]  ; RS1[28] ; CLK        ;
+; N/A                                     ; None                                                ; 15.656 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[2]   ; RS1[2]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.652 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[30] ; RS2[30] ; CLK        ;
+; N/A                                     ; None                                                ; 15.643 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[6]  ; RS1[6]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.615 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[10] ; RS2[10] ; CLK        ;
+; N/A                                     ; None                                                ; 15.599 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[14] ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 15.596 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[28]  ; RS1[28] ; CLK        ;
+; N/A                                     ; None                                                ; 15.538 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[5]  ; RS1[5]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.514 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[6]  ; RS1[6]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.512 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[23] ; RS1[23] ; CLK        ;
+; N/A                                     ; None                                                ; 15.495 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[5]  ; RS2[5]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.475 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[7]   ; RS2[7]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.472 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[14]  ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 15.463 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[6]  ; RS2[6]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.463 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[28] ; RS1[28] ; CLK        ;
+; N/A                                     ; None                                                ; 15.461 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[25] ; RS2[25] ; CLK        ;
+; N/A                                     ; None                                                ; 15.450 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[31]  ; RS1[31] ; CLK        ;
+; N/A                                     ; None                                                ; 15.449 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[23] ; RS2[23] ; CLK        ;
+; N/A                                     ; None                                                ; 15.449 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[24]  ; RS2[24] ; CLK        ;
+; N/A                                     ; None                                                ; 15.435 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[5]  ; RS1[5]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.431 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[24]  ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 15.423 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[31] ; RS1[31] ; CLK        ;
+; N/A                                     ; None                                                ; 15.417 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[24] ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 15.394 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[12]  ; RS2[12] ; CLK        ;
+; N/A                                     ; None                                                ; 15.392 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[5]  ; RS2[5]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.366 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[16]  ; RS1[16] ; CLK        ;
+; N/A                                     ; None                                                ; 15.348 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[29]  ; RS1[29] ; CLK        ;
+; N/A                                     ; None                                                ; 15.334 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[6]  ; RS2[6]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.310 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[2]   ; RS2[2]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.306 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[14]  ; RS2[14] ; CLK        ;
+; N/A                                     ; None                                                ; 15.305 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[14] ; RS2[14] ; CLK        ;
+; N/A                                     ; None                                                ; 15.284 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[17] ; RS1[17] ; CLK        ;
+; N/A                                     ; None                                                ; 15.262 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[12]  ; RS2[12] ; CLK        ;
+; N/A                                     ; None                                                ; 15.242 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[25] ; RS2[25] ; CLK        ;
+; N/A                                     ; None                                                ; 15.241 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[14]  ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 15.237 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[16] ; RS1[16] ; CLK        ;
+; N/A                                     ; None                                                ; 15.221 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[24] ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 15.201 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[5]   ; RS1[5]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.185 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:2:CASE1:CASUALS|BUF[25]  ; RS2[25] ; CLK        ;
+; N/A                                     ; None                                                ; 15.170 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:15:CASE1:CASUALS|BUF[28] ; RS1[28] ; CLK        ;
+; N/A                                     ; None                                                ; 15.166 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[19] ; RS1[19] ; CLK        ;
+; N/A                                     ; None                                                ; 15.163 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[5]   ; RS2[5]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.160 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:16:CASE1:CASUALS|BUF[6]  ; RS1[6]  ; CLK        ;
+; N/A                                     ; None                                                ; 15.159 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[30] ; RS1[30] ; CLK        ;
+; N/A                                     ; None                                                ; 15.138 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:10:CASE1:CASUALS|BUF[29] ; RS2[29] ; CLK        ;
+; N/A                                     ; None                                                ; 15.130 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[19] ; RS2[19] ; CLK        ;
+; N/A                                     ; None                                                ; 15.109 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[17]  ; RS1[17] ; CLK        ;
+; N/A                                     ; None                                                ; 15.105 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[14] ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 15.099 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[30] ; RS1[30] ; CLK        ;
+; N/A                                     ; None                                                ; 15.093 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[14] ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 15.058 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[31] ; RS2[31] ; CLK        ;
+; N/A                                     ; None                                                ; 15.057 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[30]  ; RS2[30] ; CLK        ;
+; N/A                                     ; None                                                ; 15.049 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[24]  ; RS2[24] ; CLK        ;
+; N/A                                     ; None                                                ; 15.039 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[22] ; RS1[22] ; CLK        ;
+; N/A                                     ; None                                                ; 15.031 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[24] ; RS2[24] ; CLK        ;
+; N/A                                     ; None                                                ; 15.019 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[26] ; RS2[26] ; CLK        ;
+; N/A                                     ; None                                                ; 14.997 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[14] ; RS2[14] ; CLK        ;
+; N/A                                     ; None                                                ; 14.997 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:16:CASE1:CASUALS|BUF[23] ; RS1[23] ; CLK        ;
+; N/A                                     ; None                                                ; 14.988 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[22] ; RS2[22] ; CLK        ;
+; N/A                                     ; None                                                ; 14.980 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:16:CASE1:CASUALS|BUF[6]  ; RS2[6]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.966 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[16] ; RS2[16] ; CLK        ;
+; N/A                                     ; None                                                ; 14.964 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[14]  ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 14.918 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[10] ; RS1[10] ; CLK        ;
+; N/A                                     ; None                                                ; 14.915 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[27]  ; RS1[27] ; CLK        ;
+; N/A                                     ; None                                                ; 14.906 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[22]  ; RS1[22] ; CLK        ;
+; N/A                                     ; None                                                ; 14.889 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[9]   ; RS1[9]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.883 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[1]  ; RS1[1]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.882 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[7]  ; RS2[7]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.875 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[21] ; RS2[21] ; CLK        ;
+; N/A                                     ; None                                                ; 14.870 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[14]  ; RS2[14] ; CLK        ;
+; N/A                                     ; None                                                ; 14.862 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[15]  ; RS2[15] ; CLK        ;
+; N/A                                     ; None                                                ; 14.855 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[22]  ; RS2[22] ; CLK        ;
+; N/A                                     ; None                                                ; 14.852 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[28] ; RS1[28] ; CLK        ;
+; N/A                                     ; None                                                ; 14.839 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[24] ; RS2[24] ; CLK        ;
+; N/A                                     ; None                                                ; 14.836 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[14] ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 14.834 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[1]   ; RS2[1]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.833 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[23] ; RS2[23] ; CLK        ;
+; N/A                                     ; None                                                ; 14.828 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[29] ; RS1[29] ; CLK        ;
+; N/A                                     ; None                                                ; 14.812 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[14]  ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 14.808 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[28] ; RS1[28] ; CLK        ;
+; N/A                                     ; None                                                ; 14.805 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[0]  ; RS2[0]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.796 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[28] ; RS1[28] ; CLK        ;
+; N/A                                     ; None                                                ; 14.780 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[7]  ; RS1[7]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.772 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[13]  ; RS1[13] ; CLK        ;
+; N/A                                     ; None                                                ; 14.756 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[14] ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 14.756 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[24] ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 14.741 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[17]  ; RS2[17] ; CLK        ;
+; N/A                                     ; None                                                ; 14.731 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[21]  ; RS1[21] ; CLK        ;
+; N/A                                     ; None                                                ; 14.722 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[10] ; RS2[10] ; CLK        ;
+; N/A                                     ; None                                                ; 14.714 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[15] ; RS2[15] ; CLK        ;
+; N/A                                     ; None                                                ; 14.712 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[11]  ; RS2[11] ; CLK        ;
+; N/A                                     ; None                                                ; 14.710 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:7:CASE1:CASUALS|BUF[24]  ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 14.709 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|BUF[31]  ; RS2[31] ; CLK        ;
+; N/A                                     ; None                                                ; 14.703 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[28]  ; RS1[28] ; CLK        ;
+; N/A                                     ; None                                                ; 14.696 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[11] ; RS1[11] ; CLK        ;
+; N/A                                     ; None                                                ; 14.665 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[14] ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 14.639 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[14]  ; RS2[14] ; CLK        ;
+; N/A                                     ; None                                                ; 14.637 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[19] ; RS1[19] ; CLK        ;
+; N/A                                     ; None                                                ; 14.633 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[25] ; RS1[25] ; CLK        ;
+; N/A                                     ; None                                                ; 14.629 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[17] ; RS2[17] ; CLK        ;
+; N/A                                     ; None                                                ; 14.629 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[28]  ; RS2[28] ; CLK        ;
+; N/A                                     ; None                                                ; 14.613 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[7]  ; RS1[7]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.608 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[30] ; RS2[30] ; CLK        ;
+; N/A                                     ; None                                                ; 14.601 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[19] ; RS2[19] ; CLK        ;
+; N/A                                     ; None                                                ; 14.601 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[24] ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 14.590 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[28] ; RS1[28] ; CLK        ;
+; N/A                                     ; None                                                ; 14.584 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[27]  ; RS2[27] ; CLK        ;
+; N/A                                     ; None                                                ; 14.563 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[0]   ; RS2[0]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.561 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[24] ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 14.558 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[13]  ; RS2[13] ; CLK        ;
+; N/A                                     ; None                                                ; 14.555 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[5]  ; RS1[5]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.554 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[10]  ; RS2[10] ; CLK        ;
+; N/A                                     ; None                                                ; 14.547 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[28]  ; RS2[28] ; CLK        ;
+; N/A                                     ; None                                                ; 14.544 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[6]   ; RS1[6]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.517 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[5]  ; RS2[5]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.504 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[30]  ; RS1[30] ; CLK        ;
+; N/A                                     ; None                                                ; 14.503 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[14] ; RS2[14] ; CLK        ;
+; N/A                                     ; None                                                ; 14.503 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[12] ; RS1[12] ; CLK        ;
+; N/A                                     ; None                                                ; 14.498 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[17] ; RS2[17] ; CLK        ;
+; N/A                                     ; None                                                ; 14.491 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[14] ; RS2[14] ; CLK        ;
+; N/A                                     ; None                                                ; 14.476 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[9]  ; RS2[9]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.476 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:7:CASE1:CASUALS|BUF[12]  ; RS1[12] ; CLK        ;
+; N/A                                     ; None                                                ; 14.463 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[0]   ; RS2[0]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.454 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[26] ; RS2[26] ; CLK        ;
+; N/A                                     ; None                                                ; 14.451 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[24] ; RS1[24] ; CLK        ;
+; N/A                                     ; None                                                ; 14.448 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[0]   ; RS2[0]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.444 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[0]  ; RS1[0]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.440 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[30]  ; RS2[30] ; CLK        ;
+; N/A                                     ; None                                                ; 14.437 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[15]  ; RS2[15] ; CLK        ;
+; N/A                                     ; None                                                ; 14.431 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[26]  ; RS2[26] ; CLK        ;
+; N/A                                     ; None                                                ; 14.430 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[2]  ; RS1[2]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.421 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[15] ; RS2[15] ; CLK        ;
+; N/A                                     ; None                                                ; 14.419 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[10]  ; RS2[10] ; CLK        ;
+; N/A                                     ; None                                                ; 14.414 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[28] ; RS2[28] ; CLK        ;
+; N/A                                     ; None                                                ; 14.414 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[25] ; RS1[25] ; CLK        ;
+; N/A                                     ; None                                                ; 14.408 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[18]  ; RS1[18] ; CLK        ;
+; N/A                                     ; None                                                ; 14.402 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:7:CASE1:CASUALS|BUF[14]  ; RS1[14] ; CLK        ;
+; N/A                                     ; None                                                ; 14.398 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[8]  ; RS1[8]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.393 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[11] ; RS2[11] ; CLK        ;
+; N/A                                     ; None                                                ; 14.383 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[13] ; RS1[13] ; CLK        ;
+; N/A                                     ; None                                                ; 14.382 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[1]  ; RS1[1]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.370 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[24] ; RS2[24] ; CLK        ;
+; N/A                                     ; None                                                ; 14.364 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[6]   ; RS2[6]  ; CLK        ;
+; N/A                                     ; None                                                ; 14.364 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[28] ; RS1[28] ; CLK        ;
+; N/A                                     ; None                                                ; 14.362 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[14]  ; RS2[14] ; CLK        ;
+; N/A                                     ; None                                                ; 14.358 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[10]  ; RS2[10] ; CLK        ;
+; N/A                                     ; None                                                ; 14.357 ns  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:2:CASE1:CASUALS|BUF[25]  ; RS1[25] ; CLK        ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;            ;                                                                         ;         ;            ;
++-----------------------------------------+-----------------------------------------------------+------------+-------------------------------------------------------------------------+---------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; tpd                                                                                                                                        ;
++-----------------------------------------+-----------------------------------------------------+-----------------+-------------+------------+
+; Slack                                   ; Required P2P Time                                   ; Actual P2P Time ; From        ; To         ;
++-----------------------------------------+-----------------------------------------------------+-----------------+-------------+------------+
+; N/A                                     ; None                                                ; 43.132 ns       ; MEMWORD[2]  ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 42.936 ns       ; MEMWORD[6]  ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 42.910 ns       ; MEMWORD[4]  ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 42.827 ns       ; MEMWORD[14] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 42.790 ns       ; MEMWORD[13] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 42.610 ns       ; MEMWORD[5]  ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 42.539 ns       ; MEMWORD[2]  ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 42.389 ns       ; MEMWORD[12] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 42.343 ns       ; MEMWORD[6]  ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 42.317 ns       ; MEMWORD[4]  ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 42.234 ns       ; MEMWORD[14] ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 42.197 ns       ; MEMWORD[13] ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 42.139 ns       ; MEMWORD[3]  ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 42.017 ns       ; MEMWORD[5]  ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 41.796 ns       ; MEMWORD[12] ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 41.681 ns       ; MEMWORD[2]  ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 41.546 ns       ; MEMWORD[3]  ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 41.485 ns       ; MEMWORD[6]  ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 41.459 ns       ; MEMWORD[4]  ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 41.376 ns       ; MEMWORD[14] ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 41.365 ns       ; MEMWORD[2]  ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 41.339 ns       ; MEMWORD[13] ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 41.169 ns       ; MEMWORD[6]  ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 41.159 ns       ; MEMWORD[5]  ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 41.143 ns       ; MEMWORD[4]  ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 41.060 ns       ; MEMWORD[14] ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 41.023 ns       ; MEMWORD[13] ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 40.938 ns       ; MEMWORD[12] ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 40.844 ns       ; MEMWORD[20] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 40.843 ns       ; MEMWORD[5]  ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 40.688 ns       ; MEMWORD[3]  ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 40.622 ns       ; MEMWORD[12] ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 40.498 ns       ; MEMWORD[21] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 40.372 ns       ; MEMWORD[3]  ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 40.254 ns       ; MEMWORD[22] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 40.251 ns       ; MEMWORD[20] ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 40.229 ns       ; MEMWORD[2]  ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 40.033 ns       ; MEMWORD[6]  ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 40.007 ns       ; MEMWORD[4]  ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 39.924 ns       ; MEMWORD[14] ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 39.905 ns       ; MEMWORD[21] ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 39.887 ns       ; MEMWORD[13] ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 39.841 ns       ; PC[1]       ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 39.722 ns       ; PC[0]       ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 39.708 ns       ; MEMWORD[8]  ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 39.707 ns       ; MEMWORD[5]  ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 39.661 ns       ; MEMWORD[22] ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 39.486 ns       ; MEMWORD[12] ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 39.393 ns       ; MEMWORD[20] ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 39.248 ns       ; PC[1]       ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 39.236 ns       ; MEMWORD[3]  ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 39.129 ns       ; PC[0]       ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 39.115 ns       ; MEMWORD[8]  ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 39.077 ns       ; MEMWORD[20] ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 39.047 ns       ; MEMWORD[21] ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 39.026 ns       ; MEMWORD[2]  ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 38.830 ns       ; MEMWORD[6]  ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 38.808 ns       ; MEMWORD[9]  ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 38.804 ns       ; MEMWORD[4]  ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 38.803 ns       ; MEMWORD[22] ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 38.731 ns       ; MEMWORD[21] ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 38.721 ns       ; MEMWORD[14] ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 38.684 ns       ; MEMWORD[13] ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 38.504 ns       ; MEMWORD[5]  ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 38.487 ns       ; MEMWORD[22] ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 38.482 ns       ; MEMWORD[10] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 38.390 ns       ; PC[1]       ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 38.329 ns       ; PC[2]       ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 38.328 ns       ; MEMWORD[23] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 38.283 ns       ; MEMWORD[12] ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 38.271 ns       ; PC[0]       ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 38.257 ns       ; MEMWORD[8]  ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 38.215 ns       ; MEMWORD[9]  ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 38.074 ns       ; PC[1]       ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 38.066 ns       ; MEMWORD[11] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 38.033 ns       ; MEMWORD[3]  ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 37.960 ns       ; PC[3]       ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 37.955 ns       ; PC[0]       ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 37.949 ns       ; MEMWORD[24] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 37.941 ns       ; MEMWORD[20] ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 37.941 ns       ; MEMWORD[8]  ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 37.889 ns       ; MEMWORD[10] ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 37.736 ns       ; PC[2]       ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 37.735 ns       ; MEMWORD[23] ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 37.595 ns       ; MEMWORD[21] ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 37.473 ns       ; MEMWORD[11] ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 37.367 ns       ; PC[3]       ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 37.357 ns       ; MEMWORD[9]  ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 37.356 ns       ; MEMWORD[24] ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 37.351 ns       ; MEMWORD[22] ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 37.093 ns       ; MEMWORD[7]  ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 37.041 ns       ; MEMWORD[9]  ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 37.031 ns       ; MEMWORD[10] ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 36.938 ns       ; PC[1]       ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 36.896 ns       ; MEMWORD[2]  ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 36.878 ns       ; PC[2]       ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 36.877 ns       ; MEMWORD[23] ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 36.819 ns       ; PC[0]       ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 36.805 ns       ; MEMWORD[8]  ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 36.738 ns       ; MEMWORD[20] ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 36.715 ns       ; MEMWORD[10] ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 36.700 ns       ; MEMWORD[6]  ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 36.674 ns       ; MEMWORD[4]  ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 36.615 ns       ; MEMWORD[11] ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 36.591 ns       ; MEMWORD[14] ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 36.562 ns       ; PC[2]       ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 36.561 ns       ; MEMWORD[23] ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 36.554 ns       ; MEMWORD[13] ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 36.509 ns       ; PC[3]       ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 36.500 ns       ; MEMWORD[7]  ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 36.498 ns       ; MEMWORD[24] ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 36.392 ns       ; MEMWORD[21] ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 36.374 ns       ; MEMWORD[5]  ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 36.299 ns       ; MEMWORD[11] ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 36.193 ns       ; PC[3]       ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 36.182 ns       ; MEMWORD[24] ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 36.172 ns       ; PC[4]       ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 36.153 ns       ; MEMWORD[12] ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 36.148 ns       ; MEMWORD[22] ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 36.009 ns       ; MEMWORD[2]  ; JUMPAT[24] ;
+; N/A                                     ; None                                                ; 35.967 ns       ; MEMWORD[25] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 35.905 ns       ; MEMWORD[9]  ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 35.903 ns       ; MEMWORD[3]  ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 35.813 ns       ; MEMWORD[6]  ; JUMPAT[24] ;
+; N/A                                     ; None                                                ; 35.787 ns       ; MEMWORD[4]  ; JUMPAT[24] ;
+; N/A                                     ; None                                                ; 35.735 ns       ; PC[1]       ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 35.704 ns       ; MEMWORD[14] ; JUMPAT[24] ;
+; N/A                                     ; None                                                ; 35.667 ns       ; MEMWORD[13] ; JUMPAT[24] ;
+; N/A                                     ; None                                                ; 35.642 ns       ; MEMWORD[7]  ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 35.616 ns       ; PC[0]       ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 35.602 ns       ; MEMWORD[8]  ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 35.579 ns       ; MEMWORD[10] ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 35.579 ns       ; PC[4]       ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 35.487 ns       ; MEMWORD[5]  ; JUMPAT[24] ;
+; N/A                                     ; None                                                ; 35.426 ns       ; PC[2]       ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 35.425 ns       ; MEMWORD[23] ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 35.374 ns       ; MEMWORD[25] ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 35.326 ns       ; MEMWORD[7]  ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 35.266 ns       ; MEMWORD[12] ; JUMPAT[24] ;
+; N/A                                     ; None                                                ; 35.163 ns       ; MEMWORD[11] ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 35.057 ns       ; PC[3]       ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 35.046 ns       ; MEMWORD[24] ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 35.021 ns       ; MEMWORD[2]  ; JUMPAT[23] ;
+; N/A                                     ; None                                                ; 35.016 ns       ; MEMWORD[3]  ; JUMPAT[24] ;
+; N/A                                     ; None                                                ; 34.825 ns       ; MEMWORD[6]  ; JUMPAT[23] ;
+; N/A                                     ; None                                                ; 34.799 ns       ; MEMWORD[4]  ; JUMPAT[23] ;
+; N/A                                     ; None                                                ; 34.738 ns       ; MEMWORD[2]  ; JUMPAT[22] ;
+; N/A                                     ; None                                                ; 34.721 ns       ; PC[4]       ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 34.716 ns       ; MEMWORD[14] ; JUMPAT[23] ;
+; N/A                                     ; None                                                ; 34.702 ns       ; MEMWORD[9]  ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 34.679 ns       ; MEMWORD[13] ; JUMPAT[23] ;
+; N/A                                     ; None                                                ; 34.608 ns       ; MEMWORD[20] ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 34.542 ns       ; MEMWORD[6]  ; JUMPAT[22] ;
+; N/A                                     ; None                                                ; 34.516 ns       ; MEMWORD[4]  ; JUMPAT[22] ;
+; N/A                                     ; None                                                ; 34.516 ns       ; MEMWORD[25] ; JUMPAT[28] ;
+; N/A                                     ; None                                                ; 34.499 ns       ; MEMWORD[5]  ; JUMPAT[23] ;
+; N/A                                     ; None                                                ; 34.433 ns       ; MEMWORD[14] ; JUMPAT[22] ;
+; N/A                                     ; None                                                ; 34.405 ns       ; PC[4]       ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 34.396 ns       ; MEMWORD[13] ; JUMPAT[22] ;
+; N/A                                     ; None                                                ; 34.376 ns       ; MEMWORD[10] ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 34.278 ns       ; MEMWORD[12] ; JUMPAT[23] ;
+; N/A                                     ; None                                                ; 34.262 ns       ; MEMWORD[21] ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 34.223 ns       ; PC[2]       ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 34.222 ns       ; MEMWORD[23] ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 34.216 ns       ; MEMWORD[5]  ; JUMPAT[22] ;
+; N/A                                     ; None                                                ; 34.200 ns       ; MEMWORD[25] ; JUMPAT[29] ;
+; N/A                                     ; None                                                ; 34.190 ns       ; MEMWORD[7]  ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 34.028 ns       ; MEMWORD[3]  ; JUMPAT[23] ;
+; N/A                                     ; None                                                ; 34.018 ns       ; MEMWORD[22] ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 34.009 ns       ; MEMWORD[26] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 33.995 ns       ; MEMWORD[12] ; JUMPAT[22] ;
+; N/A                                     ; None                                                ; 33.960 ns       ; MEMWORD[11] ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 33.854 ns       ; PC[3]       ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 33.843 ns       ; MEMWORD[24] ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 33.745 ns       ; MEMWORD[3]  ; JUMPAT[22] ;
+; N/A                                     ; None                                                ; 33.721 ns       ; MEMWORD[20] ; JUMPAT[24] ;
+; N/A                                     ; None                                                ; 33.674 ns       ; PC[5]       ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 33.605 ns       ; PC[1]       ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 33.486 ns       ; PC[0]       ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 33.472 ns       ; MEMWORD[8]  ; JUMPAT[25] ;
+; N/A                                     ; None                                                ; 33.416 ns       ; MEMWORD[26] ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 33.398 ns       ; PC[6]       ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 33.375 ns       ; MEMWORD[21] ; JUMPAT[24] ;
+; N/A                                     ; None                                                ; 33.320 ns       ; PC[7]       ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 33.269 ns       ; PC[4]       ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 33.188 ns       ; MEMWORD[27] ; JUMPAT[31] ;
+; N/A                                     ; None                                                ; 33.131 ns       ; MEMWORD[22] ; JUMPAT[24] ;
+; N/A                                     ; None                                                ; 33.098 ns       ; MEMWORD[2]  ; JUMPAT[20] ;
+; N/A                                     ; None                                                ; 33.081 ns       ; PC[5]       ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 33.064 ns       ; MEMWORD[25] ; JUMPAT[27] ;
+; N/A                                     ; None                                                ; 33.030 ns       ; MEMWORD[2]  ; JUMPAT[21] ;
+; N/A                                     ; None                                                ; 32.987 ns       ; MEMWORD[7]  ; JUMPAT[26] ;
+; N/A                                     ; None                                                ; 32.902 ns       ; MEMWORD[6]  ; JUMPAT[20] ;
+; N/A                                     ; None                                                ; 32.876 ns       ; MEMWORD[4]  ; JUMPAT[20] ;
+; N/A                                     ; None                                                ; 32.834 ns       ; MEMWORD[6]  ; JUMPAT[21] ;
+; N/A                                     ; None                                                ; 32.808 ns       ; MEMWORD[4]  ; JUMPAT[21] ;
+; N/A                                     ; None                                                ; 32.805 ns       ; PC[6]       ; JUMPAT[30] ;
+; N/A                                     ; None                                                ; 32.793 ns       ; MEMWORD[14] ; JUMPAT[20] ;
+; N/A                                     ; None                                                ; 32.756 ns       ; MEMWORD[13] ; JUMPAT[20] ;
+; N/A                                     ; None                                                ; 32.733 ns       ; MEMWORD[20] ; JUMPAT[23] ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                 ;             ;            ;
++-----------------------------------------+-----------------------------------------------------+-----------------+-------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; th                                                                                                                                                                                                            ;
++-----------------------------------------+-----------------------------------------------------+-----------+--------------+-------------------------------------------------------------------------+----------+
+; Minimum Slack                           ; Required th                                         ; Actual th ; From         ; To                                                                      ; To Clock ;
++-----------------------------------------+-----------------------------------------------------+-----------+--------------+-------------------------------------------------------------------------+----------+
+; N/A                                     ; None                                                ; -3.509 ns ; REG_DATA[7]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[7]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.510 ns ; REG_DATA[7]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[7]   ; CLK      ;
+; N/A                                     ; None                                                ; -3.548 ns ; REG_DATA[10] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; -3.548 ns ; REG_DATA[10] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; -3.591 ns ; REG_DATA[22] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:26:CASE1:CASUALS|BUF[22] ; CLK      ;
+; N/A                                     ; None                                                ; -3.594 ns ; REG_DATA[22] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:10:CASE1:CASUALS|BUF[22] ; CLK      ;
+; N/A                                     ; None                                                ; -3.626 ns ; REG_DATA[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[29] ; CLK      ;
+; N/A                                     ; None                                                ; -3.627 ns ; REG_DATA[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[29]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.635 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.637 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.639 ns ; REG_DATA[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; -3.639 ns ; REG_DATA[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; -3.639 ns ; REG_DATA[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; -3.640 ns ; REG_DATA[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; -3.642 ns ; REG_DATA[22] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[22] ; CLK      ;
+; N/A                                     ; None                                                ; -3.645 ns ; REG_DATA[22] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[22] ; CLK      ;
+; N/A                                     ; None                                                ; -3.732 ns ; REG_DATA[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[4]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.734 ns ; REG_DATA[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[4]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.744 ns ; REG_DATA[7]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[7]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.749 ns ; REG_DATA[27] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:18:CASE1:CASUALS|BUF[27] ; CLK      ;
+; N/A                                     ; None                                                ; -3.754 ns ; REG_DATA[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[4]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.755 ns ; REG_DATA[7]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:18:CASE1:CASUALS|BUF[7]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.759 ns ; REG_DATA[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[4]   ; CLK      ;
+; N/A                                     ; None                                                ; -3.781 ns ; REG_DATA[10] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[10]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.782 ns ; REG_DATA[16] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[16] ; CLK      ;
+; N/A                                     ; None                                                ; -3.785 ns ; REG_DATA[16] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[16] ; CLK      ;
+; N/A                                     ; None                                                ; -3.788 ns ; REG_DATA[15] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:10:CASE1:CASUALS|BUF[15] ; CLK      ;
+; N/A                                     ; None                                                ; -3.792 ns ; REG_DATA[15] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:26:CASE1:CASUALS|BUF[15] ; CLK      ;
+; N/A                                     ; None                                                ; -3.801 ns ; REG_LOAD[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[31]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.801 ns ; REG_LOAD[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[30]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.801 ns ; REG_LOAD[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[29]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.801 ns ; REG_LOAD[4]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[6]   ; CLK      ;
+; N/A                                     ; None                                                ; -3.802 ns ; REG_DATA[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[1]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.803 ns ; REG_DATA[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[1]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.805 ns ; REG_DATA[28] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[28] ; CLK      ;
+; N/A                                     ; None                                                ; -3.806 ns ; REG_DATA[18] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:6:CASE1:CASUALS|BUF[18]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.807 ns ; REG_DATA[28] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[28] ; CLK      ;
+; N/A                                     ; None                                                ; -3.808 ns ; REG_DATA[18] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:14:CASE1:CASUALS|BUF[18] ; CLK      ;
+; N/A                                     ; None                                                ; -3.809 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[14] ; CLK      ;
+; N/A                                     ; None                                                ; -3.809 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[12] ; CLK      ;
+; N/A                                     ; None                                                ; -3.809 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[11] ; CLK      ;
+; N/A                                     ; None                                                ; -3.809 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; -3.809 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[9]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.809 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[0]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.811 ns ; REG_DATA[10] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; -3.812 ns ; REG_DATA[10] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:18:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; -3.815 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[16] ; CLK      ;
+; N/A                                     ; None                                                ; -3.815 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[8]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.815 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[7]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.815 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[4]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.815 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.815 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[2]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.815 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[1]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.816 ns ; REG_DATA[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:8:CASE1:CASUALS|BUF[24]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.816 ns ; REG_DATA[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[24] ; CLK      ;
+; N/A                                     ; None                                                ; -3.820 ns ; REG_DATA[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS|BUF[24] ; CLK      ;
+; N/A                                     ; None                                                ; -3.821 ns ; REG_DATA[22] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:18:CASE1:CASUALS|BUF[22] ; CLK      ;
+; N/A                                     ; None                                                ; -3.821 ns ; REG_DATA[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:27:CASE1:CASUALS|BUF[24] ; CLK      ;
+; N/A                                     ; None                                                ; -3.822 ns ; REG_DATA[22] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:2:CASE1:CASUALS|BUF[22]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.823 ns ; REG_DATA[28] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[28] ; CLK      ;
+; N/A                                     ; None                                                ; -3.824 ns ; REG_DATA[28] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[28]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.824 ns ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[29] ; CLK      ;
+; N/A                                     ; None                                                ; -3.824 ns ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[27] ; CLK      ;
+; N/A                                     ; None                                                ; -3.824 ns ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; -3.824 ns ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[23] ; CLK      ;
+; N/A                                     ; None                                                ; -3.824 ns ; REG_LOAD[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[21] ; CLK      ;
+; N/A                                     ; None                                                ; -3.827 ns ; REG_DATA[15] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:2:CASE1:CASUALS|BUF[15]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.828 ns ; REG_DATA[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:10:CASE1:CASUALS|BUF[24] ; CLK      ;
+; N/A                                     ; None                                                ; -3.828 ns ; REG_DATA[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:26:CASE1:CASUALS|BUF[24] ; CLK      ;
+; N/A                                     ; None                                                ; -3.828 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; -3.828 ns ; REG_LOAD[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[13] ; CLK      ;
+; N/A                                     ; None                                                ; -3.829 ns ; REG_DATA[15] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:18:CASE1:CASUALS|BUF[15] ; CLK      ;
+; N/A                                     ; None                                                ; -3.830 ns ; REG_DATA[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:26:CASE1:CASUALS|BUF[23] ; CLK      ;
+; N/A                                     ; None                                                ; -3.830 ns ; REG_DATA[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:18:CASE1:CASUALS|BUF[24] ; CLK      ;
+; N/A                                     ; None                                                ; -3.840 ns ; REG_DATA[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:2:CASE1:CASUALS|BUF[24]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.840 ns ; REG_DATA[25] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; -3.841 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:6:CASE1:CASUALS|BUF[3]   ; CLK      ;
+; N/A                                     ; None                                                ; -3.841 ns ; REG_DATA[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[24]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.842 ns ; REG_DATA[24] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[24] ; CLK      ;
+; N/A                                     ; None                                                ; -3.842 ns ; REG_DATA[25] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[25]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.843 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:10:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.843 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:26:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.843 ns ; REG_DATA[7]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:27:CASE1:CASUALS|BUF[7]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.843 ns ; REG_DATA[7]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS|BUF[7]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.843 ns ; REG_DATA[10] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; -3.843 ns ; REG_DATA[10] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[10] ; CLK      ;
+; N/A                                     ; None                                                ; -3.843 ns ; REG_DATA[25] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; -3.844 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:22:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.846 ns ; REG_DATA[26] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[26] ; CLK      ;
+; N/A                                     ; None                                                ; -3.847 ns ; REG_DATA[26] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[26]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.849 ns ; REG_DATA[25] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; -3.850 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:16:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.851 ns ; REG_DATA[0]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[0]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.851 ns ; REG_DATA[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[1]   ; CLK      ;
+; N/A                                     ; None                                                ; -3.851 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:18:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.851 ns ; REG_LOAD[28] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[21] ; CLK      ;
+; N/A                                     ; None                                                ; -3.851 ns ; REG_LOAD[28] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[19] ; CLK      ;
+; N/A                                     ; None                                                ; -3.851 ns ; REG_LOAD[28] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[18] ; CLK      ;
+; N/A                                     ; None                                                ; -3.851 ns ; REG_LOAD[28] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[6]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.852 ns ; REG_DATA[0]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[0]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.852 ns ; REG_DATA[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[1]   ; CLK      ;
+; N/A                                     ; None                                                ; -3.852 ns ; REG_DATA[26] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[26] ; CLK      ;
+; N/A                                     ; None                                                ; -3.855 ns ; REG_DATA[21] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:8:CASE1:CASUALS|BUF[21]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.855 ns ; REG_DATA[21] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[21] ; CLK      ;
+; N/A                                     ; None                                                ; -3.855 ns ; REG_DATA[26] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[26] ; CLK      ;
+; N/A                                     ; None                                                ; -3.855 ns ; REG_DATA[31] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[31] ; CLK      ;
+; N/A                                     ; None                                                ; -3.857 ns ; REG_DATA[26] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[26] ; CLK      ;
+; N/A                                     ; None                                                ; -3.857 ns ; REG_DATA[26] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[26] ; CLK      ;
+; N/A                                     ; None                                                ; -3.860 ns ; REG_DATA[31] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[31] ; CLK      ;
+; N/A                                     ; None                                                ; -3.861 ns ; REG_DATA[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:27:CASE1:CASUALS|BUF[13] ; CLK      ;
+; N/A                                     ; None                                                ; -3.862 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.862 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[3]   ; CLK      ;
+; N/A                                     ; None                                                ; -3.862 ns ; REG_DATA[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS|BUF[13] ; CLK      ;
+; N/A                                     ; None                                                ; -3.866 ns ; REG_DATA[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[30]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.869 ns ; REG_DATA[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; -3.872 ns ; REG_DATA[12] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[12] ; CLK      ;
+; N/A                                     ; None                                                ; -3.873 ns ; REG_DATA[22] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:27:CASE1:CASUALS|BUF[22] ; CLK      ;
+; N/A                                     ; None                                                ; -3.874 ns ; REG_DATA[12] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[12] ; CLK      ;
+; N/A                                     ; None                                                ; -3.876 ns ; REG_DATA[22] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS|BUF[22] ; CLK      ;
+; N/A                                     ; None                                                ; -3.879 ns ; REG_LOAD[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[31] ; CLK      ;
+; N/A                                     ; None                                                ; -3.879 ns ; REG_LOAD[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; -3.879 ns ; REG_LOAD[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[29] ; CLK      ;
+; N/A                                     ; None                                                ; -3.879 ns ; REG_LOAD[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[28] ; CLK      ;
+; N/A                                     ; None                                                ; -3.879 ns ; REG_LOAD[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[27] ; CLK      ;
+; N/A                                     ; None                                                ; -3.879 ns ; REG_LOAD[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[26] ; CLK      ;
+; N/A                                     ; None                                                ; -3.879 ns ; REG_LOAD[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; -3.879 ns ; REG_LOAD[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.884 ns ; REG_DATA[31] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[31] ; CLK      ;
+; N/A                                     ; None                                                ; -3.885 ns ; REG_LOAD[31] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.885 ns ; REG_LOAD[31] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS|BUF[2]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.885 ns ; REG_DATA[31] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:16:CASE1:CASUALS|BUF[31] ; CLK      ;
+; N/A                                     ; None                                                ; -3.885 ns ; REG_DATA[31] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[31] ; CLK      ;
+; N/A                                     ; None                                                ; -3.885 ns ; REG_DATA[31] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[31]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.887 ns ; REG_DATA[15] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:16:CASE1:CASUALS|BUF[15] ; CLK      ;
+; N/A                                     ; None                                                ; -3.887 ns ; REG_DATA[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:26:CASE1:CASUALS|BUF[17] ; CLK      ;
+; N/A                                     ; None                                                ; -3.888 ns ; REG_DATA[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:18:CASE1:CASUALS|BUF[17] ; CLK      ;
+; N/A                                     ; None                                                ; -3.890 ns ; REG_DATA[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[9]   ; CLK      ;
+; N/A                                     ; None                                                ; -3.890 ns ; REG_DATA[15] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS|BUF[15] ; CLK      ;
+; N/A                                     ; None                                                ; -3.890 ns ; REG_DATA[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:2:CASE1:CASUALS|BUF[17]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.893 ns ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.893 ns ; REG_DATA[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[23] ; CLK      ;
+; N/A                                     ; None                                                ; -3.893 ns ; REG_DATA[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:18:CASE1:CASUALS|BUF[23] ; CLK      ;
+; N/A                                     ; None                                                ; -3.894 ns ; REG_DATA[5]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[5]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.894 ns ; REG_DATA[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[23] ; CLK      ;
+; N/A                                     ; None                                                ; -3.898 ns ; REG_DATA[15] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[15] ; CLK      ;
+; N/A                                     ; None                                                ; -3.902 ns ; REG_DATA[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; -3.903 ns ; REG_DATA[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:8:CASE1:CASUALS|BUF[9]   ; CLK      ;
+; N/A                                     ; None                                                ; -3.903 ns ; REG_DATA[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[9]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.903 ns ; REG_DATA[22] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[22] ; CLK      ;
+; N/A                                     ; None                                                ; -3.904 ns ; REG_DATA[30] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; -3.906 ns ; REG_DATA[22] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[22] ; CLK      ;
+; N/A                                     ; None                                                ; -3.907 ns ; REG_DATA[15] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:14:CASE1:CASUALS|BUF[15] ; CLK      ;
+; N/A                                     ; None                                                ; -3.909 ns ; REG_DATA[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|BUF[13]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.909 ns ; REG_DATA[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[13]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.909 ns ; REG_DATA[15] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS|BUF[15] ; CLK      ;
+; N/A                                     ; None                                                ; -3.909 ns ; REG_DATA[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:27:CASE1:CASUALS|BUF[29] ; CLK      ;
+; N/A                                     ; None                                                ; -3.909 ns ; REG_DATA[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[29] ; CLK      ;
+; N/A                                     ; None                                                ; -3.911 ns ; REG_DATA[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[29] ; CLK      ;
+; N/A                                     ; None                                                ; -3.912 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:2:CASE1:CASUALS|BUF[3]   ; CLK      ;
+; N/A                                     ; None                                                ; -3.913 ns ; REG_DATA[19] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:27:CASE1:CASUALS|BUF[19] ; CLK      ;
+; N/A                                     ; None                                                ; -3.913 ns ; REG_DATA[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS|BUF[29] ; CLK      ;
+; N/A                                     ; None                                                ; -3.914 ns ; REG_DATA[18] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS|BUF[18] ; CLK      ;
+; N/A                                     ; None                                                ; -3.914 ns ; REG_DATA[22] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[22] ; CLK      ;
+; N/A                                     ; None                                                ; -3.915 ns ; REG_DATA[18] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:8:CASE1:CASUALS|BUF[18]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.915 ns ; REG_DATA[19] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS|BUF[19] ; CLK      ;
+; N/A                                     ; None                                                ; -3.917 ns ; REG_DATA[22] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[22] ; CLK      ;
+; N/A                                     ; None                                                ; -3.918 ns ; REG_DATA[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:15:CASE1:CASUALS|BUF[17] ; CLK      ;
+; N/A                                     ; None                                                ; -3.919 ns ; REG_DATA[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[17] ; CLK      ;
+; N/A                                     ; None                                                ; -3.924 ns ; REG_DATA[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS|BUF[1]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.924 ns ; REG_DATA[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[1]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.925 ns ; REG_DATA[31] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[31] ; CLK      ;
+; N/A                                     ; None                                                ; -3.926 ns ; REG_DATA[15] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[15] ; CLK      ;
+; N/A                                     ; None                                                ; -3.926 ns ; REG_DATA[15] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|BUF[15]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.927 ns ; REG_DATA[19] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:14:CASE1:CASUALS|BUF[19] ; CLK      ;
+; N/A                                     ; None                                                ; -3.928 ns ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:27:CASE1:CASUALS|BUF[20] ; CLK      ;
+; N/A                                     ; None                                                ; -3.928 ns ; REG_DATA[20] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS|BUF[20] ; CLK      ;
+; N/A                                     ; None                                                ; -3.929 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.931 ns ; REG_DATA[3]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[3]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.931 ns ; REG_LOAD[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[31] ; CLK      ;
+; N/A                                     ; None                                                ; -3.931 ns ; REG_LOAD[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[30] ; CLK      ;
+; N/A                                     ; None                                                ; -3.931 ns ; REG_LOAD[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[29] ; CLK      ;
+; N/A                                     ; None                                                ; -3.931 ns ; REG_LOAD[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[28] ; CLK      ;
+; N/A                                     ; None                                                ; -3.931 ns ; REG_LOAD[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[27] ; CLK      ;
+; N/A                                     ; None                                                ; -3.931 ns ; REG_LOAD[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[26] ; CLK      ;
+; N/A                                     ; None                                                ; -3.931 ns ; REG_LOAD[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[25] ; CLK      ;
+; N/A                                     ; None                                                ; -3.931 ns ; REG_LOAD[17] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS|BUF[14] ; CLK      ;
+; N/A                                     ; None                                                ; -3.933 ns ; REG_DATA[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[1]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.933 ns ; REG_DATA[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[29] ; CLK      ;
+; N/A                                     ; None                                                ; -3.934 ns ; REG_DATA[1]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[1]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.934 ns ; REG_DATA[29] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[29] ; CLK      ;
+; N/A                                     ; None                                                ; -3.935 ns ; REG_DATA[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS|BUF[23] ; CLK      ;
+; N/A                                     ; None                                                ; -3.935 ns ; REG_DATA[23] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS|BUF[23] ; CLK      ;
+; N/A                                     ; None                                                ; -3.936 ns ; REG_DATA[13] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS|BUF[13] ; CLK      ;
+; N/A                                     ; None                                                ; -3.937 ns ; REG_DATA[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[9]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.937 ns ; REG_DATA[9]  ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:15:CASE1:CASUALS|BUF[9]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.937 ns ; REG_DATA[27] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS|BUF[27] ; CLK      ;
+; N/A                                     ; None                                                ; -3.938 ns ; REG_DATA[27] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS|BUF[27] ; CLK      ;
+; N/A                                     ; None                                                ; -3.946 ns ; REG_DATA[11] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|BUF[11]  ; CLK      ;
+; N/A                                     ; None                                                ; -3.946 ns ; REG_DATA[19] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS|BUF[19] ; CLK      ;
+; N/A                                     ; None                                                ; -3.946 ns ; REG_DATA[19] ; I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|BUF[19]  ; CLK      ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;           ;              ;                                                                         ;          ;
++-----------------------------------------+-----------------------------------------------------+-----------+--------------+-------------------------------------------------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Sat Mar 09 14:02:11 2019
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off RV32IM -c RV32IM --timing_analysis_only
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "CLK" is an undefined clock
+Info: No valid register-to-register data paths exist for clock "CLK"
+Info: tsu for register "I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[6]" (data pin = "REG_LOAD[11]", clock pin = "CLK") is 5.956 ns
+    Info: + Longest pin to register delay is 8.687 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.852 ns) = 0.852 ns; Loc. = PIN_T2; Fanout = 32; PIN Node = 'REG_LOAD[11]'
+        Info: 2: + IC(7.175 ns) + CELL(0.660 ns) = 8.687 ns; Loc. = LCFF_X32_Y20_N25; Fanout = 2; REG Node = 'I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[6]'
+        Info: Total cell delay = 1.512 ns ( 17.41 % )
+        Info: Total interconnect delay = 7.175 ns ( 82.59 % )
+    Info: + Micro setup delay of destination is -0.036 ns
+    Info: - Shortest clock path from clock "CLK" to destination register is 2.695 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'CLK'
+        Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G3; Fanout = 992; COMB Node = 'CLK~clkctrl'
+        Info: 3: + IC(1.041 ns) + CELL(0.537 ns) = 2.695 ns; Loc. = LCFF_X32_Y20_N25; Fanout = 2; REG Node = 'I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[6]'
+        Info: Total cell delay = 1.536 ns ( 56.99 % )
+        Info: Total interconnect delay = 1.159 ns ( 43.01 % )
+Info: tco from clock "CLK" to destination pin "RS1[23]" through register "I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[23]" is 18.132 ns
+    Info: + Longest clock path from clock "CLK" to source register is 2.670 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'CLK'
+        Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G3; Fanout = 992; COMB Node = 'CLK~clkctrl'
+        Info: 3: + IC(1.016 ns) + CELL(0.537 ns) = 2.670 ns; Loc. = LCFF_X35_Y18_N1; Fanout = 2; REG Node = 'I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[23]'
+        Info: Total cell delay = 1.536 ns ( 57.53 % )
+        Info: Total interconnect delay = 1.134 ns ( 42.47 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Longest register to pin delay is 15.212 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X35_Y18_N1; Fanout = 2; REG Node = 'I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[23]'
+        Info: 2: + IC(1.050 ns) + CELL(0.150 ns) = 1.200 ns; Loc. = LCCOMB_X31_Y15_N12; Fanout = 1; COMB Node = 'I_D:inst|REGISTER_FILE:REG|MUX32X1:RS1_MUX|Mux8~17'
+        Info: 3: + IC(1.316 ns) + CELL(0.438 ns) = 2.954 ns; Loc. = LCCOMB_X34_Y18_N24; Fanout = 1; COMB Node = 'I_D:inst|REGISTER_FILE:REG|MUX32X1:RS1_MUX|Mux8~18'
+        Info: 4: + IC(0.782 ns) + CELL(0.275 ns) = 4.011 ns; Loc. = LCCOMB_X33_Y15_N28; Fanout = 1; COMB Node = 'I_D:inst|REGISTER_FILE:REG|MUX32X1:RS1_MUX|Mux8~19'
+        Info: 5: + IC(1.628 ns) + CELL(0.419 ns) = 6.058 ns; Loc. = LCCOMB_X32_Y19_N4; Fanout = 1; COMB Node = 'I_D:inst|REGISTER_FILE:REG|MUX32X1:RS1_MUX|Mux8~20'
+        Info: 6: + IC(1.648 ns) + CELL(0.438 ns) = 8.144 ns; Loc. = LCCOMB_X29_Y20_N8; Fanout = 1; COMB Node = 'I_D:inst|REGISTER_FILE:REG|MUX32X1:RS1_MUX|Mux8~21'
+        Info: 7: + IC(0.248 ns) + CELL(0.275 ns) = 8.667 ns; Loc. = LCCOMB_X29_Y20_N26; Fanout = 2; COMB Node = 'I_D:inst|REGISTER_FILE:REG|MUX32X1:RS1_MUX|Mux8~24'
+        Info: 8: + IC(1.092 ns) + CELL(0.150 ns) = 9.909 ns; Loc. = LCCOMB_X32_Y19_N10; Fanout = 1; COMB Node = 'I_D:inst|MUX2X1:MXA|O[23]~8'
+        Info: 9: + IC(2.681 ns) + CELL(2.622 ns) = 15.212 ns; Loc. = PIN_M5; Fanout = 0; PIN Node = 'RS1[23]'
+        Info: Total cell delay = 4.767 ns ( 31.34 % )
+        Info: Total interconnect delay = 10.445 ns ( 68.66 % )
+Info: Longest tpd from source pin "MEMWORD[2]" to destination pin "JUMPAT[31]" is 43.132 ns
+    Info: 1: + IC(0.000 ns) + CELL(0.830 ns) = 0.830 ns; Loc. = PIN_D15; Fanout = 20; PIN Node = 'MEMWORD[2]'
+    Info: 2: + IC(5.692 ns) + CELL(0.393 ns) = 6.915 ns; Loc. = LCCOMB_X34_Y28_N18; Fanout = 1; COMB Node = 'I_D:inst|ID_DECODER:DEC|MUX32X1:MUX_32X1|Mux2~1'
+    Info: 3: + IC(0.437 ns) + CELL(0.420 ns) = 7.772 ns; Loc. = LCCOMB_X33_Y28_N12; Fanout = 15; COMB Node = 'I_D:inst|ID_DECODER:DEC|MUX32X1:MUX_32X1|Mux2~2'
+    Info: 4: + IC(0.987 ns) + CELL(0.438 ns) = 9.197 ns; Loc. = LCCOMB_X33_Y29_N6; Fanout = 64; COMB Node = 'I_D:inst|ID_IMM_GENERATOR:IMG|Mux33~2'
+    Info: 5: + IC(0.792 ns) + CELL(0.271 ns) = 10.260 ns; Loc. = LCCOMB_X32_Y29_N26; Fanout = 2; COMB Node = 'I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[1]~65'
+    Info: 6: + IC(0.259 ns) + CELL(0.419 ns) = 10.938 ns; Loc. = LCCOMB_X32_Y29_N28; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:1:OTHER:ADDERS|CO~0'
+    Info: 7: + IC(0.260 ns) + CELL(0.420 ns) = 11.618 ns; Loc. = LCCOMB_X32_Y29_N22; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:2:OTHER:ADDERS|CO~0'
+    Info: 8: + IC(0.479 ns) + CELL(0.437 ns) = 12.534 ns; Loc. = LCCOMB_X32_Y29_N8; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:3:OTHER:ADDERS|CO~0'
+    Info: 9: + IC(0.951 ns) + CELL(0.438 ns) = 13.923 ns; Loc. = LCCOMB_X33_Y25_N26; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:4:OTHER:ADDERS|CO~0'
+    Info: 10: + IC(1.446 ns) + CELL(0.420 ns) = 15.789 ns; Loc. = LCCOMB_X45_Y28_N26; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:5:OTHER:ADDERS|CO~0'
+    Info: 11: + IC(0.269 ns) + CELL(0.415 ns) = 16.473 ns; Loc. = LCCOMB_X45_Y28_N20; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:6:OTHER:ADDERS|CO~0'
+    Info: 12: + IC(0.284 ns) + CELL(0.438 ns) = 17.195 ns; Loc. = LCCOMB_X45_Y28_N14; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:7:OTHER:ADDERS|CO~0'
+    Info: 13: + IC(0.256 ns) + CELL(0.275 ns) = 17.726 ns; Loc. = LCCOMB_X45_Y28_N24; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:8:OTHER:ADDERS|CO~0'
+    Info: 14: + IC(0.273 ns) + CELL(0.275 ns) = 18.274 ns; Loc. = LCCOMB_X45_Y28_N2; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:9:OTHER:ADDERS|CO~0'
+    Info: 15: + IC(0.260 ns) + CELL(0.419 ns) = 18.953 ns; Loc. = LCCOMB_X45_Y28_N4; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:10:OTHER:ADDERS|CO~0'
+    Info: 16: + IC(1.687 ns) + CELL(0.275 ns) = 20.915 ns; Loc. = LCCOMB_X29_Y25_N2; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:11:OTHER:ADDERS|CO~0'
+    Info: 17: + IC(0.263 ns) + CELL(0.150 ns) = 21.328 ns; Loc. = LCCOMB_X29_Y25_N20; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:12:OTHER:ADDERS|CO~0'
+    Info: 18: + IC(0.277 ns) + CELL(0.438 ns) = 22.043 ns; Loc. = LCCOMB_X29_Y25_N22; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:13:OTHER:ADDERS|CO~0'
+    Info: 19: + IC(0.262 ns) + CELL(0.420 ns) = 22.725 ns; Loc. = LCCOMB_X29_Y25_N24; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:14:OTHER:ADDERS|CO~0'
+    Info: 20: + IC(0.277 ns) + CELL(0.438 ns) = 23.440 ns; Loc. = LCCOMB_X29_Y25_N18; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:15:OTHER:ADDERS|CO~0'
+    Info: 21: + IC(0.271 ns) + CELL(0.419 ns) = 24.130 ns; Loc. = LCCOMB_X29_Y25_N4; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:16:OTHER:ADDERS|CO~0'
+    Info: 22: + IC(0.918 ns) + CELL(0.437 ns) = 25.485 ns; Loc. = LCCOMB_X37_Y25_N10; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:17:OTHER:ADDERS|CO~0'
+    Info: 23: + IC(0.274 ns) + CELL(0.438 ns) = 26.197 ns; Loc. = LCCOMB_X37_Y25_N12; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:18:OTHER:ADDERS|CO~0'
+    Info: 24: + IC(0.276 ns) + CELL(0.438 ns) = 26.911 ns; Loc. = LCCOMB_X37_Y25_N22; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:19:OTHER:ADDERS|CO~0'
+    Info: 25: + IC(0.261 ns) + CELL(0.420 ns) = 27.592 ns; Loc. = LCCOMB_X37_Y25_N8; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:20:OTHER:ADDERS|CO~0'
+    Info: 26: + IC(0.687 ns) + CELL(0.438 ns) = 28.717 ns; Loc. = LCCOMB_X33_Y25_N28; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:21:OTHER:ADDERS|CO~0'
+    Info: 27: + IC(1.458 ns) + CELL(0.438 ns) = 30.613 ns; Loc. = LCCOMB_X29_Y32_N2; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:22:OTHER:ADDERS|CO~0'
+    Info: 28: + IC(0.450 ns) + CELL(0.275 ns) = 31.338 ns; Loc. = LCCOMB_X29_Y32_N20; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:23:OTHER:ADDERS|CO~0'
+    Info: 29: + IC(0.256 ns) + CELL(0.275 ns) = 31.869 ns; Loc. = LCCOMB_X29_Y32_N14; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:24:OTHER:ADDERS|CO~0'
+    Info: 30: + IC(0.255 ns) + CELL(0.271 ns) = 32.395 ns; Loc. = LCCOMB_X29_Y32_N0; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:25:OTHER:ADDERS|CO~0'
+    Info: 31: + IC(1.453 ns) + CELL(0.438 ns) = 34.286 ns; Loc. = LCCOMB_X33_Y25_N22; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:26:OTHER:ADDERS|CO~0'
+    Info: 32: + IC(1.038 ns) + CELL(0.438 ns) = 35.762 ns; Loc. = LCCOMB_X29_Y27_N24; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:27:OTHER:ADDERS|CO~0'
+    Info: 33: + IC(0.257 ns) + CELL(0.275 ns) = 36.294 ns; Loc. = LCCOMB_X29_Y27_N2; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:28:OTHER:ADDERS|CO~0'
+    Info: 34: + IC(0.253 ns) + CELL(0.150 ns) = 36.697 ns; Loc. = LCCOMB_X29_Y27_N4; Fanout = 2; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:29:OTHER:ADDERS|CO~0'
+    Info: 35: + IC(1.000 ns) + CELL(0.438 ns) = 38.135 ns; Loc. = LCCOMB_X33_Y25_N24; Fanout = 1; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:30:OTHER:ADDERS|CO~0'
+    Info: 36: + IC(0.261 ns) + CELL(0.438 ns) = 38.834 ns; Loc. = LCCOMB_X33_Y25_N2; Fanout = 1; COMB Node = 'I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:31:MSB:ADDER|S'
+    Info: 37: + IC(1.656 ns) + CELL(2.642 ns) = 43.132 ns; Loc. = PIN_K2; Fanout = 0; PIN Node = 'JUMPAT[31]'
+    Info: Total cell delay = 16.697 ns ( 38.71 % )
+    Info: Total interconnect delay = 26.435 ns ( 61.29 % )
+Info: th for register "I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[7]" (data pin = "REG_DATA[7]", clock pin = "CLK") is -3.509 ns
+    Info: + Longest clock path from clock "CLK" to destination register is 2.659 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'CLK'
+        Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G3; Fanout = 992; COMB Node = 'CLK~clkctrl'
+        Info: 3: + IC(1.005 ns) + CELL(0.537 ns) = 2.659 ns; Loc. = LCFF_X37_Y13_N19; Fanout = 2; REG Node = 'I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[7]'
+        Info: Total cell delay = 1.536 ns ( 57.77 % )
+        Info: Total interconnect delay = 1.123 ns ( 42.23 % )
+    Info: + Micro hold delay of destination is 0.266 ns
+    Info: - Shortest pin to register delay is 6.434 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.820 ns) = 0.820 ns; Loc. = PIN_AA15; Fanout = 31; PIN Node = 'REG_DATA[7]'
+        Info: 2: + IC(5.248 ns) + CELL(0.366 ns) = 6.434 ns; Loc. = LCFF_X37_Y13_N19; Fanout = 2; REG Node = 'I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[7]'
+        Info: Total cell delay = 1.186 ns ( 18.43 % )
+        Info: Total interconnect delay = 5.248 ns ( 81.57 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 205 megabytes
+    Info: Processing ended: Sat Mar 09 14:02:12 2019
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+

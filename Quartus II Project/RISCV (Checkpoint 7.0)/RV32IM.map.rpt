@@ -1,0 +1,1178 @@
+Analysis & Synthesis report for RV32IM
+Sat Mar 09 14:01:53 2019
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: I_D:inst
+ 12. Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC
+ 13. Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_A
+ 14. Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_B
+ 15. Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_C
+ 16. Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_A
+ 17. Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_B
+ 18. Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_C
+ 19. Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_D
+ 20. Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_E
+ 21. Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX32X1:MUX_32X1
+ 22. Parameter Settings for User Entity Instance: I_D:inst|REGISTER_FILE:REG|MUX32X1:RS1_MUX
+ 23. Parameter Settings for User Entity Instance: I_D:inst|REGISTER_FILE:REG|MUX32X1:RS2_MUX
+ 24. Parameter Settings for User Entity Instance: I_D:inst|MUX2X1:MXA
+ 25. Parameter Settings for User Entity Instance: I_D:inst|MUX2X1:MXB
+ 26. Parameter Settings for User Entity Instance: I_D:inst|MUX2X1:MXC
+ 27. Port Connectivity Checks: "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:31:MSB:ADDER"
+ 28. Port Connectivity Checks: "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:0:OTHER:ADDERS"
+ 29. Port Connectivity Checks: "I_D:inst|MUX2X1:MXC"
+ 30. Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX32X1:MUX_32X1"
+ 31. Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_E"
+ 32. Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_D"
+ 33. Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_C"
+ 34. Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_B"
+ 35. Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_A"
+ 36. Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_C"
+ 37. Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_B"
+ 38. Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_A"
+ 39. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++------------------------------------+----------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sat Mar 09 14:01:53 2019        ;
+; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
+; Revision Name                      ; RV32IM                                       ;
+; Top-level Entity Name              ; I_DTEST                                      ;
+; Family                             ; Cyclone II                                   ;
+; Total logic elements               ; 2,533                                        ;
+;     Total combinational functions  ; 1,541                                        ;
+;     Dedicated logic registers      ; 992                                          ;
+; Total registers                    ; 992                                          ;
+; Total pins                         ; 310                                          ;
+; Total virtual pins                 ; 0                                            ;
+; Total memory bits                  ; 0                                            ;
+; Embedded Multiplier 9-bit elements ; 0                                            ;
+; Total PLLs                         ; 0                                            ;
++------------------------------------+----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; I_DTEST            ; RV32IM             ;
+; Family name                                                                ; Cyclone II         ; Stratix II         ;
+; Use Generated Physical Constraints File                                    ; Off                ;                    ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                         ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                              ;
++----------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                              ;
++----------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------+
+; TOOLBOX.vhd                      ; yes             ; User VHDL File                     ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/TOOLBOX.vhd          ;
+; MUX2X1.vhd                       ; yes             ; User VHDL File                     ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/MUX2X1.vhd           ;
+; MUX8X1.vhd                       ; yes             ; User VHDL File                     ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/MUX8X1.vhd           ;
+; MUX32X1.vhd                      ; yes             ; User VHDL File                     ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/MUX32X1.vhd          ;
+; ID_DECODER.vhd                   ; yes             ; User VHDL File                     ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/ID_DECODER.vhd       ;
+; ID_IMM_GENERATOR.vhd             ; yes             ; User VHDL File                     ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/ID_IMM_GENERATOR.vhd ;
+; REG_32B_CASUAL.vhd               ; yes             ; User VHDL File                     ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/REG_32B_CASUAL.vhd   ;
+; REG_32B_ZERO.vhd                 ; yes             ; User VHDL File                     ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/REG_32B_ZERO.vhd     ;
+; REGISTER_FILE.vhd                ; yes             ; User VHDL File                     ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/REGISTER_FILE.vhd    ;
+; ADDER_2B.vhd                     ; yes             ; User VHDL File                     ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/ADDER_2B.vhd         ;
+; ID_ADDER.vhd                     ; yes             ; User VHDL File                     ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/ID_ADDER.vhd         ;
+; I_D.vhd                          ; yes             ; User VHDL File                     ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/I_D.vhd              ;
+; I_DTEST.bdf                      ; yes             ; User Block Diagram/Schematic File  ; D:/Academic/Software/QuartusWebEdition/quartus/RISCV/I_DTEST.bdf          ;
++----------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 2,533 ;
+;                                             ;       ;
+; Total combinational functions               ; 1541  ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 1423  ;
+;     -- 3 input functions                    ; 105   ;
+;     -- <=2 input functions                  ; 13    ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 1541  ;
+;     -- arithmetic mode                      ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 992   ;
+;     -- Dedicated logic registers            ; 992   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 310   ;
+; Maximum fan-out node                        ; CLK   ;
+; Maximum fan-out                             ; 992   ;
+; Total fan-out                               ; 10213 ;
+; Average fan-out                             ; 3.59  ;
++---------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                   ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                      ; Library Name ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------+--------------+
+; |I_DTEST                                        ; 1541 (0)          ; 992 (0)      ; 0           ; 0            ; 0       ; 0         ; 310  ; 0            ; |I_DTEST                                                                 ; work         ;
+;    |I_D:inst|                                   ; 1541 (1)          ; 992 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst                                                        ;              ;
+;       |ID_ADDER:ADD|                            ; 62 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD                                           ; work         ;
+;          |ADDER_2B:\ADDERS:0:OTHER:ADDERS|      ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:0:OTHER:ADDERS           ; work         ;
+;          |ADDER_2B:\ADDERS:10:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:10:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:11:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:11:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:12:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:12:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:13:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:13:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:14:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:14:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:15:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:15:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:16:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:16:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:17:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:17:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:18:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:18:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:19:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:19:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:1:OTHER:ADDERS|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:1:OTHER:ADDERS           ; work         ;
+;          |ADDER_2B:\ADDERS:20:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:20:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:21:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:21:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:22:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:22:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:23:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:23:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:24:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:24:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:25:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:25:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:26:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:26:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:27:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:27:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:28:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:28:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:29:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:29:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:2:OTHER:ADDERS|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:2:OTHER:ADDERS           ; work         ;
+;          |ADDER_2B:\ADDERS:30:OTHER:ADDERS|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:30:OTHER:ADDERS          ; work         ;
+;          |ADDER_2B:\ADDERS:31:MSB:ADDER|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:31:MSB:ADDER             ; work         ;
+;          |ADDER_2B:\ADDERS:3:OTHER:ADDERS|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:3:OTHER:ADDERS           ; work         ;
+;          |ADDER_2B:\ADDERS:4:OTHER:ADDERS|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:4:OTHER:ADDERS           ; work         ;
+;          |ADDER_2B:\ADDERS:5:OTHER:ADDERS|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:5:OTHER:ADDERS           ; work         ;
+;          |ADDER_2B:\ADDERS:6:OTHER:ADDERS|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:6:OTHER:ADDERS           ; work         ;
+;          |ADDER_2B:\ADDERS:7:OTHER:ADDERS|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:7:OTHER:ADDERS           ; work         ;
+;          |ADDER_2B:\ADDERS:8:OTHER:ADDERS|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:8:OTHER:ADDERS           ; work         ;
+;          |ADDER_2B:\ADDERS:9:OTHER:ADDERS|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:9:OTHER:ADDERS           ; work         ;
+;       |ID_DECODER:DEC|                          ; 47 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_DECODER:DEC                                         ; work         ;
+;          |MUX32X1:MUX_32X1|                     ; 45 (45)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_DECODER:DEC|MUX32X1:MUX_32X1                        ; work         ;
+;          |MUX8X1:MUX_8X1_A|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_A                        ; work         ;
+;          |MUX8X1:MUX_8X1_C|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_C                        ; work         ;
+;       |ID_IMM_GENERATOR:IMG|                    ; 75 (75)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|ID_IMM_GENERATOR:IMG                                   ; work         ;
+;       |MUX2X1:MXA|                              ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|MUX2X1:MXA                                             ; work         ;
+;       |MUX2X1:MXB|                              ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|MUX2X1:MXB                                             ; work         ;
+;       |MUX2X1:MXC|                              ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|MUX2X1:MXC                                             ; work         ;
+;       |REGISTER_FILE:REG|                       ; 1290 (0)          ; 992 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG                                      ; work         ;
+;          |MUX32X1:RS1_MUX|                      ; 645 (645)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|MUX32X1:RS1_MUX                      ; work         ;
+;          |MUX32X1:RS2_MUX|                      ; 645 (645)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|MUX32X1:RS2_MUX                      ; work         ;
+;          |REG_32B_CASUAL:\GEN:10:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:10:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:11:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:12:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:12:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:13:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:13:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:14:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:14:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:15:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:15:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:16:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:16:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:17:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:17:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:18:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:18:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:19:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:19:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:1:CASE1:CASUALS|  ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS  ; work         ;
+;          |REG_32B_CASUAL:\GEN:20:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:21:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:21:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:22:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:22:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:23:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:23:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:24:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:24:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:25:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:25:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:26:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:26:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:27:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:27:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:28:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:28:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:29:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:29:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:2:CASE1:CASUALS|  ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:2:CASE1:CASUALS  ; work         ;
+;          |REG_32B_CASUAL:\GEN:30:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:30:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:31:CASE1:CASUALS| ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:31:CASE1:CASUALS ; work         ;
+;          |REG_32B_CASUAL:\GEN:3:CASE1:CASUALS|  ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:3:CASE1:CASUALS  ; work         ;
+;          |REG_32B_CASUAL:\GEN:4:CASE1:CASUALS|  ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:4:CASE1:CASUALS  ; work         ;
+;          |REG_32B_CASUAL:\GEN:5:CASE1:CASUALS|  ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:5:CASE1:CASUALS  ; work         ;
+;          |REG_32B_CASUAL:\GEN:6:CASE1:CASUALS|  ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:6:CASE1:CASUALS  ; work         ;
+;          |REG_32B_CASUAL:\GEN:7:CASE1:CASUALS|  ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:7:CASE1:CASUALS  ; work         ;
+;          |REG_32B_CASUAL:\GEN:8:CASE1:CASUALS|  ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:8:CASE1:CASUALS  ; work         ;
+;          |REG_32B_CASUAL:\GEN:9:CASE1:CASUALS|  ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:9:CASE1:CASUALS  ; work         ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                ;
++--------------------------------------------------------------------------+----------------------------------------+
+; Register name                                                            ; Reason for Removal                     ;
++--------------------------------------------------------------------------+----------------------------------------+
+; I_D:inst|REGISTER_FILE:REG|REG_32B_ZERO:\GEN:0:CASE0:ZERO_REG|BUF[0..31] ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 32                                   ;                                        ;
++--------------------------------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 992   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 992   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 992   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 32:1               ; 32 bits   ; 672 LEs       ; 640 LEs              ; 32 LEs                 ; No         ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|MUX32X1:RS2_MUX|Mux7 ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 640 LEs              ; 32 LEs                 ; No         ; |I_DTEST|I_D:inst|REGISTER_FILE:REG|MUX32X1:RS1_MUX|Mux8 ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |I_DTEST|I_D:inst|ID_IMM_GENERATOR:IMG|Mux5              ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; No         ; |I_DTEST|I_D:inst|ID_IMM_GENERATOR:IMG|Mux28             ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |I_DTEST|I_D:inst|ID_IMM_GENERATOR:IMG|Mux20             ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |I_DTEST|I_D:inst|ID_IMM_GENERATOR:IMG|Mux4              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+
+
++-------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst ;
++-----------------+-------+-----------------------------+
+; Parameter Name  ; Value ; Type                        ;
++-----------------+-------+-----------------------------+
+; CTRL_WORD_TOTAL ; 18    ; Signed Integer              ;
+; CTRL_WORD_OUT   ; 14    ; Signed Integer              ;
++-----------------+-------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; ctrl_word_size ; 18    ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_A ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; insize         ; 18    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_B ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; insize         ; 18    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_C ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; insize         ; 18    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_A ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; insize         ; 18    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_B ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; insize         ; 18    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_C ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; insize         ; 18    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_D ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; insize         ; 18    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_E ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; insize         ; 18    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|ID_DECODER:DEC|MUX32X1:MUX_32X1 ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; insize         ; 18    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|REGISTER_FILE:REG|MUX32X1:RS1_MUX ;
++----------------+-------+----------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                           ;
++----------------+-------+----------------------------------------------------------------+
+; insize         ; 32    ; Signed Integer                                                 ;
++----------------+-------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|REGISTER_FILE:REG|MUX32X1:RS2_MUX ;
++----------------+-------+----------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                           ;
++----------------+-------+----------------------------------------------------------------+
+; insize         ; 32    ; Signed Integer                                                 ;
++----------------+-------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|MUX2X1:MXA ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; insize         ; 32    ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|MUX2X1:MXB ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; insize         ; 32    ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I_D:inst|MUX2X1:MXC ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; insize         ; 32    ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:31:MSB:ADDER"                                ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; co   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------+
+; Port Connectivity Checks: "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:0:OTHER:ADDERS" ;
++------+-------+----------+---------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                 ;
++------+-------+----------+---------------------------------------------------------+
+; ci   ; Input ; Info     ; Stuck at GND                                            ;
++------+-------+----------+---------------------------------------------------------+
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "I_D:inst|MUX2X1:MXC" ;
++-----------+-------+----------+------------------+
+; Port      ; Type  ; Severity ; Details          ;
++-----------+-------+----------+------------------+
+; d1[31..3] ; Input ; Info     ; Stuck at GND     ;
+; d1[1..0]  ; Input ; Info     ; Stuck at GND     ;
+; d1[2]     ; Input ; Info     ; Stuck at VCC     ;
++-----------+-------+----------+------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX32X1:MUX_32X1" ;
++-------------+-------+----------+-------------------------------------+
+; Port        ; Type  ; Severity ; Details                             ;
++-------------+-------+----------+-------------------------------------+
+; d5[15..13]  ; Input ; Info     ; Stuck at VCC                        ;
+; d5[11..9]   ; Input ; Info     ; Stuck at VCC                        ;
+; d5[2..1]    ; Input ; Info     ; Stuck at VCC                        ;
+; d5[17..16]  ; Input ; Info     ; Stuck at GND                        ;
+; d5[8..3]    ; Input ; Info     ; Stuck at GND                        ;
+; d5[12]      ; Input ; Info     ; Stuck at GND                        ;
+; d5[0]       ; Input ; Info     ; Stuck at GND                        ;
+; d13[15..13] ; Input ; Info     ; Stuck at VCC                        ;
+; d13[11..9]  ; Input ; Info     ; Stuck at VCC                        ;
+; d13[17..16] ; Input ; Info     ; Stuck at GND                        ;
+; d13[8..0]   ; Input ; Info     ; Stuck at GND                        ;
+; d13[12]     ; Input ; Info     ; Stuck at GND                        ;
+; d25[11..9]  ; Input ; Info     ; Stuck at VCC                        ;
+; d25[2..0]   ; Input ; Info     ; Stuck at VCC                        ;
+; d25[17..12] ; Input ; Info     ; Stuck at GND                        ;
+; d25[6..3]   ; Input ; Info     ; Stuck at GND                        ;
+; d25[8]      ; Input ; Info     ; Stuck at GND                        ;
+; d25[7]      ; Input ; Info     ; Stuck at VCC                        ;
+; d27[11..9]  ; Input ; Info     ; Stuck at VCC                        ;
+; d27[2..0]   ; Input ; Info     ; Stuck at VCC                        ;
+; d27[15..12] ; Input ; Info     ; Stuck at GND                        ;
+; d27[8..3]   ; Input ; Info     ; Stuck at GND                        ;
+; d27[17]     ; Input ; Info     ; Stuck at GND                        ;
+; d27[16]     ; Input ; Info     ; Stuck at VCC                        ;
++-------------+-------+----------+-------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_E" ;
++------------+-------+----------+--------------------------------------+
+; Port       ; Type  ; Severity ; Details                              ;
++------------+-------+----------+--------------------------------------+
+; d0[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d0[5..4]   ; Input ; Info     ; Stuck at VCC                         ;
+; d0[17..16] ; Input ; Info     ; Stuck at GND                         ;
+; d0[14..12] ; Input ; Info     ; Stuck at GND                         ;
+; d0[8..6]   ; Input ; Info     ; Stuck at GND                         ;
+; d0[3..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d0[15]     ; Input ; Info     ; Stuck at VCC                         ;
+; d1[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d1[5..4]   ; Input ; Info     ; Stuck at VCC                         ;
+; d1[17..16] ; Input ; Info     ; Stuck at GND                         ;
+; d1[14..12] ; Input ; Info     ; Stuck at GND                         ;
+; d1[8..6]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[3..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[15]     ; Input ; Info     ; Stuck at VCC                         ;
+; d4[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d4[5..3]   ; Input ; Info     ; Stuck at VCC                         ;
+; d4[17..16] ; Input ; Info     ; Stuck at GND                         ;
+; d4[14..12] ; Input ; Info     ; Stuck at GND                         ;
+; d4[8..6]   ; Input ; Info     ; Stuck at GND                         ;
+; d4[2..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d4[15]     ; Input ; Info     ; Stuck at VCC                         ;
+; d5[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d5[5..3]   ; Input ; Info     ; Stuck at VCC                         ;
+; d5[14..12] ; Input ; Info     ; Stuck at GND                         ;
+; d5[8..6]   ; Input ; Info     ; Stuck at GND                         ;
+; d5[2..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d5[17]     ; Input ; Info     ; Stuck at VCC                         ;
+; d5[16]     ; Input ; Info     ; Stuck at GND                         ;
+; d5[15]     ; Input ; Info     ; Stuck at VCC                         ;
+; d6[11..7]  ; Input ; Info     ; Stuck at VCC                         ;
+; d6[5..3]   ; Input ; Info     ; Stuck at VCC                         ;
+; d6[17..16] ; Input ; Info     ; Stuck at GND                         ;
+; d6[14..12] ; Input ; Info     ; Stuck at GND                         ;
+; d6[2..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d6[15]     ; Input ; Info     ; Stuck at VCC                         ;
+; d6[6]      ; Input ; Info     ; Stuck at GND                         ;
+; d7[11..7]  ; Input ; Info     ; Stuck at VCC                         ;
+; d7[5..3]   ; Input ; Info     ; Stuck at VCC                         ;
+; d7[14..12] ; Input ; Info     ; Stuck at GND                         ;
+; d7[2..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d7[17]     ; Input ; Info     ; Stuck at VCC                         ;
+; d7[16]     ; Input ; Info     ; Stuck at GND                         ;
+; d7[15]     ; Input ; Info     ; Stuck at VCC                         ;
+; d7[6]      ; Input ; Info     ; Stuck at GND                         ;
++------------+-------+----------+--------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_D" ;
++------------+-------+----------+--------------------------------------+
+; Port       ; Type  ; Severity ; Details                              ;
++------------+-------+----------+--------------------------------------+
+; d1[16..13] ; Input ; Info     ; Stuck at VCC                         ;
+; d1[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d1[7..5]   ; Input ; Info     ; Stuck at VCC                         ;
+; d1[4..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[17]     ; Input ; Info     ; Stuck at GND                         ;
+; d1[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d1[8]      ; Input ; Info     ; Stuck at GND                         ;
+; d2[16..13] ; Input ; Info     ; Stuck at VCC                         ;
+; d2[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d2[8..6]   ; Input ; Info     ; Stuck at GND                         ;
+; d2[2..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d2[17]     ; Input ; Info     ; Stuck at GND                         ;
+; d2[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d2[5]      ; Input ; Info     ; Stuck at VCC                         ;
+; d2[4]      ; Input ; Info     ; Stuck at GND                         ;
+; d2[3]      ; Input ; Info     ; Stuck at VCC                         ;
+; d3[16..13] ; Input ; Info     ; Stuck at VCC                         ;
+; d3[11..7]  ; Input ; Info     ; Stuck at VCC                         ;
+; d3[2..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d3[17]     ; Input ; Info     ; Stuck at GND                         ;
+; d3[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d3[6]      ; Input ; Info     ; Stuck at GND                         ;
+; d3[5]      ; Input ; Info     ; Stuck at VCC                         ;
+; d3[4]      ; Input ; Info     ; Stuck at GND                         ;
+; d3[3]      ; Input ; Info     ; Stuck at VCC                         ;
+; d4[16..13] ; Input ; Info     ; Stuck at VCC                         ;
+; d4[11..8]  ; Input ; Info     ; Stuck at VCC                         ;
+; d4[5..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d4[17]     ; Input ; Info     ; Stuck at GND                         ;
+; d4[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d4[7]      ; Input ; Info     ; Stuck at GND                         ;
+; d4[6]      ; Input ; Info     ; Stuck at VCC                         ;
+; d6[16..13] ; Input ; Info     ; Stuck at VCC                         ;
+; d6[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d6[7..6]   ; Input ; Info     ; Stuck at VCC                         ;
+; d6[5..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d6[17]     ; Input ; Info     ; Stuck at GND                         ;
+; d6[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d6[8]      ; Input ; Info     ; Stuck at GND                         ;
+; d7[16..13] ; Input ; Info     ; Stuck at VCC                         ;
+; d7[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d7[8..7]   ; Input ; Info     ; Stuck at GND                         ;
+; d7[5..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d7[17]     ; Input ; Info     ; Stuck at GND                         ;
+; d7[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d7[6]      ; Input ; Info     ; Stuck at VCC                         ;
++------------+-------+----------+--------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_C" ;
++------------+-------+----------+--------------------------------------+
+; Port       ; Type  ; Severity ; Details                              ;
++------------+-------+----------+--------------------------------------+
+; d0[17..15] ; Input ; Info     ; Stuck at GND                         ;
+; d0[13..12] ; Input ; Info     ; Stuck at GND                         ;
+; d0[10..3]  ; Input ; Info     ; Stuck at GND                         ;
+; d0[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d0[14]     ; Input ; Info     ; Stuck at VCC                         ;
+; d0[11]     ; Input ; Info     ; Stuck at VCC                         ;
+; d0[2]      ; Input ; Info     ; Stuck at VCC                         ;
+; d1[17..15] ; Input ; Info     ; Stuck at GND                         ;
+; d1[13..12] ; Input ; Info     ; Stuck at GND                         ;
+; d1[8..3]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[14]     ; Input ; Info     ; Stuck at VCC                         ;
+; d1[11]     ; Input ; Info     ; Stuck at VCC                         ;
+; d1[10]     ; Input ; Info     ; Stuck at GND                         ;
+; d1[9]      ; Input ; Info     ; Stuck at VCC                         ;
+; d1[2]      ; Input ; Info     ; Stuck at VCC                         ;
+; d2[11..10] ; Input ; Info     ; Stuck at VCC                         ;
+; d2[17..15] ; Input ; Info     ; Stuck at GND                         ;
+; d2[13..12] ; Input ; Info     ; Stuck at GND                         ;
+; d2[9..3]   ; Input ; Info     ; Stuck at GND                         ;
+; d2[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d2[14]     ; Input ; Info     ; Stuck at VCC                         ;
+; d2[2]      ; Input ; Info     ; Stuck at VCC                         ;
++------------+-------+----------+--------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_B" ;
++------------+-------+----------+--------------------------------------+
+; Port       ; Type  ; Severity ; Details                              ;
++------------+-------+----------+--------------------------------------+
+; d0[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d0[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d0[8..3]   ; Input ; Info     ; Stuck at GND                         ;
+; d0[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d0[13]     ; Input ; Info     ; Stuck at VCC                         ;
+; d0[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d0[2]      ; Input ; Info     ; Stuck at VCC                         ;
+; d1[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d1[7..5]   ; Input ; Info     ; Stuck at VCC                         ;
+; d1[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d1[4..3]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[13]     ; Input ; Info     ; Stuck at VCC                         ;
+; d1[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d1[8]      ; Input ; Info     ; Stuck at GND                         ;
+; d1[2]      ; Input ; Info     ; Stuck at VCC                         ;
+; d2[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d2[3..2]   ; Input ; Info     ; Stuck at VCC                         ;
+; d2[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d2[8..6]   ; Input ; Info     ; Stuck at GND                         ;
+; d2[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d2[13]     ; Input ; Info     ; Stuck at VCC                         ;
+; d2[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d2[5]      ; Input ; Info     ; Stuck at VCC                         ;
+; d2[4]      ; Input ; Info     ; Stuck at GND                         ;
+; d3[11..7]  ; Input ; Info     ; Stuck at VCC                         ;
+; d3[3..2]   ; Input ; Info     ; Stuck at VCC                         ;
+; d3[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d3[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d3[13]     ; Input ; Info     ; Stuck at VCC                         ;
+; d3[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d3[6]      ; Input ; Info     ; Stuck at GND                         ;
+; d3[5]      ; Input ; Info     ; Stuck at VCC                         ;
+; d3[4]      ; Input ; Info     ; Stuck at GND                         ;
+; d4[11..8]  ; Input ; Info     ; Stuck at VCC                         ;
+; d4[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d4[5..3]   ; Input ; Info     ; Stuck at GND                         ;
+; d4[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d4[13]     ; Input ; Info     ; Stuck at VCC                         ;
+; d4[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d4[7]      ; Input ; Info     ; Stuck at GND                         ;
+; d4[6]      ; Input ; Info     ; Stuck at VCC                         ;
+; d4[2]      ; Input ; Info     ; Stuck at VCC                         ;
+; d6[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d6[7..6]   ; Input ; Info     ; Stuck at VCC                         ;
+; d6[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d6[5..3]   ; Input ; Info     ; Stuck at GND                         ;
+; d6[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d6[13]     ; Input ; Info     ; Stuck at VCC                         ;
+; d6[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d6[8]      ; Input ; Info     ; Stuck at GND                         ;
+; d6[2]      ; Input ; Info     ; Stuck at VCC                         ;
+; d7[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d7[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d7[8..7]   ; Input ; Info     ; Stuck at GND                         ;
+; d7[5..3]   ; Input ; Info     ; Stuck at GND                         ;
+; d7[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d7[13]     ; Input ; Info     ; Stuck at VCC                         ;
+; d7[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d7[6]      ; Input ; Info     ; Stuck at VCC                         ;
+; d7[2]      ; Input ; Info     ; Stuck at VCC                         ;
++------------+-------+----------+--------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_A" ;
++------------+-------+----------+--------------------------------------+
+; Port       ; Type  ; Severity ; Details                              ;
++------------+-------+----------+--------------------------------------+
+; d0[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d0[12..3]  ; Input ; Info     ; Stuck at GND                         ;
+; d0[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d0[13]     ; Input ; Info     ; Stuck at VCC                         ;
+; d0[2]      ; Input ; Info     ; Stuck at VCC                         ;
+; d1[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d1[12..10] ; Input ; Info     ; Stuck at GND                         ;
+; d1[8..3]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[13]     ; Input ; Info     ; Stuck at VCC                         ;
+; d1[9]      ; Input ; Info     ; Stuck at VCC                         ;
+; d1[2]      ; Input ; Info     ; Stuck at VCC                         ;
+; d2[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d2[12..11] ; Input ; Info     ; Stuck at GND                         ;
+; d2[9..3]   ; Input ; Info     ; Stuck at GND                         ;
+; d2[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d2[13]     ; Input ; Info     ; Stuck at VCC                         ;
+; d2[10]     ; Input ; Info     ; Stuck at VCC                         ;
+; d2[2]      ; Input ; Info     ; Stuck at VCC                         ;
+; d4[13..12] ; Input ; Info     ; Stuck at VCC                         ;
+; d4[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d4[11..3]  ; Input ; Info     ; Stuck at GND                         ;
+; d4[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d4[2]      ; Input ; Info     ; Stuck at VCC                         ;
+; d5[13..12] ; Input ; Info     ; Stuck at VCC                         ;
+; d5[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d5[11..10] ; Input ; Info     ; Stuck at GND                         ;
+; d5[8..3]   ; Input ; Info     ; Stuck at GND                         ;
+; d5[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d5[9]      ; Input ; Info     ; Stuck at VCC                         ;
+; d5[2]      ; Input ; Info     ; Stuck at VCC                         ;
++------------+-------+----------+--------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_C" ;
++------------+-------+----------+--------------------------------------+
+; Port       ; Type  ; Severity ; Details                              ;
++------------+-------+----------+--------------------------------------+
+; d0[16..13] ; Input ; Info     ; Stuck at VCC                         ;
+; d0[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d0[6..5]   ; Input ; Info     ; Stuck at VCC                         ;
+; d0[8..7]   ; Input ; Info     ; Stuck at GND                         ;
+; d0[4..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d0[17]     ; Input ; Info     ; Stuck at GND                         ;
+; d0[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d1[16..13] ; Input ; Info     ; Stuck at VCC                         ;
+; d1[11..8]  ; Input ; Info     ; Stuck at VCC                         ;
+; d1[6..5]   ; Input ; Info     ; Stuck at VCC                         ;
+; d1[4..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[17]     ; Input ; Info     ; Stuck at GND                         ;
+; d1[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d1[7]      ; Input ; Info     ; Stuck at GND                         ;
++------------+-------+----------+--------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_B" ;
++------------+-------+----------+--------------------------------------+
+; Port       ; Type  ; Severity ; Details                              ;
++------------+-------+----------+--------------------------------------+
+; d0[16..13] ; Input ; Info     ; Stuck at VCC                         ;
+; d0[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d0[8..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d0[17]     ; Input ; Info     ; Stuck at GND                         ;
+; d0[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d1[16..13] ; Input ; Info     ; Stuck at VCC                         ;
+; d1[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d1[8..6]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[4..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[17]     ; Input ; Info     ; Stuck at GND                         ;
+; d1[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d1[5]      ; Input ; Info     ; Stuck at VCC                         ;
++------------+-------+----------+--------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_A" ;
++------------+-------+----------+--------------------------------------+
+; Port       ; Type  ; Severity ; Details                              ;
++------------+-------+----------+--------------------------------------+
+; d0[11..9]  ; Input ; Info     ; Stuck at VCC                         ;
+; d0[6..5]   ; Input ; Info     ; Stuck at VCC                         ;
+; d0[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d0[8..7]   ; Input ; Info     ; Stuck at GND                         ;
+; d0[4..3]   ; Input ; Info     ; Stuck at GND                         ;
+; d0[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d0[13]     ; Input ; Info     ; Stuck at VCC                         ;
+; d0[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d0[2]      ; Input ; Info     ; Stuck at VCC                         ;
+; d1[11..8]  ; Input ; Info     ; Stuck at VCC                         ;
+; d1[6..5]   ; Input ; Info     ; Stuck at VCC                         ;
+; d1[17..14] ; Input ; Info     ; Stuck at GND                         ;
+; d1[4..3]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[1..0]   ; Input ; Info     ; Stuck at GND                         ;
+; d1[13]     ; Input ; Info     ; Stuck at VCC                         ;
+; d1[12]     ; Input ; Info     ; Stuck at GND                         ;
+; d1[7]      ; Input ; Info     ; Stuck at GND                         ;
+; d1[2]      ; Input ; Info     ; Stuck at VCC                         ;
++------------+-------+----------+--------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Sat Mar 09 14:01:44 2019
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RV32IM -c RV32IM
+Info: Found 2 design units, including 1 entities, in source file i_f.vhd
+    Info: Found design unit 1: I_F-STRUCTURAL
+    Info: Found entity 1: I_F
+Info: Found 2 design units, including 1 entities, in source file i_f_ram.vhd
+    Info: Found design unit 1: i_f_ram-SYN
+    Info: Found entity 1: I_F_RAM
+Info: Found 1 design units, including 1 entities, in source file i_f_memtest.bdf
+    Info: Found entity 1: I_F_MEMTEST
+Info: Found 1 design units, including 0 entities, in source file toolbox.vhd
+    Info: Found design unit 1: TOOLBOX
+Info: Found 2 design units, including 1 entities, in source file mux2x1.vhd
+    Info: Found design unit 1: MUX2X1-RTL
+    Info: Found entity 1: MUX2X1
+Info: Found 1 design units, including 1 entities, in source file mux2x1test.bdf
+    Info: Found entity 1: MUX2X1TEST
+Info: Found 2 design units, including 1 entities, in source file mux8x1.vhd
+    Info: Found design unit 1: MUX8X1-RTL
+    Info: Found entity 1: MUX8X1
+Info: Found 1 design units, including 1 entities, in source file mux8x1test.bdf
+    Info: Found entity 1: MUX8X1TEST
+Info: Found 2 design units, including 1 entities, in source file mux32x1.vhd
+    Info: Found design unit 1: MUX32X1-RTL
+    Info: Found entity 1: MUX32X1
+Info: Found 1 design units, including 1 entities, in source file mux32x1test.bdf
+    Info: Found entity 1: MUX32X1TEST
+Info: Found 2 design units, including 1 entities, in source file reg_flipper.vhd
+    Info: Found design unit 1: REG_FLIPPER-RTL
+    Info: Found entity 1: REG_FLIPPER
+Info: Found 1 design units, including 1 entities, in source file reg_flippertest.bdf
+    Info: Found entity 1: REG_FLIPPERTEST
+Info: Found 2 design units, including 1 entities, in source file id_decoder.vhd
+    Info: Found design unit 1: ID_DECODER-STRUCTURAL
+    Info: Found entity 1: ID_DECODER
+Info: Found 1 design units, including 1 entities, in source file id_decodertest.bdf
+    Info: Found entity 1: ID_DECODERTEST
+Info: Found 2 design units, including 1 entities, in source file id_imm_generator.vhd
+    Info: Found design unit 1: ID_IMM_GENERATOR-RTL
+    Info: Found entity 1: ID_IMM_GENERATOR
+Info: Found 1 design units, including 1 entities, in source file id_imm_generatortest.bdf
+    Info: Found entity 1: ID_IMM_GENERATORTEST
+Info: Found 2 design units, including 1 entities, in source file reg_32b_casual.vhd
+    Info: Found design unit 1: REG_32B_CASUAL-RTL
+    Info: Found entity 1: REG_32B_CASUAL
+Info: Found 1 design units, including 1 entities, in source file reg_32b_casualtest.bdf
+    Info: Found entity 1: REG_32B_CASUALTEST
+Info: Found 2 design units, including 1 entities, in source file reg_32b_zero.vhd
+    Info: Found design unit 1: REG_32B_ZERO-RTL
+    Info: Found entity 1: REG_32B_ZERO
+Info: Found 1 design units, including 1 entities, in source file reg_32b_zerotest.bdf
+    Info: Found entity 1: REG_32B_ZEROTEST
+Info: Found 2 design units, including 1 entities, in source file register_file.vhd
+    Info: Found design unit 1: REGISTER_FILE-STRUCTURAL
+    Info: Found entity 1: REGISTER_FILE
+Info: Found 1 design units, including 1 entities, in source file register_filetest.bdf
+    Info: Found entity 1: REGISTER_FILETEST
+Info: Found 2 design units, including 1 entities, in source file barrel_cell.vhd
+    Info: Found design unit 1: BARREL_CELL-STRUCTURAL
+    Info: Found entity 1: BARREL_CELL
+Info: Found 1 design units, including 1 entities, in source file barrel_celltest.bdf
+    Info: Found entity 1: BARREL_CELLTEST
+Info: Found 2 design units, including 1 entities, in source file mux2x1_bit.vhd
+    Info: Found design unit 1: MUX2X1_BIT-BEHAVIORAL
+    Info: Found entity 1: MUX2X1_BIT
+Info: Found 1 design units, including 1 entities, in source file mux2x1_bittest.bdf
+    Info: Found entity 1: MUX2X1_BITTEST
+Info: Found 2 design units, including 1 entities, in source file barrel_shifter.vhd
+    Info: Found design unit 1: BARREL_SHIFTER-STRUCTURAL
+    Info: Found entity 1: BARREL_SHIFTER
+Info: Found 1 design units, including 1 entities, in source file barrel_shiftertest.bdf
+    Info: Found entity 1: BARREL_SHIFTERTEST
+Info: Found 2 design units, including 1 entities, in source file adder_2b.vhd
+    Info: Found design unit 1: ADDER_2B-RTL
+    Info: Found entity 1: ADDER_2B
+Info: Found 1 design units, including 1 entities, in source file adder_2btest.bdf
+    Info: Found entity 1: ADDER_2BTEST
+Info: Found 2 design units, including 1 entities, in source file id_adder.vhd
+    Info: Found design unit 1: ID_ADDER-STRUCTURAL
+    Info: Found entity 1: ID_ADDER
+Info: Found 1 design units, including 1 entities, in source file id_addertest.bdf
+    Info: Found entity 1: ID_ADDERTEST
+Info: Found 2 design units, including 1 entities, in source file i_d.vhd
+    Info: Found design unit 1: I_D-STRUCTURAL
+    Info: Found entity 1: I_D
+Info: Found 1 design units, including 1 entities, in source file i_dtest.bdf
+    Info: Found entity 1: I_DTEST
+Info: Elaborating entity "I_DTEST" for the top level hierarchy
+Info: Elaborating entity "I_D" for hierarchy "I_D:inst"
+Info: Elaborating entity "ID_DECODER" for hierarchy "I_D:inst|ID_DECODER:DEC"
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(68): used explicit default value for signal "L_LB" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(69): used explicit default value for signal "L_LH" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(70): used explicit default value for signal "L_LW" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(71): used explicit default value for signal "L_LBU" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(72): used explicit default value for signal "L_LHU" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(74): used explicit default value for signal "I_ADDI" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(75): used explicit default value for signal "I_SLLI" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(76): used explicit default value for signal "I_SLTI" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(77): used explicit default value for signal "I_SLTIU" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(78): used explicit default value for signal "I_XORI" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(79): used explicit default value for signal "I_SRLI" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(80): used explicit default value for signal "I_SRAI" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(81): used explicit default value for signal "I_ORI" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(82): used explicit default value for signal "I_ANDI" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(84): used explicit default value for signal "S_SB" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(85): used explicit default value for signal "S_SH" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(86): used explicit default value for signal "S_SW" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(88): used explicit default value for signal "R_ADD" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(89): used explicit default value for signal "R_SUB" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(90): used explicit default value for signal "R_SLL" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(91): used explicit default value for signal "R_SLT" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(92): used explicit default value for signal "R_SLTU" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(93): used explicit default value for signal "R_XOR" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(94): used explicit default value for signal "R_SRL" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(95): used explicit default value for signal "R_SRA" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(96): used explicit default value for signal "R_OR" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(97): used explicit default value for signal "R_AND" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(99): used explicit default value for signal "B_BEQ" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(100): used explicit default value for signal "B_BNE" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(101): used explicit default value for signal "B_BLT" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(102): used explicit default value for signal "B_BGE" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(103): used explicit default value for signal "B_BLTU" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(104): used explicit default value for signal "B_BGEU" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(106): used explicit default value for signal "AUIPC" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(107): used explicit default value for signal "LUI" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(108): used explicit default value for signal "JALR" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ID_DECODER.vhd(109): used explicit default value for signal "JAL" because signal was never assigned a value
+Info: Elaborating entity "MUX2X1" for hierarchy "I_D:inst|ID_DECODER:DEC|MUX2X1:MUX_2X1_A"
+Info: Elaborating entity "MUX8X1" for hierarchy "I_D:inst|ID_DECODER:DEC|MUX8X1:MUX_8X1_A"
+Warning (10492): VHDL Process Statement warning at MUX8X1.vhd(33): signal "D0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX8X1.vhd(34): signal "D1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX8X1.vhd(35): signal "D2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX8X1.vhd(36): signal "D3" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX8X1.vhd(37): signal "D4" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX8X1.vhd(38): signal "D5" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX8X1.vhd(39): signal "D6" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX8X1.vhd(40): signal "D7" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info: Elaborating entity "MUX32X1" for hierarchy "I_D:inst|ID_DECODER:DEC|MUX32X1:MUX_32X1"
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(61): signal "D0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(62): signal "D1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(63): signal "D2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(64): signal "D3" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(65): signal "D4" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(66): signal "D5" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(67): signal "D6" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(68): signal "D7" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(69): signal "D8" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(70): signal "D9" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(71): signal "D10" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(72): signal "D11" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(73): signal "D12" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(74): signal "D13" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(75): signal "D14" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(76): signal "D15" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(77): signal "D16" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(78): signal "D17" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(79): signal "D18" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(80): signal "D19" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(81): signal "D20" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(82): signal "D21" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(83): signal "D22" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(84): signal "D23" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(85): signal "D24" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(86): signal "D25" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(87): signal "D26" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(88): signal "D27" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(89): signal "D28" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(90): signal "D29" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(91): signal "D30" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(92): signal "D31" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info: Elaborating entity "ID_IMM_GENERATOR" for hierarchy "I_D:inst|ID_IMM_GENERATOR:IMG"
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(59): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(60): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(61): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(62): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(64): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(65): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(66): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(67): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(69): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(70): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(71): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(72): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(75): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(76): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(77): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(80): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(81): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(82): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(83): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ID_IMM_GENERATOR.vhd(84): signal "IF_WORD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info: Elaborating entity "REGISTER_FILE" for hierarchy "I_D:inst|REGISTER_FILE:REG"
+Info: Elaborating entity "REG_32B_ZERO" for hierarchy "I_D:inst|REGISTER_FILE:REG|REG_32B_ZERO:\GEN:0:CASE0:ZERO_REG"
+Info: Elaborating entity "REG_32B_CASUAL" for hierarchy "I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:1:CASE1:CASUALS"
+Warning (10492): VHDL Process Statement warning at REG_32B_CASUAL.vhd(29): signal "LOAD" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info: Elaborating entity "MUX32X1" for hierarchy "I_D:inst|REGISTER_FILE:REG|MUX32X1:RS1_MUX"
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(61): signal "D0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(62): signal "D1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(63): signal "D2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(64): signal "D3" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(65): signal "D4" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(66): signal "D5" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(67): signal "D6" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(68): signal "D7" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(69): signal "D8" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(70): signal "D9" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(71): signal "D10" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(72): signal "D11" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(73): signal "D12" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(74): signal "D13" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(75): signal "D14" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(76): signal "D15" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(77): signal "D16" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(78): signal "D17" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(79): signal "D18" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(80): signal "D19" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(81): signal "D20" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(82): signal "D21" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(83): signal "D22" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(84): signal "D23" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(85): signal "D24" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(86): signal "D25" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(87): signal "D26" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(88): signal "D27" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(89): signal "D28" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(90): signal "D29" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(91): signal "D30" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at MUX32X1.vhd(92): signal "D31" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info: Elaborating entity "MUX2X1" for hierarchy "I_D:inst|MUX2X1:MXA"
+Info: Elaborating entity "ID_ADDER" for hierarchy "I_D:inst|ID_ADDER:ADD"
+Warning (10036): Verilog HDL or VHDL warning at ID_ADDER.vhd(37): object "CO_DUMP" assigned a value but never read
+Info: Elaborating entity "ADDER_2B" for hierarchy "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:0:OTHER:ADDERS"
+Warning: Tri-state node(s) do not directly drive top-level pin(s)
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[31]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:31:MSB:ADDER|S" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[30]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:30:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[29]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:29:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[28]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:28:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[27]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:27:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[26]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:26:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[25]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:25:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[24]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:24:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[23]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:23:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[22]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:22:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[21]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:21:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[20]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:20:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[19]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:19:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[18]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:18:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[17]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:17:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[16]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:16:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[15]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:15:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[14]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:14:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[13]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:13:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[12]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:12:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[11]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:11:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[10]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:10:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[9]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:9:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[8]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:8:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[7]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:7:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[6]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:6:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[5]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:5:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[4]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:4:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[3]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:3:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[2]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:2:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[1]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:1:OTHER:ADDERS|CO" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "I_D:inst|ID_IMM_GENERATOR:IMG|IMMEDIATE[0]" to the node "I_D:inst|ID_ADDER:ADD|ADDER_2B:\ADDERS:0:OTHER:ADDERS|PARTIAL_SUM" into an OR gate
+Warning: Ignored assignments for entity "RV32IM" -- entity does not exist in design
+    Warning: Assignment for entity set_global_assignment -name LL_ROOT_REGION ON -entity RV32IM -section_id "Root Region" was ignored
+    Warning: Assignment for entity set_global_assignment -name LL_MEMBER_STATE LOCKED -entity RV32IM -section_id "Root Region" was ignored
+Warning: Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "MEMWORD[1]"
+    Warning (15610): No output dependent on input pin "MEMWORD[0]"
+    Warning (15610): No output dependent on input pin "REG_LOAD[0]"
+Info: Implemented 2843 device resources after synthesis - the final resource count might be different
+    Info: Implemented 130 input pins
+    Info: Implemented 180 output pins
+    Info: Implemented 2533 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 171 warnings
+    Info: Peak virtual memory: 272 megabytes
+    Info: Processing ended: Sat Mar 09 14:01:53 2019
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:07
+
+
