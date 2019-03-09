@@ -1,27 +1,26 @@
--- =============================================================
--- |		RISC-V RV32I(M) ISA IMPLEMENTATION             |
--- =============================================================
--- |student:    Deligiannis Nikos			       |
--- |supervisor: Aristides Efthymiou			       |
--- =============================================================
--- |		UNIVERSITY OF IOANNINA - 2019 		       |
--- |  			VCAS LABORATORY 	               |
--- =============================================================
-
+-- +===========================================================+
+-- |			RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
+-- |===========================================================|
+-- |student:    Deligiannis Nikos							   |
+-- |supervisor: Aristides Efthymiou						       |
+-- |===========================================================|
+-- |			    UNIVERSITY OF IOANNINA - 2019 			   |
+-- |  					 VCAS LABORATORY 					   |
+-- +===========================================================+
 
 -- *** 1/5: INSTRUCTION FETCH (IF) MODULE DESIGN ***
-
--- "The usage of this module is to get a target address 
--- which is the PC register's value and access the instruction
--- memory at this address to fetch an XLEN word and send it to the
--- next pipeline stage (ID) to be decoded. Instruction memory (RAM) 
--- will be designed using a M4K block provided by the Cyclone-II FPGA
--- processor. Its size will be 128*32 bits (512B)."
-
+----------------------------------------------------------------------
+-- " The usage of this module is to get a target address 
+--   which is the PC register's value and access the instruction
+--   memory at this address to fetch an XLEN word and send it to the
+--   next pipeline stage (ID) to be decoded. Instruction memory (RAM) 
+--   will be designed using a M4K block provided by the Cyclone-II FPGA
+--   processor. Its size will be 128*32 bits (512B). "
+----------------------------------------------------------------------
 
 -- FUTURE ADDITIONS - TODO:
 -- * STALL SIGNAL IMPLEMENTATION: ADD CLK ENABLE TO MEMORY
--- * ...
+-- * REMOVE ALL THE TEST SIGNALS
 
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
@@ -39,7 +38,6 @@ ENTITY I_F IS
 			-- Testing Signals --
 			TEST_DATA: IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 			TEST_WREN: IN STD_LOGIC
-			
 		);
 		
 END I_F;
