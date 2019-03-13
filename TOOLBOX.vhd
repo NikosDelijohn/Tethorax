@@ -131,7 +131,17 @@ PACKAGE TOOLBOX IS
 			
 	END COMPONENT MUX32X1;
 	
--------------------------------------------------------------------------	
+-------------------------------------------------------------------------
+	-- Defined @ "DEC5X32.vhd" file.
+	COMPONENT DEC5X32 IS 
+
+		PORT (
+				SEL : IN  STD_LOGIC_VECTOR(4 DOWNTO 0);
+				RES : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			 );
+			 
+	END COMPONENT DEC5X32;	
+-------------------------------------------------------------------------
 	-- Defined @ "REG_FLIPPER.vhd" file.
 	COMPONENT REG_FLIPPER IS
 
@@ -204,31 +214,6 @@ PACKAGE TOOLBOX IS
 			 
 	END COMPONENT REGISTER_FILE;
 -------------------------------------------------------------------------
-	-- Defined @ "BARREL_CELL.vhd" file.
-	COMPONENT BARREL_CELL IS
-	
-		PORT (
-				D0    : IN  STD_LOGIC;
-				D1    : IN  STD_LOGIC;
-				D2    : IN  STD_LOGIC;
-				SEL   : IN  STD_LOGIC_VECTOR(1 DOWNTO 0);
-				O     : OUT STD_LOGIC
-			 );
-
-	END COMPONENT BARREL_CELL;
--------------------------------------------------------------------------
-	-- Defined @ "BARREL_SHIFTER.vhd" file.
-	COMPONENT BARREL_SHIFTER IS
-	
-		PORT (
-				VALUE_A : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-				SHAMT_B : IN  STD_LOGIC_VECTOR(4  DOWNTO 0);
-				OPCODE  : IN  STD_LOGIC_VECTOR(1  DOWNTO 0); 
-				RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
-			 );
-		 
-	END COMPONENT BARREL_SHIFTER;
--------------------------------------------------------------------------
 	-- Defined @ "ADDER_2B.vhd" file.
 	COMPONENT ADDER_2B IS
 			
@@ -255,10 +240,10 @@ PACKAGE TOOLBOX IS
 -------------------------------------------------------------------------
 	-- Defined @ "I_D.vhd" file
 	COMPONENT I_D
-		GENERIC ( CTRL_WORD_TOTAL : INTEGER := 18 ; CTRL_WORD_OUT : INTEGER := 14);
+		GENERIC ( CTRL_WORD_TOTAL : INTEGER := 19 ; CTRL_WORD_OUT : INTEGER := 17);
 		PORT 	( 	
 					CLK,RST    : IN  STD_LOGIC;						
-					WB_RD_LOAD : IN  STD_LOGIC_VECTOR(31 DOWNTO 0); 
+					WB_RD_LOAD : IN  STD_LOGIC_VECTOR(4  DOWNTO 0); 
 					WB_RD_DATA : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);  	
 					PC_VALUE   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0); 
 					IF_WORD    : IN  STD_LOGIC_VECTOR(31 DOWNTO 0); 
@@ -269,11 +254,74 @@ PACKAGE TOOLBOX IS
 					IMMEDIATE  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 					TARGET_AD  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0); 
 					PC_VALUE_O : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-					CTRL_WORD  : OUT STD_LOGIC_VECTOR(CTRL_WORD_OUT-1  DOWNTO 0);
-					JALR_CASE  : OUT STD_LOGIC
+					CTRL_WORD  : OUT STD_LOGIC_VECTOR(CTRL_WORD_OUT-1  DOWNTO 0)
 				);
 
 	END COMPONENT I_D;	
+-------------------------------------------------------------------------	
+-- ================== EXECUTE - ALU  COMPONENTS ================== --
 -------------------------------------------------------------------------
+	-- Defined @ "BARREL_CELL.vhd" file.
+	COMPONENT BARREL_CELL IS
+	
+		PORT (
+				D0    : IN  STD_LOGIC;
+				D1    : IN  STD_LOGIC;
+				D2    : IN  STD_LOGIC;
+				SEL   : IN  STD_LOGIC_VECTOR(1 DOWNTO 0);
+				O     : OUT STD_LOGIC
+			 );
 
+	END COMPONENT BARREL_CELL;
+-------------------------------------------------------------------------
+	-- Defined @ "BARREL_SHIFTER.vhd" file.
+	COMPONENT BARREL_SHIFTER IS
+	
+		PORT (
+				VALUE_A : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				SHAMT_B : IN  STD_LOGIC_VECTOR(4  DOWNTO 0);
+				OPCODE  : IN  STD_LOGIC_VECTOR(1  DOWNTO 0); 
+				RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			 );
+		 
+	END COMPONENT BARREL_SHIFTER;
+-------------------------------------------------------------------------
+	-- Defined @ "EXE_LOGIC_MODULE.vhd" file.
+	COMPONENT EXE_LOGIC_MODULE IS 
+	
+		PORT (
+				A   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				B   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				OP  : IN  STD_LOGIC_VECTOR(1  DOWNTO 0);
+				RES : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			 );
+			 
+	END COMPONENT EXE_LOGIC_MODULE;
+-------------------------------------------------------------------------
+	-- Defined @ "EXE_ADDER_SUBBER_CELL.vhd" file.
+	COMPONENT EXE_ADDER_SUBBER_CELL IS
+
+		PORT (
+		    	A  : IN  STD_LOGIC; 
+			    B  : IN  STD_LOGIC;
+				CI : IN  STD_LOGIC;
+				OP : IN  STD_LOGIC;
+				S  : OUT STD_LOGIC;
+				CO : OUT STD_LOGIC
+			 );
+		 
+	END COMPONENT EXE_ADDER_SUBBER_CELL;
+-------------------------------------------------------------------------
+	-- Defined @ "EXE_BRANCH_RESOLVE.vhd" file.
+	COMPONENT EXE_BRANCH_RESOLVE IS 
+		
+		PORT( 
+				RES  : IN  STD_LOGIC_VECTOR(32 DOWNTO 0);
+				EQLT : IN  STD_LOGIC;
+				INV  : IN  STD_LOGIC;
+				T_NT : OUT STD_LOGIC
+			);
+
+	END COMPONENT EXE_BRANCH_RESOLVE;
+-------------------------------------------------------------------------
 END PACKAGE TOOLBOX;
