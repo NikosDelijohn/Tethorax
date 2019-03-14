@@ -54,6 +54,7 @@ ARCHITECTURE BEHAVIORAL OF DEC5X32 IS
 				WHEN "11101" => RES(29) <= '1';
 				WHEN "11110" => RES(30) <= '1';
 				WHEN "11111" => RES(31) <= '1';
+				WHEN OTHERS  => RES     <= (OTHERS =>'0');
 			
 			END CASE;
 

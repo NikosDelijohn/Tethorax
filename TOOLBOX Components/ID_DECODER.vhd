@@ -107,7 +107,7 @@ ARCHITECTURE STRUCTURAL OF ID_DECODER IS
 	-- OTHERS --------------------------------------------------
 	SIGNAL AUIPC   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "011"&"1"&"0"&"111"&"00"&"00"&"0"&"0"&"0"&"0"&"1"&"1"&"0"&"0"; -- BGE U:0 | IMMGEN:011 | WB OP:1 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:00 | INV: X | EQLT: X | BRANCH:0 | SLT:0 | IMM:1 | PC:1 | JUMP:0 | LUI:0 
 	SIGNAL LUI     : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "011"&"1"&"0"&"111"&"00"&"00"&"0"&"0"&"0"&"0"&"0"&"0"&"0"&"1"; -- BGE U:0 | IMMGEN:011 | WB OP:1 | MEM U:X | MEM OP:111 | ADD OP:XX | ALU OP:XX | INV: X | EQLT: X | BRANCH:0 | SLT:0 | IMM:0 | PC:0 | JUMP:0 | LUI:1 
-	SIGNAL JALR    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "000"&"0"&"0"&"111"&"01"&"00"&"0"&"0"&"0"&"0"&"1"&"1"&"1"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:0 | MEM U:X | MEM OP:111 | ADD OP:01 | ALU OP:00 | INV: X | EQLT: X | BRANCH:0 | SLT:0 | IMM:1 | PC:1 | JUMP:1 | LUI:0 <= LSB = 0 [XOR ADDOP TRICK]
+	SIGNAL JALR    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "000"&"0"&"0"&"111"&"01"&"00"&"0"&"0"&"0"&"0"&"1"&"0"&"1"&"0"; -- BGE U:0 | IMMGEN:000 | WB OP:0 | MEM U:X | MEM OP:111 | ADD OP:01 | ALU OP:00 | INV: X | EQLT: X | BRANCH:0 | SLT:0 | IMM:1 | PC:1 | JUMP:1 | LUI:0 <= LSB = 0 [XOR ADDOP TRICK]
 	SIGNAL JAL     : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "100"&"0"&"0"&"111"&"00"&"00"&"0"&"0"&"0"&"0"&"1"&"1"&"1"&"0"; -- BGE U:0 | IMMGEN:100 | WB OP:0 | MEM U:X | MEM OP:111 | ADD OP:0X | ALU OP:00 | INV: X | EQLT: X | BRANCH:0 | SLT:0 | IMM:1 | PC:1 | JUMP:1 | LUI:0 
 	-- CARRIERS ------------------------------------------------
 	SIGNAL BUF_2A   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0);
@@ -119,6 +119,8 @@ ARCHITECTURE STRUCTURAL OF ID_DECODER IS
 	SIGNAL BUF_8C   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0);
 	SIGNAL BUF_8D   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0);
 	SIGNAL BUF_8E   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0);
+	
+	SIGNAL GND      : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := (OTHERS => '0');
 	
 	BEGIN
 		-- MUX LEVEL 1 --
@@ -153,8 +155,11 @@ ARCHITECTURE STRUCTURAL OF ID_DECODER IS
 								  D0   => L_LB,  -- fucnt3 000
 								  D1   => L_LH,  -- funct3 001
 								  D2   => L_LW,  -- funct3 010
+								  D3   => GND,
 								  D4   => L_LBU, -- funct3 100 
 								  D5   => L_LHU, -- funct3 101
+								  D6   => GND,
+								  D7   => GND,
 								  SEL  => MUX_8X1_SEL,
 								  O    => BUF_8A
 								 );
@@ -178,6 +183,11 @@ ARCHITECTURE STRUCTURAL OF ID_DECODER IS
 								 D0   => S_SB, -- funct3 000
 								 D1   => S_SH, -- funct3 001
 								 D2   => S_SW, -- funct3 010
+								 D3   => GND,
+								 D4   => GND,
+								 D5   => GND,
+								 D6   => GND,
+								 D7   => GND,
 								 SEL  => MUX_8X1_SEL,
 								 O    => BUF_8C
 								);
@@ -200,6 +210,8 @@ ARCHITECTURE STRUCTURAL OF ID_DECODER IS
 				   PORT    MAP (
 								 D0   => B_BEQ,  -- funct3 000
 								 D1   => B_BNE,  -- funct3 001
+								 D2   => GND,
+								 D3   => GND,
 								 D4   => B_BLT,  -- funct3 100
 								 D5   => B_BGE,  -- funct3 101
 								 D6   => B_BLTU, -- funct3 110
@@ -212,14 +224,37 @@ ARCHITECTURE STRUCTURAL OF ID_DECODER IS
 				  GENERIC MAP ( INSIZE => CTRL_WORD_SIZE )
 				  PORT    MAP ( 
 								D0  => BUF_8A,
+								D1  => GND,
+								D2  => GND,
+								D3  => GND,
 								D4  => BUF_8B,
 								D5  => AUIPC,
+								D6  => GND,
+								D7  => GND,
 								D8  => BUF_8C,
+								D9  => GND,
+								D10	=> GND,
+								D11 => GND,
 								D12 => BUF_8D,
 								D13 => LUI,
+								D14 => GND,
+								D15 => GND,
+								D16 => GND,
+								D17 => GND,
+								D18 => GND,
+								D19 => GND,
+								D20 => GND,
+								D21 => GND,
+								D22 => GND,
+								D23 => GND,
 								D24 => BUF_8E,
 								D25 => JALR,
+								D26 => GND,
 								D27 => JAL,
+								D28 => GND,
+								D29 => GND,
+								D30 => GND,
+								D31 => GND,
 								SEL => MUX_32X1_SEL,
 								O   => CONTROL_WORD
 							  );
