@@ -16,23 +16,8 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
 PACKAGE TOOLBOX IS
--- ================== INSTRUCTION FETCH COMPONENTS ================== --
-------------------------------------------------------------------------
-	-- Defined @ "I_F_RAM.vhd" file. 
-	COMPONENT I_F_RAM IS
-	
-			PORT
-				(
-					address		: IN STD_LOGIC_VECTOR (6 DOWNTO 0);
-					clock		: IN STD_LOGIC  := '1';
-					data		: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-					wren		: IN STD_LOGIC ;
-					q		    : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
-				);
-				
-	END COMPONENT I_F_RAM;
 -------------------------------------------------------------------------	
--- ================== INSTRUCTION DECODE COMPONENTS ================== --
+--| [0] GENERAL PURPOSE COMPONENTS
 -------------------------------------------------------------------------
 	-- Defined @ "MUX2X1.vhd" file.
 	COMPONENT MUX2X1 IS
@@ -60,6 +45,24 @@ PACKAGE TOOLBOX IS
 			 );
 		 
 	END COMPONENT MUX2X1_BIT;
+-------------------------------------------------------------------------
+	-- Defined @ "MUX4X1.vhd" file.
+	COMPONENT MUX4X1 IS 
+		
+		GENERIC ( INSIZE : INTEGER := 10 );
+		
+		PORT (	
+				D0  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D1  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D2  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D3  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				
+				SEL : IN  STD_LOGIC_VECTOR(1 DOWNTO 0);
+			 
+				O : OUT STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0)
+			 );
+
+	END COMPONENT MUX4X1;
 -------------------------------------------------------------------------
 	-- Defined @ "MUX8X1.vhd" file.
 	COMPONENT MUX8X1 IS 
@@ -132,6 +135,19 @@ PACKAGE TOOLBOX IS
 	END COMPONENT MUX32X1;
 	
 -------------------------------------------------------------------------
+	-- Defined @ "ADDER_2B.vhd" file.
+	COMPONENT ADDER_2B IS
+			
+		PORT ( 
+				A  : IN STD_LOGIC;
+				B  : IN STD_LOGIC;
+				CI : IN STD_LOGIC;
+				S  : OUT STD_LOGIC;
+				CO : OUT STD_LOGIC 
+			 );
+
+	END COMPONENT ADDER_2B;
+-------------------------------------------------------------------------
 	-- Defined @ "DEC5X32.vhd" file.
 	COMPONENT DEC5X32 IS 
 
@@ -141,6 +157,24 @@ PACKAGE TOOLBOX IS
 			 );
 			 
 	END COMPONENT DEC5X32;	
+-------------------------------------------------------------------------
+-- [1] INSTRUCTION FETCH COMPONENTS 
+----------------------------------+--------------------------------------
+	-- Defined @ "I_F_RAM.vhd" file. 
+	COMPONENT I_F_RAM IS
+	
+			PORT
+				(
+					address		: IN STD_LOGIC_VECTOR (6 DOWNTO 0);
+					clock		: IN STD_LOGIC  := '1';
+					data		: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+					wren		: IN STD_LOGIC ;
+					q		    : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+				);
+				
+	END COMPONENT I_F_RAM;
+-------------------------------------------------------------------------
+-- [2] INSTRUCTION DECODE COMPONENTS
 -------------------------------------------------------------------------
 	-- Defined @ "REG_FLIPPER.vhd" file.
 	COMPONENT REG_FLIPPER IS
@@ -156,7 +190,7 @@ PACKAGE TOOLBOX IS
 	-- Defined @ "ID_DECODER.vhd" file.
 	COMPONENT ID_DECODER IS
 
-		GENERIC ( CTRL_WORD_SIZE : INTEGER := 18 );
+		GENERIC ( CTRL_WORD_SIZE : INTEGER := 20 );
 	
 		PORT(
 				MUX_2X1_SEL  : IN  STD_LOGIC;                    
@@ -214,19 +248,6 @@ PACKAGE TOOLBOX IS
 			 
 	END COMPONENT REGISTER_FILE;
 -------------------------------------------------------------------------
-	-- Defined @ "ADDER_2B.vhd" file.
-	COMPONENT ADDER_2B IS
-			
-		PORT ( 
-				A  : IN STD_LOGIC;
-				B  : IN STD_LOGIC;
-				CI : IN STD_LOGIC;
-				S  : OUT STD_LOGIC;
-				CO : OUT STD_LOGIC 
-			 );
-
-	END COMPONENT ADDER_2B;
--------------------------------------------------------------------------
 	-- Defined @ "ID_ADDER.vhd" file
 	COMPONENT ID_ADDER IS
 	
@@ -240,7 +261,7 @@ PACKAGE TOOLBOX IS
 -------------------------------------------------------------------------
 	-- Defined @ "I_D.vhd" file
 	COMPONENT I_D
-		GENERIC ( CTRL_WORD_TOTAL : INTEGER := 19 ; CTRL_WORD_OUT : INTEGER := 17);
+		GENERIC ( CTRL_WORD_TOTAL : INTEGER := 20 ; CTRL_WORD_OUT : INTEGER := 18);
 		PORT 	( 	
 					CLK,RST    : IN  STD_LOGIC;						
 					WB_RD_LOAD : IN  STD_LOGIC_VECTOR(4  DOWNTO 0); 
@@ -259,7 +280,7 @@ PACKAGE TOOLBOX IS
 
 	END COMPONENT I_D;	
 -------------------------------------------------------------------------	
--- ================== EXECUTE - ALU  COMPONENTS ================== --
+-- [3] EXE - ALU COMPONENTS
 -------------------------------------------------------------------------
 	-- Defined @ "BARREL_CELL.vhd" file.
 	COMPONENT BARREL_CELL IS
@@ -312,6 +333,18 @@ PACKAGE TOOLBOX IS
 		 
 	END COMPONENT EXE_ADDER_SUBBER_CELL;
 -------------------------------------------------------------------------
+	-- Defined @ "EXE_ADDER_SUBBER.vhd" file.
+	COMPONENT EXE_ADDER_SUBBER IS 
+
+		PORT (
+				A  : IN  STD_LOGIC_VECTOR(32 DOWNTO 0);
+				B  : IN  STD_LOGIC_VECTOR(32 DOWNTO 0);
+				OP : IN  STD_LOGIC; -- OPCODE [0: ADD / 1: SUB]
+				S  : OUT STD_LOGIC_VECTOR(32 DOWNTO 0)
+			 );
+			 
+	END COMPONENT EXE_ADDER_SUBBER;
+-------------------------------------------------------------------------
 	-- Defined @ "EXE_BRANCH_RESOLVE.vhd" file.
 	COMPONENT EXE_BRANCH_RESOLVE IS 
 		
@@ -323,5 +356,15 @@ PACKAGE TOOLBOX IS
 			);
 
 	END COMPONENT EXE_BRANCH_RESOLVE;
+-------------------------------------------------------------------------
+	-- Defined @ "EXE_SLT_MODULE.vhd" file.
+	COMPONENT EXE_SLT_MODULE IS
+
+		PORT ( 
+				INPUT : IN  STD_LOGIC;
+				OUTPUT: OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			 );
+
+	END COMPONENT EXE_SLT_MODULE;
 -------------------------------------------------------------------------
 END PACKAGE TOOLBOX;
