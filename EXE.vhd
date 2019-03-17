@@ -30,7 +30,12 @@ ENTITY EXE IS
 			B  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 			OP : IN  STD_LOGIC_VECTOR(8  DOWNTO 0); 
 			RES: OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-			TNT: OUT STD_LOGIC
+			TNT: OUT STD_LOGIC;
+			
+			adtest_a : out std_logic_vector(32 downto 0);
+			adtest_b : out std_logic_vector(32 downto 0);
+			adres    : out std_logic_vector(32 downto 0);
+			slttest  : out std_logic_vector(31 downto 0)
 		);
 
 END EXE;
@@ -57,19 +62,21 @@ ARCHITECTURE STRUCTURAL OF EXE IS
 	-- ADDER/SUBBER ---------------------------------
 	MUX_A: MUX2X1_BIT
 		   PORT MAP(
-					 D0  =>   '0',
-					 D1  => A(31),
+					 D0  => A(31),
+					 D1  =>   '0',
 					 SEL => OP(8),
 					 O   => ADDER_A_MSB
 				   );
 	MUX_B: MUX2X1_BIT
 		   PORT MAP(
-					 D0  =>   '0',
-					 D1  => B(31),
+					 D0  => B(31),
+					 D1  =>   '0',
 					 SEL => OP(8),
 					 O   => ADDER_B_MSB
 				   );
-	
+	--tests
+	adtest_a <= ADDER_A_MSB & A;
+	adtest_b <= ADDER_B_MSB & B;
 	ADSB: EXE_ADDER_SUBBER
 		  PORT MAP(
 					 A  => ADDER_A_MSB & A,
@@ -77,7 +84,7 @@ ARCHITECTURE STRUCTURAL OF EXE IS
 					 OP => OP(5),
 					 S  => ADDER_RES
 				  );
-	
+	adres<= ADDER_RES;
 	-- BRANCH RESOLVER ------------------------------
 	BRANCH: EXE_BRANCH_RESOLVE
 		  PORT MAP(
@@ -93,6 +100,8 @@ ARCHITECTURE STRUCTURAL OF EXE IS
 					 INPUT  => ADDER_RES(32),
 					 OUTPUT => SLT_RES
 				  );
+				  
+	slttest <= SLT_RES;
 				  
 	-- LOGIC MODULE ---------------------------------
 	LOGIC: EXE_LOGIC_MODULE
@@ -142,7 +151,7 @@ ARCHITECTURE STRUCTURAL OF EXE IS
 
 	
 	TNT <= BRANCH_RES AND OP(2);
-	RES <= ADD_RES;
+	RES <= ALU_RES;
 	
 	
 		
