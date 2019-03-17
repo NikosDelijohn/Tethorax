@@ -16,23 +16,8 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
 PACKAGE TOOLBOX IS
--- ================== INSTRUCTION FETCH COMPONENTS ================== --
-------------------------------------------------------------------------
-	-- Defined @ "I_F_RAM.vhd" file. 
-	COMPONENT I_F_RAM IS
-	
-			PORT
-				(
-					address		: IN STD_LOGIC_VECTOR (6 DOWNTO 0);
-					clock		: IN STD_LOGIC  := '1';
-					data		: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-					wren		: IN STD_LOGIC ;
-					q		    : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
-				);
-				
-	END COMPONENT I_F_RAM;
 -------------------------------------------------------------------------	
--- ================== INSTRUCTION DECODE COMPONENTS ================== --
+--| [0] GENERAL PURPOSE COMPONENTS
 -------------------------------------------------------------------------
 	-- Defined @ "MUX2X1.vhd" file.
 	COMPONENT MUX2X1 IS
@@ -61,20 +46,38 @@ PACKAGE TOOLBOX IS
 		 
 	END COMPONENT MUX2X1_BIT;
 -------------------------------------------------------------------------
+	-- Defined @ "MUX4X1.vhd" file.
+	COMPONENT MUX4X1 IS 
+		
+		GENERIC ( INSIZE : INTEGER := 10 );
+		
+		PORT (	
+				D0  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D1  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D2  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D3  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				
+				SEL : IN  STD_LOGIC_VECTOR(1 DOWNTO 0);
+			 
+				O : OUT STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0)
+			 );
+
+	END COMPONENT MUX4X1;
+-------------------------------------------------------------------------
 	-- Defined @ "MUX8X1.vhd" file.
 	COMPONENT MUX8X1 IS 
 
 		GENERIC ( INSIZE : INTEGER := 10 );
 		
 		PORT (	
-				D0  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D1  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D2  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D3  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D4  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D5  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D6  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D7  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
+				D0  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D1  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D2  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D3  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D4  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D5  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D6  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D7  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
 				
 				SEL : IN  STD_LOGIC_VECTOR(2 DOWNTO 0);
 			 
@@ -92,37 +95,37 @@ PACKAGE TOOLBOX IS
 		PORT (
 		
 				 D0: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
-				 D1: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				 D2: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				 D3: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
+				 D1: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				 D2: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				 D3: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
 				 D4: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
 				 D5: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
-				 D6: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				 D7: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
+				 D6: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				 D7: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
 				 D8: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
-				 D9: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D10: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D11: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
+				 D9: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D10: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D11: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
 				D12: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
 				D13: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
-				D14: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D15: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D16: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D17: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D18: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D19: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D20: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D21: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D22: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D23: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
+				D14: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D15: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D16: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D17: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D18: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D19: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D20: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D21: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D22: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D23: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
 				D24: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
 				D25: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
-				D26: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
+				D26: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
 				D27: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
-				D28: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D29: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D30: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
-				D31: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0) := NULL;
+				D28: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D29: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D30: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D31: IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
 				
 				SEL: IN  STD_LOGIC_VECTOR(4 DOWNTO 0);
 				
@@ -131,7 +134,48 @@ PACKAGE TOOLBOX IS
 			
 	END COMPONENT MUX32X1;
 	
--------------------------------------------------------------------------	
+-------------------------------------------------------------------------
+	-- Defined @ "ADDER_2B.vhd" file.
+	COMPONENT ADDER_2B IS
+			
+		PORT ( 
+				A  : IN STD_LOGIC;
+				B  : IN STD_LOGIC;
+				CI : IN STD_LOGIC;
+				S  : OUT STD_LOGIC;
+				CO : OUT STD_LOGIC 
+			 );
+
+	END COMPONENT ADDER_2B;
+-------------------------------------------------------------------------
+	-- Defined @ "DEC5X32.vhd" file.
+	COMPONENT DEC5X32 IS 
+
+		PORT (
+				SEL : IN  STD_LOGIC_VECTOR(4 DOWNTO 0);
+				RES : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			 );
+			 
+	END COMPONENT DEC5X32;	
+-------------------------------------------------------------------------
+-- [1] INSTRUCTION FETCH COMPONENTS 
+----------------------------------+--------------------------------------
+	-- Defined @ "I_F_RAM.vhd" file. 
+	COMPONENT I_F_RAM IS
+	
+			PORT
+				(
+					address		: IN STD_LOGIC_VECTOR (6 DOWNTO 0);
+					clock		: IN STD_LOGIC  := '1';
+					data		: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+					wren		: IN STD_LOGIC ;
+					q		    : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+				);
+				
+	END COMPONENT I_F_RAM;
+-------------------------------------------------------------------------
+-- [2] INSTRUCTION DECODE COMPONENTS
+-------------------------------------------------------------------------
 	-- Defined @ "REG_FLIPPER.vhd" file.
 	COMPONENT REG_FLIPPER IS
 
@@ -146,7 +190,7 @@ PACKAGE TOOLBOX IS
 	-- Defined @ "ID_DECODER.vhd" file.
 	COMPONENT ID_DECODER IS
 
-		GENERIC ( CTRL_WORD_SIZE : INTEGER := 18 );
+		GENERIC ( CTRL_WORD_SIZE : INTEGER := 20 );
 	
 		PORT(
 				MUX_2X1_SEL  : IN  STD_LOGIC;                    
@@ -197,12 +241,46 @@ PACKAGE TOOLBOX IS
 				LOAD_REG : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 				DATA_IN  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 				ADDR_RS1 : IN  STD_LOGIC_VECTOR(4  DOWNTO 0);
-				ADDR_RS2 : IN  STD_LOGIC_VECTOR(4  DOWNTO 0) := NULL;
+				ADDR_RS2 : IN  STD_LOGIC_VECTOR(4  DOWNTO 0);
 				DATA_RS1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-				DATA_RS2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) := NULL
+				DATA_RS2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 			 );
 			 
 	END COMPONENT REGISTER_FILE;
+-------------------------------------------------------------------------
+	-- Defined @ "ID_ADDER.vhd" file
+	COMPONENT ID_ADDER IS
+	
+		 PORT (
+				PC_VALUE  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				IMMEDIATE : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				OUTPUT 	  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			  );
+		 
+	END COMPONENT ID_ADDER;
+-------------------------------------------------------------------------
+	-- Defined @ "I_D.vhd" file
+	COMPONENT I_D
+		GENERIC ( CTRL_WORD_TOTAL : INTEGER := 20 ; CTRL_WORD_OUT : INTEGER := 18);
+		PORT 	( 	
+					CLK,RST    : IN  STD_LOGIC;						
+					WB_RD_LOAD : IN  STD_LOGIC_VECTOR(4  DOWNTO 0); 
+					WB_RD_DATA : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);  	
+					PC_VALUE   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0); 
+					IF_WORD    : IN  STD_LOGIC_VECTOR(31 DOWNTO 0); 
+
+					RS1_VALUE  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0); 
+					RS2_VALUE  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+					RD_ADDR    : OUT STD_LOGIC_VECTOR(4  DOWNTO 0);
+					IMMEDIATE  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+					TARGET_AD  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0); 
+					PC_VALUE_O : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+					CTRL_WORD  : OUT STD_LOGIC_VECTOR(CTRL_WORD_OUT-1  DOWNTO 0)
+				);
+
+	END COMPONENT I_D;	
+-------------------------------------------------------------------------	
+-- [3] EXE - ALU COMPONENTS
 -------------------------------------------------------------------------
 	-- Defined @ "BARREL_CELL.vhd" file.
 	COMPONENT BARREL_CELL IS
@@ -229,51 +307,64 @@ PACKAGE TOOLBOX IS
 		 
 	END COMPONENT BARREL_SHIFTER;
 -------------------------------------------------------------------------
-	-- Defined @ "ADDER_2B.vhd" file.
-	COMPONENT ADDER_2B IS
-			
-		PORT ( 
-				A  : IN STD_LOGIC;
-				B  : IN STD_LOGIC;
-				CI : IN STD_LOGIC;
+	-- Defined @ "EXE_LOGIC_MODULE.vhd" file.
+	COMPONENT EXE_LOGIC_MODULE IS 
+	
+		PORT (
+				A   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				B   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				OP  : IN  STD_LOGIC_VECTOR(1  DOWNTO 0);
+				RES : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			 );
+			 
+	END COMPONENT EXE_LOGIC_MODULE;
+-------------------------------------------------------------------------
+	-- Defined @ "EXE_ADDER_SUBBER_CELL.vhd" file.
+	COMPONENT EXE_ADDER_SUBBER_CELL IS
+
+		PORT (
+		    	A  : IN  STD_LOGIC; 
+			    B  : IN  STD_LOGIC;
+				CI : IN  STD_LOGIC;
+				OP : IN  STD_LOGIC;
 				S  : OUT STD_LOGIC;
-				CO : OUT STD_LOGIC 
+				CO : OUT STD_LOGIC
+			 );
+		 
+	END COMPONENT EXE_ADDER_SUBBER_CELL;
+-------------------------------------------------------------------------
+	-- Defined @ "EXE_ADDER_SUBBER.vhd" file.
+	COMPONENT EXE_ADDER_SUBBER IS 
+
+		PORT (
+				A  : IN  STD_LOGIC_VECTOR(32 DOWNTO 0);
+				B  : IN  STD_LOGIC_VECTOR(32 DOWNTO 0);
+				OP : IN  STD_LOGIC; -- OPCODE [0: ADD / 1: SUB]
+				S  : OUT STD_LOGIC_VECTOR(32 DOWNTO 0)
+			 );
+			 
+	END COMPONENT EXE_ADDER_SUBBER;
+-------------------------------------------------------------------------
+	-- Defined @ "EXE_BRANCH_RESOLVE.vhd" file.
+	COMPONENT EXE_BRANCH_RESOLVE IS 
+		
+		PORT( 
+				RES  : IN  STD_LOGIC_VECTOR(32 DOWNTO 0);
+				EQLT : IN  STD_LOGIC;
+				INV  : IN  STD_LOGIC;
+				T_NT : OUT STD_LOGIC
+			);
+
+	END COMPONENT EXE_BRANCH_RESOLVE;
+-------------------------------------------------------------------------
+	-- Defined @ "EXE_SLT_MODULE.vhd" file.
+	COMPONENT EXE_SLT_MODULE IS
+
+		PORT ( 
+				INPUT : IN  STD_LOGIC;
+				OUTPUT: OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 			 );
 
-	END COMPONENT ADDER_2B;
+	END COMPONENT EXE_SLT_MODULE;
 -------------------------------------------------------------------------
-	-- Defined @ "ID_ADDER.vhd" file
-	COMPONENT ID_ADDER IS
-	
-		 PORT (
-				PC_VALUE  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-				IMMEDIATE : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-				OUTPUT 	  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
-			  );
-		 
-	END COMPONENT ID_ADDER;
--------------------------------------------------------------------------
-	-- Defined @ "I_D.vhd" file
-	COMPONENT I_D
-		GENERIC ( CTRL_WORD_TOTAL : INTEGER := 18 ; CTRL_WORD_OUT : INTEGER := 14);
-		PORT 	( 	
-					CLK,RST    : IN  STD_LOGIC;						
-					WB_RD_LOAD : IN  STD_LOGIC_VECTOR(31 DOWNTO 0); 
-					WB_RD_DATA : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);  	
-					PC_VALUE   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0); 
-					IF_WORD    : IN  STD_LOGIC_VECTOR(31 DOWNTO 0); 
-
-					RS1_VALUE  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0); 
-					RS2_VALUE  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-					RD_ADDR    : OUT STD_LOGIC_VECTOR(4  DOWNTO 0);
-					IMMEDIATE  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-					TARGET_AD  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0); 
-					PC_VALUE_O : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-					CTRL_WORD  : OUT STD_LOGIC_VECTOR(CTRL_WORD_OUT-1  DOWNTO 0);
-					JALR_CASE  : OUT STD_LOGIC
-				);
-
-	END COMPONENT I_D;	
--------------------------------------------------------------------------
-
 END PACKAGE TOOLBOX;

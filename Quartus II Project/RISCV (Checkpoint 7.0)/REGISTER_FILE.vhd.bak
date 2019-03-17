@@ -11,10 +11,11 @@
 -- *** 2/5: INSTRUCTION DECODE (ID) MODULE DESIGN ***
 ------------------------------------------------------------
 -- PART#3: REGISTER FILE
--- " The systems register file which has a total of 32 regs.  
+-- " The system's register file which has a total of 32 regs.  
 --   These registers are casual registers with parrarel load
 --   function. Except register #0. Register #0 is hardwired
---   to GND and its value cannot be changed. "
+--   to GND and its value cannot be changed. They all are
+--   32 bit (XLEN) wide. "
 ------------------------------------------------------------
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;

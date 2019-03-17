@@ -72,7 +72,7 @@ applicable agreement for further details.
 	(output)
 	(rect 648 200 831 216)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (color 0 128 0)(font_size 6)))
-	(text "COMMAND[17..0]" (rect 90 0 178 12)(font "Arial" (color 0 128 0)))
+	(text "COMMAND[19..0]" (rect 90 0 178 12)(font "Arial" (color 0 128 0)))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8)(color 0 128 0)(line_width 1))
@@ -87,7 +87,7 @@ applicable agreement for further details.
 (symbol
 	(rect 280 176 632 272)
 	(text "ID_DECODER" (rect 5 0 78 12)(font "Arial" ))
-	(text "inst1" (rect 8 80 31 92)(font "Arial" ))
+	(text "inst" (rect 8 80 25 92)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -118,7 +118,7 @@ applicable agreement for further details.
 	)
 	(parameter
 		"CTRL_WORD_SIZE"
-		"18"
+		"20"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
@@ -156,7 +156,7 @@ applicable agreement for further details.
 	(section (rect 0 48 368 72)(text "NAME" (rect 2 0 32 12)(font "Arial" ))(text "NICK" (rect 56 2 99 20)(font "Arial" (font_size 12)))(border))
 	(section (rect 0 72 280 96)(text "LASTNAME" (rect 2 0 58 12)(font "Arial" ))(text "1.00" (rect 56 1 85 17)(font "Arial" (font_size 10)))(border))
 	(section (rect 280 72 368 96)(text "REV" (rect 2 1 24 13)(font "Arial" ))(text "A" (rect 43 1 53 17)(font "Arial" (font_size 10)))(border))
-	(section (rect 0 96 240 120)(text "DATE" (rect 2 0 30 12)(font "Arial" ))(text "Wed Mar 06 20:11:50 2019" (rect 56 3 241 19)(font "Arial" (font_size 10)))(date)(border))
+	(section (rect 0 96 240 120)(text "DATE" (rect 2 0 30 12)(font "Arial" ))(text "Fri Mar 15 19:54:53 2019" (rect 56 3 227 19)(font "Arial" (font_size 10)))(date)(border))
 	(section (rect 240 96 310 120)(text "SHEET" (rect 2 0 37 12)(font "Arial" ))(text "1" (rect 55 5 63 21)(font "Arial" (font_size 10))))
 	(section (rect 310 96 368 120)(text "OF" (rect 10 0 25 12)(font "Arial" ))(text "1" (rect 34 4 42 20)(font "Arial" (font_size 10))))
 	(drawing

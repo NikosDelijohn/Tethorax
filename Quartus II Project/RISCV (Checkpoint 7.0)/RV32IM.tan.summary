@@ -2,44 +2,14 @@
 Timing Analyzer Summary
 --------------------------------------------------------------------------------------
 
-Type           : Worst-case tsu
-Slack          : N/A
-Required Time  : None
-Actual Time    : 5.956 ns
-From           : REG_LOAD[11]
-To             : I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:11:CASE1:CASUALS|BUF[6]
-From Clock     : --
-To Clock       : CLK
-Failed Paths   : 0
-
-Type           : Worst-case tco
-Slack          : N/A
-Required Time  : None
-Actual Time    : 18.132 ns
-From           : I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[23]
-To             : RS1[23]
-From Clock     : CLK
-To Clock       : --
-Failed Paths   : 0
-
 Type           : Worst-case tpd
 Slack          : N/A
 Required Time  : None
-Actual Time    : 43.132 ns
-From           : MEMWORD[2]
-To             : JUMPAT[31]
+Actual Time    : 38.325 ns
+From           : B[1]
+To             : TNT
 From Clock     : --
 To Clock       : --
-Failed Paths   : 0
-
-Type           : Worst-case th
-Slack          : N/A
-Required Time  : None
-Actual Time    : -3.509 ns
-From           : REG_DATA[7]
-To             : I_D:inst|REGISTER_FILE:REG|REG_32B_CASUAL:\GEN:20:CASE1:CASUALS|BUF[7]
-From Clock     : --
-To Clock       : CLK
 Failed Paths   : 0
 
 Type           : Total number of failed paths

@@ -53,7 +53,7 @@ applicable agreement for further details.
 	)
 	(parameter
 		"CTRL_WORD_SIZE"
-		"18"
+		"20"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing

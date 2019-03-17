@@ -1,4 +1,4 @@
--- Custom 32 to 1 Generic input Multiplexer.
+-- Casual 32 to 1 Generic input Multiplexer.
 
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
