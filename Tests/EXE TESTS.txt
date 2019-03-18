@@ -1,0 +1,29 @@
+ADDER/SUBBER
+---------------------------------
+ADD UNSIGNED: 384 [OK]   
+ADD   SIGNED: 0   [OK]
+SUB         : 32  [OK]
+SLT         : 34  [OK]
+SLT UNSIGNED: 418 [OK]
+LUI         : 1   [OK]
+
+BRANCHES
+---------------------------------    
+BEQ         : 44  [OK]
+BNE         : 60  [OK]
+BLT         : 36  [OK]
+BLTU        : 420 [OK]
+BGE         : 52  [OK]
+BGEU        : 436 [OK]
+
+BARREL SHIFTER         
+---------------------------------
+SRL         : 96 [OK]
+SLL         : 224[OK]
+SRA         : 352[OK]
+
+LOGIC MODULE         
+---------------------------------
+AND         : 64 [OK]
+OR          : 192[OK]
+XOR         : 320[OK]
