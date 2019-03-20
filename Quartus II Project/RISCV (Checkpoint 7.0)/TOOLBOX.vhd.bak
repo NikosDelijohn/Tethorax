@@ -16,23 +16,8 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
 PACKAGE TOOLBOX IS
--- ================== INSTRUCTION FETCH COMPONENTS ================== --
-------------------------------------------------------------------------
-	-- Defined @ "I_F_RAM.vhd" file. 
-	COMPONENT I_F_RAM IS
-	
-			PORT
-				(
-					address		: IN STD_LOGIC_VECTOR (6 DOWNTO 0);
-					clock		: IN STD_LOGIC  := '1';
-					data		: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-					wren		: IN STD_LOGIC ;
-					q		    : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
-				);
-				
-	END COMPONENT I_F_RAM;
 -------------------------------------------------------------------------	
--- ================== INSTRUCTION DECODE COMPONENTS ================== --
+--| [0] GENERAL PURPOSE COMPONENTS
 -------------------------------------------------------------------------
 	-- Defined @ "MUX2X1.vhd" file.
 	COMPONENT MUX2X1 IS
@@ -60,6 +45,24 @@ PACKAGE TOOLBOX IS
 			 );
 		 
 	END COMPONENT MUX2X1_BIT;
+-------------------------------------------------------------------------
+	-- Defined @ "MUX4X1.vhd" file.
+	COMPONENT MUX4X1 IS 
+		
+		GENERIC ( INSIZE : INTEGER := 10 );
+		
+		PORT (	
+				D0  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D1  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D2  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				D3  : IN  STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0);
+				
+				SEL : IN  STD_LOGIC_VECTOR(1 DOWNTO 0);
+			 
+				O : OUT STD_LOGIC_VECTOR(INSIZE-1 DOWNTO 0)
+			 );
+
+	END COMPONENT MUX4X1;
 -------------------------------------------------------------------------
 	-- Defined @ "MUX8X1.vhd" file.
 	COMPONENT MUX8X1 IS 
@@ -132,6 +135,19 @@ PACKAGE TOOLBOX IS
 	END COMPONENT MUX32X1;
 	
 -------------------------------------------------------------------------
+	-- Defined @ "ADDER_2B.vhd" file.
+	COMPONENT ADDER_2B IS
+			
+		PORT ( 
+				A  : IN STD_LOGIC;
+				B  : IN STD_LOGIC;
+				CI : IN STD_LOGIC;
+				S  : OUT STD_LOGIC;
+				CO : OUT STD_LOGIC 
+			 );
+
+	END COMPONENT ADDER_2B;
+-------------------------------------------------------------------------
 	-- Defined @ "DEC5X32.vhd" file.
 	COMPONENT DEC5X32 IS 
 
@@ -141,6 +157,24 @@ PACKAGE TOOLBOX IS
 			 );
 			 
 	END COMPONENT DEC5X32;	
+-------------------------------------------------------------------------
+-- [1] INSTRUCTION FETCH COMPONENTS 
+----------------------------------+--------------------------------------
+	-- Defined @ "I_F_RAM.vhd" file. 
+	COMPONENT I_F_RAM IS
+	
+			PORT
+				(
+					address		: IN STD_LOGIC_VECTOR (6 DOWNTO 0);
+					clock		: IN STD_LOGIC  := '1';
+					data		: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+					wren		: IN STD_LOGIC ;
+					q		    : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+				);
+				
+	END COMPONENT I_F_RAM;
+-------------------------------------------------------------------------
+-- [2] INSTRUCTION DECODE COMPONENTS
 -------------------------------------------------------------------------
 	-- Defined @ "REG_FLIPPER.vhd" file.
 	COMPONENT REG_FLIPPER IS
@@ -214,19 +248,6 @@ PACKAGE TOOLBOX IS
 			 
 	END COMPONENT REGISTER_FILE;
 -------------------------------------------------------------------------
-	-- Defined @ "ADDER_2B.vhd" file.
-	COMPONENT ADDER_2B IS
-			
-		PORT ( 
-				A  : IN STD_LOGIC;
-				B  : IN STD_LOGIC;
-				CI : IN STD_LOGIC;
-				S  : OUT STD_LOGIC;
-				CO : OUT STD_LOGIC 
-			 );
-
-	END COMPONENT ADDER_2B;
--------------------------------------------------------------------------
 	-- Defined @ "ID_ADDER.vhd" file
 	COMPONENT ID_ADDER IS
 	
@@ -259,7 +280,7 @@ PACKAGE TOOLBOX IS
 
 	END COMPONENT I_D;	
 -------------------------------------------------------------------------	
--- ================== EXECUTE - ALU  COMPONENTS ================== --
+-- [3] EXE - ALU COMPONENTS
 -------------------------------------------------------------------------
 	-- Defined @ "BARREL_CELL.vhd" file.
 	COMPONENT BARREL_CELL IS
@@ -345,5 +366,43 @@ PACKAGE TOOLBOX IS
 			 );
 
 	END COMPONENT EXE_SLT_MODULE;
+-------------------------------------------------------------------------
+-- [4] MEM 
+-------------------------------------------------------------------------
+	-- Defined @ "MEM_DATAMEM.vhd" file.
+	COMPONENT MEM_DATAMEM IS
+		PORT
+		(
+			address		: IN STD_LOGIC_VECTOR (6 DOWNTO 0);
+			byteena		: IN STD_LOGIC_VECTOR (3 DOWNTO 0) :=  (OTHERS => '1');
+			clken		: IN STD_LOGIC  := '1';
+			clock		: IN STD_LOGIC  := '1';
+			data		: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+			wren		: IN STD_LOGIC ;
+			q		: OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+		);
+	END COMPONENT MEM_DATAMEM;
+-------------------------------------------------------------------------
+	-- Defined @ "MEM_BYTE_ENABLE.vhd" file.
+	COMPONENT MEM_BYTE_ENABLE IS
+
+		PORT(
+				OPCODE : IN  STD_LOGIC_VECTOR(1 DOWNTO 0);
+				BYTEEN : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+			);
+
+	END COMPONENT MEM_BYTE_ENABLE;	
+-------------------------------------------------------------------------
+	-- Defined @ "MEM_BYTE_EN_MSBS.vhd" file.
+	COMPONENT MEM_BYTE_EN_MSBS IS
+
+		PORT ( 
+				U        : IN  STD_LOGIC;
+				MEM_VALUE: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				BYTE_ENA : IN  STD_LOGIC_VECTOR(3  DOWNTO 0);
+				RES      : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)			
+			 );
+
+	END COMPONENT MEM_BYTE_EN_MSBS;
 -------------------------------------------------------------------------
 END PACKAGE TOOLBOX;

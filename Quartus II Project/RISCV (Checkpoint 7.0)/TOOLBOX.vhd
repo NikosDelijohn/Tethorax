@@ -367,4 +367,42 @@ PACKAGE TOOLBOX IS
 
 	END COMPONENT EXE_SLT_MODULE;
 -------------------------------------------------------------------------
+-- [4] MEM 
+-------------------------------------------------------------------------
+	-- Defined @ "MEM_DATAMEM.vhd" file.
+	COMPONENT MEM_DATAMEM IS
+		PORT
+		(
+			address		: IN STD_LOGIC_VECTOR (6 DOWNTO 0);
+			byteena		: IN STD_LOGIC_VECTOR (3 DOWNTO 0) :=  (OTHERS => '1');
+			clken		: IN STD_LOGIC  := '1';
+			clock		: IN STD_LOGIC  := '1';
+			data		: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+			wren		: IN STD_LOGIC ;
+			q		: OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+		);
+	END COMPONENT MEM_DATAMEM;
+-------------------------------------------------------------------------
+	-- Defined @ "MEM_BYTE_ENABLE.vhd" file.
+	COMPONENT MEM_BYTE_ENABLE IS
+
+		PORT(
+				OPCODE : IN  STD_LOGIC_VECTOR(1 DOWNTO 0);
+				BYTEEN : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+			);
+
+	END COMPONENT MEM_BYTE_ENABLE;	
+-------------------------------------------------------------------------
+	-- Defined @ "MEM_BYTE_EN_MSBS.vhd" file.
+	COMPONENT MEM_BYTE_EN_MSBS IS
+
+		PORT ( 
+				U        : IN  STD_LOGIC;
+				MEM_VALUE: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				BYTE_ENA : IN  STD_LOGIC_VECTOR(1  DOWNTO 0);
+				RES      : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)			
+			 );
+
+	END COMPONENT MEM_BYTE_EN_MSBS;
+-------------------------------------------------------------------------
 END PACKAGE TOOLBOX;

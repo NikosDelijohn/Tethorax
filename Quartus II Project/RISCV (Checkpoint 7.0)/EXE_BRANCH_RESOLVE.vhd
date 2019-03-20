@@ -1,3 +1,31 @@
+-- +===========================================================+
+-- |			RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
+-- |===========================================================|
+-- |student:    Deligiannis Nikos							   |
+-- |supervisor: Aristides Efthymiou						       |
+-- |===========================================================|
+-- |			    UNIVERSITY OF IOANNINA - 2019 			   |
+-- |  					 VCAS LABORATORY 					   |
+-- +===========================================================+
+
+
+-- *** 3/5: ARITHMETIC AND LOGIC UNIT (EXE-ALU) MODULE DESIGN ***
+----------------------------------------------------------------------
+-- PART#4: BRANCH RESOLVE MODULE
+-- " This module, given the result of the subtraction, which is 
+--   XLEN + 1 in size, and two control signals (EQLT,INV) desides
+--   if the branch should be taken or not. The outcome depends on
+--   the following:
+--  +----------------------+ 
+--  |EQLT LT | BRANCH TYPE |
+--- |--------|-------------|
+--  | 1   0  |     BEQ     |
+--  | 1   1  |     BNE     |
+--  | 0   0  |     BLT     |
+--  | 0   1  |     BGE     |
+--  +----------------------+ "
+----------------------------------------------------------------------
+
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_MISC.ALL;
