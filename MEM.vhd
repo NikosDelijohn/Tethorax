@@ -1,3 +1,24 @@
+-- +===========================================================+
+-- |			RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
+-- |===========================================================|
+-- |student:    Deligiannis Nikos							   |
+-- |supervisor: Aristides Efthymiou						       |
+-- |===========================================================|
+-- |			    UNIVERSITY OF IOANNINA - 2019 			   |
+-- |  					 VCAS LABORATORY 					   |
+-- +===========================================================+
+
+
+-- *** 4/5: MEMORY MODULE DESIGN ***
+-------------------------------------------------
+-- "This module works only if the command is a 
+-- Load or a Store command. In case of them both
+-- the effective address is obtained as ALU's 
+-- 7 LSBs [since its capacitance is 128 memory
+-- slots, log2(128) = 7] and works according to
+-- the OPCODE given which was generated from ID 
+-- module."
+-------------------------------------------------
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_MISC.ALL;
@@ -49,7 +70,7 @@ ARCHITECTURE STRUCTURAL OF MEM IS
 			PORT MAP (
 							U 	  	  => OP(3),
 							MEM_VALUE => MEM_DATA,
-							BYTE_ENA  => BYTEEN,
+							BYTE_ENA  => OP(1 DOWNTO 0),
 							RES       => MEM_RES
 					 );
 	
