@@ -17,7 +17,7 @@ USE IEEE.STD_LOGIC_1164.ALL;
 
 PACKAGE TOOLBOX IS
 -------------------------------------------------------------------------	
---| [0] GENERAL PURPOSE COMPONENTS
+-- [0] GENERAL PURPOSE COMPONENTS
 -------------------------------------------------------------------------
 	-- Defined @ "MUX2X1.vhd" file.
 	COMPONENT MUX2X1 IS
@@ -405,4 +405,68 @@ PACKAGE TOOLBOX IS
 
 	END COMPONENT MEM_BYTE_EN_MSBS;
 -------------------------------------------------------------------------
+	-- Defined @ "MEM.vhd" file.
+	COMPONENT MEM IS
+
+		PORT (
+				CLK    : IN  STD_LOGIC;
+				OP     : IN  STD_LOGIC_VECTOR(3  DOWNTO 0);
+				WR_ADR : IN  STD_LOGIC_VECTOR(6  DOWNTO 0);
+				WR_DAT : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				
+				MEM_RES: OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			 );
+			 
+	END COMPONENT MEM;
+-------------------------------------------------------------------------
+-- [5] WB
+-------------------------------------------------------------------------
+	-- Defined @ "WB.vhd" file.
+	COMPONENT WB IS
+
+		PORT (
+				WB_OP : IN  STD_LOGIC;
+				WB_ADR: IN  STD_LOGIC_VECTOR(4  DOWNTO 0);
+				WB_DAT: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				
+				RD_ADR: OUT STD_LOGIC_VECTOR(4  DOWNTO 0);
+				RD_DAT: OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			 );
+
+	END COMPONENT WB;
+-------------------------------------------------------------------------
+-- [6] COMPONENT CONTROL (REGS,LOGIC etc,)
+-------------------------------------------------------------------------
+	-- Defined @ "DECODE_TO_EXECUTE.vhd" file.
+	COMPONENT DECODE_TO_EXECUTE IS 
+
+		PORT ( 
+				RS1  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				RS2  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				PC_I : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				IMME : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				
+				JALR : IN  STD_LOGIC;
+				JUMP : IN  STD_LOGIC;
+				BRAN : IN  STD_LOGIC;
+				PC   : IN  STD_LOGIC;
+				IMM  : IN  STD_LOGIC;
+				
+				A    : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+				B    : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			 );
+			 
+	END COMPONENT DECODE_TO_EXECUTE;
+-------------------------------------------------------------------------
+	-- Defined @ "PC_PLUS_4.vhd" file.
+	COMPONENT PC_PLUS_4 IS
+
+		PORT (
+				PC : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+				RES: OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			 );
+
+	END COMPONENT PC_PLUS_4;
+-------------------------------------------------------------------------
+
 END PACKAGE TOOLBOX;
