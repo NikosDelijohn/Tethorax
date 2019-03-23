@@ -258,7 +258,33 @@ PACKAGE TOOLBOX IS
 			  );
 		 
 	END COMPONENT ID_ADDER;
+
 -------------------------------------------------------------------------
+	-- Defined @ "STALL_FWD_PREDICT.vhd" file.
+	COMPONENT STALL_FWD_PREDICT IS
+
+		PORT( 
+				RS1  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0); 
+				RS2  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0); 
+				RD_E : IN  STD_LOGIC_VECTOR(31 DOWNTO 0); 
+				RD_M : IN  STD_LOGIC_VECTOR(31 DOWNTO 0); 
+				
+				LOAD_IN_EXE : IN  STD_LOGIC; 
+				LOAD_IN_MEM : IN  STD_LOGIC; 
+				
+			
+				IMGEN : IN STD_LOGIC_VECTOR(2 DOWNTO  0);
+				BRANCH: IN STD_LOGIC;
+				
+				STALL: OUT STD_LOGIC;
+				FWDA : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+				FWDB : OUT STD_LOGIC_VECTOR(1 DOWNTO 0); 
+				FWDC : OUT STD_LOGIC                     
+			);
+
+	END COMPONENT STALL_FWD_PREDICT;
+-------------------------------------------------------------------------
+
 	-- Defined @ "I_D.vhd" file
 	COMPONENT I_D
 		GENERIC ( CTRL_WORD_TOTAL : INTEGER := 20 ; CTRL_WORD_OUT : INTEGER := 18);
