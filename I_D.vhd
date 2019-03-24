@@ -164,7 +164,7 @@ BEGIN
 	PC_VALUE_O <= PC_VALUE;
 	CTRL_WORD  <= CTRL;
 	
-	FUNCT3T    <= FUNCT3;
+	FUNCT3T    <= FUNCT3; -- Probing signals
 	FUNCT7T    <= FUNCT7;
 	OPCODET    <= OPCODE;
 	DECODERO   <= DEC_BUF;
