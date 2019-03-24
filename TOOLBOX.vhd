@@ -159,20 +159,19 @@ PACKAGE TOOLBOX IS
 	END COMPONENT DEC5X32;	
 -------------------------------------------------------------------------
 -- [1] INSTRUCTION FETCH COMPONENTS 
-----------------------------------+--------------------------------------
-	-- Defined @ "I_F_RAM.vhd" file. 
-	COMPONENT I_F_RAM IS
-	
-			PORT
-				(
-					address		: IN STD_LOGIC_VECTOR (6 DOWNTO 0);
-					clock		: IN STD_LOGIC  := '1';
-					data		: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-					wren		: IN STD_LOGIC ;
-					q		    : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
-				);
-				
-	END COMPONENT I_F_RAM;
+-------------------------------------------------------------------------
+	-- Defined @ "IF_INSTRMEM.vhd" file.
+	COMPONENT IF_INSTRMEM IS
+		PORT
+		(
+			address		: IN STD_LOGIC_VECTOR (6 DOWNTO 0);
+			clken		: IN STD_LOGIC  := '1';
+			clock		: IN STD_LOGIC  := '1';
+			data		: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+			wren		: IN STD_LOGIC ;
+			q		    : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+		);
+	END COMPONENT IF_INSTRMEM;
 -------------------------------------------------------------------------
 -- [2] INSTRUCTION DECODE COMPONENTS
 -------------------------------------------------------------------------
@@ -272,9 +271,7 @@ PACKAGE TOOLBOX IS
 				LOAD_IN_EXE : IN  STD_LOGIC; 
 				LOAD_IN_MEM : IN  STD_LOGIC; 
 				
-			
 				IMGEN : IN STD_LOGIC_VECTOR(2 DOWNTO  0);
-				BRANCH: IN STD_LOGIC;
 				
 				STALL: OUT STD_LOGIC;
 				FWDA : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
