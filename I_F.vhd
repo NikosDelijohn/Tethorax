@@ -19,8 +19,8 @@
 ----------------------------------------------------------------------
 
 -- FUTURE ADDITIONS - TODO:
--- 1] STALL SIGNAL IMPLEMENTATION: ADD CLK ENABLE TO MEMORY
--- 2] REMOVE ALL THE TEST SIGNALS
+-- * STALL SIGNAL IMPLEMENTATION: ADD CLK ENABLE TO MEMORY => DONE
+-- * REMOVE ALL THE TEST SIGNALS => DONE
 
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
@@ -32,12 +32,11 @@ ENTITY I_F IS
 
 	PORT(
 			GLB_CLK: IN  STD_LOGIC;
+			STALL  : IN  STD_LOGIC;
 			PC     : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 			MEMWORD: OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-			PC_ADD : OUT STD_LOGIC_VECTOR( 6 DOWNTO 0);
-			-- Testing Signals --
-			TEST_DATA: IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-			TEST_WREN: IN STD_LOGIC
+			PC_ADD : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+
 		);
 		
 END I_F;
@@ -48,14 +47,15 @@ ARCHITECTURE STRUCTURAL OF I_F IS
     
 BEGIN
 	
-	MEM: I_F_RAM PORT MAP ( 
-							 address => PC(8 DOWNTO 2), -- 2 LSBs will be used for byte padding.
+	MEM: IF_INSTRMEM  PORT MAP ( 
+							 address => PC(8 DOWNTO 2), 
+							 clken   => NOT STALL,
 							 clock   => GLB_CLK,
-							 data    => TEST_DATA,--GND,
-							 wren    => TEST_WREN,--'0',
+							 data    => GND,
+							 wren    => '0',
 							 q 		 => MEMWORD
 						  );
 						  
-	PC_ADD <= PC(8 DOWNTO 2);
+	PC_ADD <= "00000000000000000000000"&PC(8 DOWNTO 2)&"00";
 		 
 END STRUCTURAL;					   
