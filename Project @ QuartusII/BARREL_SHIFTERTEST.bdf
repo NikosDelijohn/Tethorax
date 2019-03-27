@@ -1,0 +1,162 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+//#pragma file_not_in_maxplusii_format
+(header "graphic" (version "1.3"))
+(pin
+	(input)
+	(rect 200 200 368 216)
+	(text "INPUT" (rect 133 0 161 10)(font "Arial" (color 255 0 0)(font_size 6)))
+	(text "A[31..0]" (rect 5 0 43 12)(font "Arial" (color 255 0 0)))
+	(pt 168 8)
+	(drawing
+		(line (pt 92 12)(pt 117 12)(color 255 0 0)(line_width 1))
+		(line (pt 92 4)(pt 117 4)(color 255 0 0)(line_width 1))
+		(line (pt 121 8)(pt 168 8)(color 255 0 0)(line_width 1))
+		(line (pt 92 12)(pt 92 4)(color 255 0 0)(line_width 1))
+		(line (pt 117 4)(pt 121 8)(color 255 0 0)(line_width 1))
+		(line (pt 117 12)(pt 121 8)(color 255 0 0)(line_width 1))
+	)
+	(text "VCC" (rect 136 7 156 17)(font "Arial" (color 255 0 0)(font_size 6)))
+)
+(pin
+	(input)
+	(rect 200 216 368 232)
+	(text "INPUT" (rect 133 0 161 10)(font "Arial" (color 255 0 0)(font_size 6)))
+	(text "SHAMT[4..0]" (rect 5 0 67 12)(font "Arial" (color 255 0 0)))
+	(pt 168 8)
+	(drawing
+		(line (pt 92 12)(pt 117 12)(color 255 0 0)(line_width 1))
+		(line (pt 92 4)(pt 117 4)(color 255 0 0)(line_width 1))
+		(line (pt 121 8)(pt 168 8)(color 255 0 0)(line_width 1))
+		(line (pt 92 12)(pt 92 4)(color 255 0 0)(line_width 1))
+		(line (pt 117 4)(pt 121 8)(color 255 0 0)(line_width 1))
+		(line (pt 117 12)(pt 121 8)(color 255 0 0)(line_width 1))
+	)
+	(text "VCC" (rect 136 7 156 17)(font "Arial" (color 255 0 0)(font_size 6)))
+)
+(pin
+	(input)
+	(rect 200 232 368 248)
+	(text "INPUT" (rect 133 0 161 10)(font "Arial" (color 255 0 0)(font_size 6)))
+	(text "OP[1..0]" (rect 5 0 46 12)(font "Arial" (color 255 0 0)))
+	(pt 168 8)
+	(drawing
+		(line (pt 92 12)(pt 117 12)(color 255 0 0)(line_width 1))
+		(line (pt 92 4)(pt 117 4)(color 255 0 0)(line_width 1))
+		(line (pt 121 8)(pt 168 8)(color 255 0 0)(line_width 1))
+		(line (pt 92 12)(pt 92 4)(color 255 0 0)(line_width 1))
+		(line (pt 117 4)(pt 121 8)(color 255 0 0)(line_width 1))
+		(line (pt 117 12)(pt 121 8)(color 255 0 0)(line_width 1))
+	)
+	(text "VCC" (rect 136 7 156 17)(font "Arial" (color 255 0 0)(font_size 6)))
+)
+(pin
+	(output)
+	(rect 624 200 800 216)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (color 0 128 0)(font_size 6)))
+	(text "RES[31..0]" (rect 90 0 144 12)(font "Arial" (color 0 128 0)))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8)(color 0 128 0)(line_width 1))
+		(line (pt 52 4)(pt 78 4)(color 0 128 0)(line_width 1))
+		(line (pt 52 12)(pt 78 12)(color 0 128 0)(line_width 1))
+		(line (pt 52 12)(pt 52 4)(color 0 128 0)(line_width 1))
+		(line (pt 78 4)(pt 82 8)(color 0 128 0)(line_width 1))
+		(line (pt 82 8)(pt 78 12)(color 0 128 0)(line_width 1))
+		(line (pt 78 12)(pt 82 8)(color 0 128 0)(line_width 1))
+	)
+)
+(symbol
+	(rect 392 176 600 272)
+	(text "BARREL_SHIFTER" (rect 5 0 101 12)(font "Arial" ))
+	(text "inst1" (rect 8 80 31 92)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "VALUE_A[31..0]" (rect 0 0 80 12)(font "Arial" ))
+		(text "VALUE_A[31..0]" (rect 21 27 101 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 3))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "SHAMT_B[4..0]" (rect 0 0 75 12)(font "Arial" ))
+		(text "SHAMT_B[4..0]" (rect 21 43 96 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "OPCODE[1..0]" (rect 0 0 73 12)(font "Arial" ))
+		(text "OPCODE[1..0]" (rect 21 59 94 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 208 32)
+		(output)
+		(text "RESULT[31..0]" (rect 0 0 74 12)(font "Arial" ))
+		(text "RESULT[31..0]" (rect 113 27 187 39)(font "Arial" ))
+		(line (pt 208 32)(pt 192 32)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 192 80)(line_width 1))
+	)
+)
+(connector
+	(pt 392 224)
+	(pt 368 224)
+	(bus)
+	(color 255 0 0)
+)
+(connector
+	(pt 392 240)
+	(pt 368 240)
+	(bus)
+	(color 255 0 0)
+)
+(connector
+	(pt 600 208)
+	(pt 624 208)
+	(bus)
+	(color 0 128 0)
+)
+(connector
+	(pt 368 208)
+	(pt 392 208)
+	(bus)
+	(color 255 0 0)
+)
+(text "ERROR FOR OPCODE = \"11\"" (rect 336 336 496 350)(font "Arial" (font_size 8)))
+(arc (pt 224 248)(pt 328 344)(rect 224 152 432 344))
+(title_block
+	(rect 208 32 576 152)
+	(section (rect 0 0 368 24)(text "TITLE" (rect 2 0 30 12)(font "Arial" ))(text "RV32I(M)" (rect 56 2 133 20)(font "Arial" (font_size 12)))(border))
+	(section (rect 0 24 368 48)(text "INFO" (rect 2 0 29 12)(font "Arial" ))(text "3/5: ALU PARTS [BARREL SHIFTER]" (rect 56 2 367 20)(font "Arial" (font_size 12)))(border))
+	(section (rect 0 48 368 72)(text "NAME" (rect 2 0 32 12)(font "Arial" ))(text "NICK" (rect 56 2 99 20)(font "Arial" (font_size 12)))(border))
+	(section (rect 0 72 280 96)(text "LASTNAME" (rect 2 0 58 12)(font "Arial" ))(text "1.00" (rect 56 1 85 17)(font "Arial" (font_size 10)))(border))
+	(section (rect 280 72 368 96)(text "REV" (rect 2 1 24 13)(font "Arial" ))(text "A" (rect 43 1 53 17)(font "Arial" (font_size 10)))(border))
+	(section (rect 0 96 240 120)(text "DATE" (rect 2 0 30 12)(font "Arial" ))(text "Tue Mar 05 15:53:35 2019" (rect 56 3 234 19)(font "Arial" (font_size 10)))(date)(border))
+	(section (rect 240 96 310 120)(text "SHEET" (rect 2 0 37 12)(font "Arial" ))(text "1" (rect 55 5 63 21)(font "Arial" (font_size 10))))
+	(section (rect 310 96 368 120)(text "OF" (rect 10 0 25 12)(font "Arial" ))(text "1" (rect 34 4 42 20)(font "Arial" (font_size 10))))
+	(drawing
+	)
+	(fill (color 255 255 0))
+)

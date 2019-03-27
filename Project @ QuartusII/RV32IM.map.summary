@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Mar 27 17:30:06 2019
+Quartus II Version : 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition
+Revision Name : RV32IM
+Top-level Entity Name : RV32I
+Family : Cyclone II
+Total logic elements : 3,369
+    Total combinational functions : 2,353
+    Dedicated logic registers : 1,308
+Total registers : 1308
+Total pins : 153
+Total virtual pins : 0
+Total memory bits : 8,192
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

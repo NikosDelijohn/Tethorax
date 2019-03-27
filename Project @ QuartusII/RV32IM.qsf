@@ -1,0 +1,170 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2010 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+# Date created = 13:35:41  February 20, 2019
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		RV32IM_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone II"
+set_global_assignment -name DEVICE EP2C35F672C6
+set_global_assignment -name TOP_LEVEL_ENTITY RV32I
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:35:41  FEBRUARY 20, 2019"
+set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name SIMULATION_MODE TIMING
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE I_F_MEMTEST.vwf
+set_global_assignment -name VHDL_FILE TOOLBOX.vhd
+set_global_assignment -name VHDL_FILE PIPELINE.vhd
+set_global_assignment -name VHDL_FILE RV32I.vhd
+set_global_assignment -name VHDL_FILE RV32IM.vhd
+set_global_assignment -name QIP_FILE IF_INSTRMEM.qip
+set_global_assignment -name MIF_FILE INSTRUCTION_CACHE.mif
+set_global_assignment -name VHDL_FILE INSTRUCTION_FETCH.vhd
+set_global_assignment -name VHDL_FILE I_F.vhd
+set_global_assignment -name BDF_FILE I_F_MEMTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE I_F_MEMTEST.vwf
+set_global_assignment -name VHDL_FILE MUX2X1.vhd
+set_global_assignment -name BDF_FILE MUX2X1TEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE MUX2X1TEST.vwf
+set_global_assignment -name VHDL_FILE MUX8X1.vhd
+set_global_assignment -name BDF_FILE MUX8X1TEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE MUX8X1TEST.vwf
+set_global_assignment -name VHDL_FILE MUX32X1.vhd
+set_global_assignment -name BDF_FILE MUX32X1TEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE MUX32X1TEST.vwf
+set_global_assignment -name VHDL_FILE REG_FLIPPER.vhd
+set_global_assignment -name BDF_FILE REG_FLIPPERTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE REG_FLIPPERTEST.vwf
+set_global_assignment -name VHDL_FILE ID_DECODER.vhd
+set_global_assignment -name BDF_FILE ID_DECODERTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE ID_DECODERTEST.vwf
+set_global_assignment -name VHDL_FILE ID_IMM_GENERATOR.vhd
+set_global_assignment -name BDF_FILE ID_IMM_GENERATORTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE ID_IMM_GENERATORTEST.vwf
+set_global_assignment -name VHDL_FILE REG_32B_CASUAL.vhd
+set_global_assignment -name BDF_FILE REG_32B_CASUALTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE REG_32B_CASUALTEST.vwf
+set_global_assignment -name VHDL_FILE REG_32B_ZERO.vhd
+set_global_assignment -name BDF_FILE REG_32B_ZEROTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE REG_32B_ZEROTEST.vwf
+set_global_assignment -name VHDL_FILE REGISTER_FILE.vhd
+set_global_assignment -name BDF_FILE REGISTER_FILETEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE REGISTER_FILETEST.vwf
+set_global_assignment -name VHDL_FILE BARREL_CELL.vhd
+set_global_assignment -name BDF_FILE BARREL_CELLTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE BARREL_CELLTEST.vwf
+set_global_assignment -name VHDL_FILE MUX2X1_BIT.vhd
+set_global_assignment -name BDF_FILE MUX2X1_BITTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE MUX2X1_BITTEST.vwf
+set_global_assignment -name VHDL_FILE BARREL_SHIFTER.vhd
+set_global_assignment -name BDF_FILE BARREL_SHIFTERTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE BARREL_SHIFTERTEST.vwf
+set_global_assignment -name VHDL_FILE ADDER_2B.vhd
+set_global_assignment -name BDF_FILE ADDER_2BTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE ADDER_2BTEST.vwf
+set_global_assignment -name VHDL_FILE ID_ADDER.vhd
+set_global_assignment -name BDF_FILE ID_ADDERTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE ID_ADDERTEST.vwf
+set_global_assignment -name VHDL_FILE I_D.vhd
+set_global_assignment -name VHDL_FILE INSTRUCTION_DECODE.vhd
+set_global_assignment -name BDF_FILE I_DTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE I_DTEST_I.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE I_DTEST_R.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE I_DTEST_LS.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE I_DTEST_JB.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE "I_DTEST_AUIPC-LUI.vwf"
+set_global_assignment -name VHDL_FILE EXE_LOGIC_MODULE.vhd
+set_global_assignment -name BDF_FILE EXE_LOGIC_MODULETEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE EXE_LOGIC_MODULETEST.vwf
+set_global_assignment -name VHDL_FILE EXE_ADDER_SUBBER_CELL.vhd
+set_global_assignment -name BDF_FILE EXE_ADDER_SUBBER_CELLTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE EXE_ADDER_SUBBER_CELLTEST.vwf
+set_global_assignment -name VHDL_FILE EXE_ADDER_SUBBER.vhd
+set_global_assignment -name BDF_FILE EXE_ADDER_SUBBERTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE EXE_ADDER_SUBBERTEST.vwf
+set_global_assignment -name VHDL_FILE DEC5X32.vhd
+set_global_assignment -name BDF_FILE DEC5X32TEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE DEC5X32TEST.vwf
+set_global_assignment -name VHDL_FILE EXE_BRANCH_RESOLVE.vhd
+set_global_assignment -name BDF_FILE EXE_BRANCH_RESOLVETEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE EXE_BRANCH_RESOLVETEST.vwf
+set_global_assignment -name VHDL_FILE EXE_SLT_MODULE.vhd
+set_global_assignment -name BDF_FILE EXE_SLT_MODULETEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE EXE_SLT_MODULETEST.vwf
+set_global_assignment -name VHDL_FILE EXE.vhd
+set_global_assignment -name BDF_FILE EXETEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE EXETEST_B.vwf
+set_global_assignment -name VHDL_FILE MUX4X1.vhd
+set_global_assignment -name QIP_FILE MEM_DATAMEM.qip
+set_global_assignment -name VHDL_FILE MEM_BYTE_ENABLE.vhd
+set_global_assignment -name VHDL_FILE MEM_BYTE_EN_MSBS.vhd
+set_global_assignment -name BDF_FILE MEM_BYTE_EN_MSBSTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE MEM_BYTE_EN_MSBSTEST.vwf
+set_global_assignment -name VHDL_FILE MEM.vhd
+set_global_assignment -name VHDL_FILE MEMORY.vhd
+set_global_assignment -name BDF_FILE MEMTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE MEMTEST.vwf
+set_global_assignment -name VHDL_FILE WB.vhd
+set_global_assignment -name BDF_FILE WBTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE WBTEST.vwf
+set_global_assignment -name VHDL_FILE DECODE_TO_EXECUTE.vhd
+set_global_assignment -name VHDL_FILE MEM_TO_WB.vhd
+set_global_assignment -name VHDL_FILE PC_PLUS_4.vhd
+set_global_assignment -name BDF_FILE PC_PLUS_4TEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE PC_PLUS_4TEST.vwf
+set_global_assignment -name VHDL_FILE STALL_FWD_PREDICT.vhd
+set_global_assignment -name BDF_FILE STALL_FWD_PREDICTTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE STALL_FWD_PREDICTTEST.vwf
+set_global_assignment -name VHDL_FILE PC_REGISTER.vhd
+set_global_assignment -name BDF_FILE PC_REGISTERTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE PC_REGISTERTEST.vwf
+set_global_assignment -name VHDL_FILE PIPE_IF_TO_ID_REGISTER.vhd
+set_global_assignment -name BDF_FILE PIPE_IF_TO_ID_REGISTERTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE PIPE_IF_TO_ID_REGISTERTEST.vwf
+set_global_assignment -name VHDL_FILE PIPE_ID_TO_EXE_REGISTER.vhd
+set_global_assignment -name VHDL_FILE PIPE_EXE_TO_MEM_REGISTER.vhd
+set_global_assignment -name VHDL_FILE PIPE_MEM_TO_WB_REGISTER.vhd
+set_global_assignment -name VHDL_FILE CONTROL_WORD_REGROUP.vhd
+set_global_assignment -name BDF_FILE RV32IMTEST.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE RV32IM_PCTEST.vwf
+set_global_assignment -name VHDL_FILE PACKAGE_ERROR.vhd
+set_global_assignment -name VHDL_FILE WRITE_BACK.vhd
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

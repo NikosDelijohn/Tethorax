@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="RV32IM">
+		<CBX_INST_ENTRY INSTANCE_NAME="|RV32I|INSTRUCTION_FETCH:IF1|IF_INSTRMEM:MEM|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_bog1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|RV32I|MEMORY:MEM4|MEM_DATAMEM:DATA_MEM|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_h0i1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>
