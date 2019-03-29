@@ -40,14 +40,12 @@ END WRITE_BACK;
 
 ARCHITECTURE STRUCTURAL OF WRITE_BACK IS
 	
-	SIGNAL GND : STD_LOGIC_VECTOR(4 DOWNTO 0) := (OTHERS =>'0');
-	
 	BEGIN
 		
 		MUX_DATA: MUX2X1
 				  GENERIC MAP( INSIZE => 5 )
 				  PORT    MAP(
-					    	   D0     => GND,
+					    	   D0     => "00000",
 							   D1     => WB_ADR,
 							   SEL    => WB_OP,
 							   O      => RD_ADR
