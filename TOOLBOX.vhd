@@ -136,19 +136,7 @@ PACKAGE TOOLBOX IS
 	END COMPONENT MUX32X1;
 	
 -------------------------------------------------------------------------
-	-- Defined @ "ADDER_2B.vhd" file.
-	COMPONENT ADDER_2B IS
-			
-		PORT ( 
-				A  : IN STD_LOGIC;
-				B  : IN STD_LOGIC;
-				CI : IN STD_LOGIC;
-				S  : OUT STD_LOGIC;
-				CO : OUT STD_LOGIC 
-			 );
 
-	END COMPONENT ADDER_2B;
--------------------------------------------------------------------------
 	-- Defined @ "DEC5X32.vhd" file.
 	COMPONENT DEC5X32 IS 
 
@@ -249,6 +237,30 @@ PACKAGE TOOLBOX IS
 			 );
 			 
 	END COMPONENT REGISTER_FILE;
+-------------------------------------------------------------------------
+	-- Defined @ "ADDER_2B.vhd" file.
+	COMPONENT ADDER_2B IS
+			
+		PORT ( 
+				A  : IN STD_LOGIC;
+				B  : IN STD_LOGIC;
+				CI : IN STD_LOGIC;
+				S  : OUT STD_LOGIC;
+				CO : OUT STD_LOGIC 
+			 );
+
+	END COMPONENT ADDER_2B;
+-------------------------------------------------------------------------
+	COMPONENT ADDER_2B_MSB IS
+
+		PORT ( 
+				A  : IN STD_LOGIC;
+				B  : IN STD_LOGIC;
+				CI : IN STD_LOGIC;
+				S  : OUT STD_LOGIC
+			 );
+
+	END COMPONENT ADDER_2B_MSB;
 -------------------------------------------------------------------------
 	-- Defined @ "ID_ADDER.vhd" file
 	COMPONENT ID_ADDER IS
@@ -376,6 +388,18 @@ PACKAGE TOOLBOX IS
 			 );
 		 
 	END COMPONENT EXE_ADDER_SUBBER_CELL;
+-------------------------------------------------------------------------
+	COMPONENT EXE_ADDER_SUBBER_CELL_MSB IS 
+
+		PORT (
+				A  : IN  STD_LOGIC; 
+				B  : IN  STD_LOGIC;
+				CI : IN  STD_LOGIC;
+				OP : IN  STD_LOGIC; -- O = ADD / 1 = INVERT B
+				S  : OUT STD_LOGIC
+			 );
+			 
+	END COMPONENT EXE_ADDER_SUBBER_CELL_MSB;
 -------------------------------------------------------------------------
 	-- Defined @ "EXE_ADDER_SUBBER.vhd" file.
 	COMPONENT EXE_ADDER_SUBBER IS 
