@@ -68,8 +68,6 @@ END STALL_FWD_PREDICT;
 
 ARCHITECTURE RTL OF STALL_FWD_PREDICT IS
 	
-	SIGNAL GND  : STD_LOGIC := '0';
-	
 	SIGNAL MUST_STALL : STD_LOGIC;
 		
 	SIGNAL BUF_A: STD_LOGIC;
@@ -110,13 +108,13 @@ ARCHITECTURE RTL OF STALL_FWD_PREDICT IS
 	EXE_MUX_RS1: MUX2X1_BIT														      
 			 PORT MAP (															     
 						D0  => BUF_A,      -- If it is AUIPC or LUI or JAL
-						D1  => GND,        -- then there is no RS1
+						D1  => '0',        -- then there is no RS1
 						SEL => SELECT_RS1, 
 						O   => OR_A
 					   );
 	EXE_MUX_RS2: MUX2X1_BIT
 			 PORT MAP (
-						D0  => GND,        -- If it is NOT R or Branch
+						D0  => '0',        -- If it is NOT R or Branch
 						D1  => BUF_B,	   -- then there is no RS2. If it is Store
 						SEL => SELECT_RS2, -- then RS2 has its own FWD path in MEM
 						O   => OR_B        -- fwdc.
@@ -125,14 +123,14 @@ ARCHITECTURE RTL OF STALL_FWD_PREDICT IS
 	MEM_MUX_RS1: MUX2X1_BIT
 			 PORT MAP (
 						D0  => BUF_C,		-- These Muxes concern the FWDB path
-						D1  => GND, 		 
+						D1  => '0', 		 
 						SEL => SELECT_RS1,  
  						O   => OR_C
 					  );
 					  
 	MEM_MUX_RS2: MUX2X1_BIT
 			 PORT MAP (
-						D0  => GND,
+						D0  => '0',
 						D1  => BUF_D,
 						SEL => SELECT_RS2,
 						O   => OR_D
