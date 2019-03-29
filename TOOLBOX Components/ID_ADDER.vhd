@@ -35,7 +35,6 @@ END ID_ADDER;
 ARCHITECTURE STRUCTURAL OF ID_ADDER IS
 
 	SIGNAL RIPPLE_CARRY : STD_LOGIC_VECTOR(0 TO 31) := (OTHERS => '0') ;
-	SIGNAL CO_DUMP 	    : STD_LOGIC;
 
 	BEGIN
 	
@@ -56,13 +55,12 @@ ARCHITECTURE STRUCTURAL OF ID_ADDER IS
 		 
 		 MSB : IF I = 31 GENERATE
 		
-			ADDER: ADDER_2B
+			ADDER: ADDER_2B_MSB
 				   PORT MAP( 
 							  A  => PC_VALUE(I),
 							  B  => IMMEDIATE(I),
 							  CI => RIPPLE_CARRY(I),
-							  S  => OUTPUT(I),
-							  CO => CO_DUMP
+							  S  => OUTPUT(I)
 						   );
 						   
 		END GENERATE MSB;			
