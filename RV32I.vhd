@@ -36,7 +36,11 @@ ENTITY RV32I IS
 			NPC_PLUS_4_MUX : OUT STD_LOGIC;
 			NPC_TEST : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 			PC_VAL_REG_A : OUT STD_LOGIC_vECTOR(31 DOWNTO 0);
-			PC_VAL_REG_B : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+			PC_VAL_REG_B : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+			EXE_TNT		 : OUT STD_LOGIC;
+			ALU_VALUE_A  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+			ALU_VALUE_B  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+			ALU_OPCODE_T : OUT STD_LOGIC_VECTOR(8 DOWNTO 0)
 			
 		 );
 		 
@@ -81,6 +85,8 @@ ARCHITECTURE STRUCTURAL OF RV32I IS
 	SIGNAL PC_OUT_DUMP   : STD_LOGIC_VECTOR(31 DOWNTO 0); -- The Output won't be used due to the nature of the M4K blocks.
 														  -- The register will actually be bypassed.
 	-- IF I/O --
+														  -- In case of RST the address must be 0b00 and not 4
+	SIGNAL IF_IN_BUF 	 : STD_LOGIC_VECTOR(31 DOWNTO 0); -- The Assembler starts at addr 0b00
 	SIGNAL IF_OUT_IFWORD : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	SIGNAL IF_OUT_PC_VAL : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	
@@ -141,12 +147,21 @@ ARCHITECTURE STRUCTURAL OF RV32I IS
 	PC0: PC_REGISTER
 		PORT MAP( CLK => CLK, RST => RST, STALL => PIPE_STALL_SIG, NEXT_PC => PC_IN_NEXT_PC, ADDRESS => PC_OUT_DUMP );
 	
+	NPC_MUX_RST: MUX2X1 
+				 GENERIC MAP ( INSIZE => 32 )
+				 PORT    MAP ( 
+							   D0     => PC_IN_NEXT_PC,
+							   D1 	  => (OTHERS => '0'),
+							   SEL 	  => RST,
+							   O 	  => IF_IN_BUF
+							  );
+	
 	-- INSTRUCTION FETCH --	
 	IF1: INSTRUCTION_FETCH                             
 		 PORT MAP(  
 					GLB_CLK => CLK, 
 					STALL   => PIPE_STALL_SIG, 
-					PC      => PC_IN_NEXT_PC, -- Bypassing the PC Register
+					PC      => IF_IN_BUF, -- Bypassing the PC Register
 					MEMWORD => IF_OUT_IFWORD, 
 					PC_ADD  => IF_OUT_PC_VAL 
 				 );	
@@ -430,7 +445,10 @@ ARCHITECTURE STRUCTURAL OF RV32I IS
 	PC_VAL_REG_A <= PIPE_A_OUT_PC_VAL;
 	PC_VAL_REG_B <= PIPE_B_OUT_PC_VAL;
 	NPC_TEST <= PC_IN_NEXT_PC;
+	EXE_TNT <= BRANCH_T_NT;
 	
-	
+	ALU_VALUE_A <= TO_ALU_A;
+	ALU_VALUE_B <= TO_ALU_B;
+	ALU_OPCODE_T<= ALU_OPCODE;
 	
 END STRUCTURAL;
