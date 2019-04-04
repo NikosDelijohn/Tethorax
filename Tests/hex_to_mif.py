@@ -14,14 +14,18 @@ def gen_line(file):
 		
 def parse(file1,file2):
 	
-	file2.write(" WIDTH = 32; \n DEPTH = 128; \n ADDRESS_RADIX = UNS; \n DATA_RADIX = HEX; \n\nCONTENT BEGIN \n")
+	file2.write(" WIDTH = 32; \n DEPTH = 1024; \n ADDRESS_RADIX = UNS; \n DATA_RADIX = HEX; \n\nCONTENT BEGIN \n")
 	
-	for i in range(0,36):
+	for i in range(0,1024):
 	
 		temp = str(next(gen_line(file1)))
+		if (int(temp,16) == 0):
+			break
 		file2.write( "\t" + str(i) + "   : " + temp[:-1] + ";\n")
-		
-	file2.write("\t [36..127] : 00\nEND;")
+	
+	if i != 1024:
+		file2.write("\t["+str(i)+"..1023]   : 00;\n")
+	file2.write("END;")
 	file2.close()
 
 
