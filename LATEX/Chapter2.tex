@@ -6,16 +6,12 @@
 %\begin{document}
 %\dominitoc[n]
 %\nomtcpagenumbers
-\definecolor{brightgreen}{rgb}{0.38, 1.0, 0.49}
-\definecolor{canaryyellow}{rgb}{0.97, 1.0, 0.38}
-\definecolor{bred}{rgb}{1.0, 0.38, 0.38}
-\definecolor{carorange}{rgb}{1.0, 0.82, 0.38}
-\definecolor{capri}{rgb}{0.38, 0.77, 1.0}
-\definecolor{blue}{rgb}{0.38,0.40 ,1.0}
+
 
 
 \chapter{Background \& Technical Information}
 	\minitoc
+	%\addtocontents{toc}{\protect\contentsline{chapter}{\protect\numberline{}Background \& Technical Information}{}{}}
 	\section{Base ISA Overview}
 	\label{sec:Overview}
 	The RISC-V ISA is defined as a base integer ISA, which must be present in any implementation, plus optional extensions to the base ISA. The base integer ISA is very similar to that of the early RISC processors except with no branch delay slots and with support for optional variable-length instruction encodings. \\
@@ -25,8 +21,8 @@
 	\section{ISA Extensions}
 	\label{sec:Extensions}
 	There are various extensions to the Base ISA ("I") such as:  \\\\
-	
-	\begin{tabular}{|c|p{2in}|} \hline
+	\vspace{-2mm}
+	\begin{tabular}{|c|l|} \hline
 	\setrow{\bfseries}Extension Symbol &\setrow{\bfseries} Extension Contents \\\hline
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		"M" & Integer Multiplication \& Division     \\\hline
@@ -91,7 +87,7 @@
 		\end{center}
 	\end{figure}
 
-	The fields of Figure 2.3 are labeled with the instruction bits (instr[y]) used to construct their value. Sign extension always uses inst[31]. \\
+	The fields of Figure \ref{Image2.3} are labeled with the instruction bits (instr[y]) used to construct their value. Sign extension always uses inst[31]. \\
 	
 	Labeled as $rd$ is the destination register, meaning the register at which the result of the operation will be stored and as $rs1,rs2$ (if any) are the registers (operands) that will be used. The $funct7,funct3$ and $opcode$ fields will be used for the decode of the command and for the generation of the signals needed for its processing while the $imm[x:y]$ fields will be used for the assemble of the command's immediate.	
 	\newpage

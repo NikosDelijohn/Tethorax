@@ -370,6 +370,10 @@ Disassembly of section .text.init:
  4c2:	0000                	unimp
 
 Disassembly of section .data:
+Contents of section .data:
+ 2000 efbeefbe efbeefbe efbeefbe efbeefbe  ................
+ 2010 efbeefbe 00000000 00000000 00000000  ................
+
 
 00002000 <begin_signature>:
     2000:	          	jal	t4,ffffd3ee <_end+0xffffb3ce>

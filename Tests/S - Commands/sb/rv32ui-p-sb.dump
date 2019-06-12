@@ -339,6 +339,9 @@ Disassembly of section .text.init:
  442:	0000                	unimp
 
 Disassembly of section .data:
+Contents of section .data:
+ 2000 efefefef efefefef efef0000 00000000  ................
+
 
 00002000 <begin_signature>:
     2000:	          	jal	t6,6fe <pass+0x2fa>

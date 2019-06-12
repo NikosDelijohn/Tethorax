@@ -367,6 +367,11 @@ Disassembly of section .text.init:
  4c2:	0000                	unimp
 
 Disassembly of section .data:
+Contents of section .data:
+ 2000 efbeadde efbeadde efbeadde efbeadde  ................
+ 2010 efbeadde efbeadde efbeadde efbeadde  ................
+ 2020 efbeadde efbeadde 00000000 00000000  ................
+
 
 00002000 <begin_signature>:
     2000:	deadbeef          	jal	t4,fffdd5ea <_end+0xfffdb5ba>

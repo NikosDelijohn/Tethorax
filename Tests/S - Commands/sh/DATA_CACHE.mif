@@ -1,0 +1,11 @@
+ WIDTH = 32; 
+ DEPTH = 128; 
+ ADDRESS_RADIX = UNS; 
+ DATA_RADIX = HEX; 
+
+CONTENT BEGIN 
+
+	[0..4]: BEEFBEEF;
+	[5..127]: 00;
+
+END;
