@@ -1,12 +1,13 @@
 -- +===========================================================+
--- |			RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
+-- |		RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
 -- |===========================================================|
--- |student:    Deligiannis Nikos							   |
--- |supervisor: Aristides Efthymiou						       |
+-- |student:    Deligiannis Nikos			       |
+-- |supervisor: Aristides Efthymiou			       |
 -- |===========================================================|
--- |			    UNIVERSITY OF IOANNINA - 2019 			   |
--- |  					 VCAS LABORATORY 					   |
+-- |		UNIVERSITY OF IOANNINA - 2019      	       |
+-- |  		     VCAS LABORATORY			       |
 -- +===========================================================+
+
 
 -- *** 2/5: INSTRUCTION DECODE (ID) MODULE DESIGN ***
 ------------------------------------------------------------
@@ -18,10 +19,10 @@
 --   selection is described in the following matrix:
 --
 --  	*-------------------------------------------*
---		| CTRL_WORD [3 MSBs]  ||  TYPE OF IMMEDIATE |
+--	| CTRL_WORD [3 MSBs]  ||  TYPE OF IMMEDIATE |
 --  	|-------------------------------------------| 
 --  	|       000           ||        I           |
---  	|	    001           ||        S           |
+--  	|       001           ||        S           |
 --  	|       010           ||        B           |
 --  	|       011           ||        U           |
 --  	|       100           ||        J           |
@@ -35,14 +36,13 @@ USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY ID_IMM_GENERATOR IS
 
-	PORT (
-			IMM_TYPE  : IN  STD_LOGIC_VECTOR(2  DOWNTO 0);
-			IF_WORD   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-			IMMEDIATE : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)	
-		 );
+	PORT(
+		IMM_TYPE  : IN  STD_LOGIC_VECTOR(2  DOWNTO 0);
+		IF_WORD   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		IMMEDIATE : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)	
+	    );
 		 
 END ID_IMM_GENERATOR;
-
 
 ARCHITECTURE RTL OF ID_IMM_GENERATOR IS
 	
@@ -56,33 +56,33 @@ BEGIN
 		CASE IMM_TYPE IS
 			
 			--     I
-			WHEN "000" => RES(31 DOWNTO 11) <= (OTHERS => IF_WORD(31)); 
-						  RES(10 DOWNTO  5) <= IF_WORD(30 DOWNTO 25);
-						  RES(4  DOWNTO  1) <= IF_WORD(24 DOWNTO 21);
-						  RES(0)			<= IF_WORD(20);
+			WHEN "000" => 	RES(31 DOWNTO 11) <= (OTHERS => IF_WORD(31)); 
+				 	RES(10 DOWNTO  5) <= IF_WORD(30 DOWNTO 25);
+					RES(4  DOWNTO  1) <= IF_WORD(24 DOWNTO 21);
+					RES(0)		  <= IF_WORD(20);
 			--     S
-			WHEN "001" => RES(31 DOWNTO 11) <= (OTHERS => IF_WORD(31));
-						  RES(10 DOWNTO  5) <= IF_WORD(30 DOWNTO 25);
-						  RES(4  DOWNTO  1) <= IF_WORD(11 DOWNTO  8);
-						  RES(0) 		    <= IF_WORD(7);
+			WHEN "001" => 	RES(31 DOWNTO 11) <= (OTHERS => IF_WORD(31));
+					RES(10 DOWNTO  5) <= IF_WORD(30 DOWNTO 25);
+					RES(4  DOWNTO  1) <= IF_WORD(11 DOWNTO  8);
+					RES(0) 		  <= IF_WORD(7);
 			--     B			  
-			WHEN "010" => RES(31 DOWNTO 12) <= (OTHERS => IF_WORD(31));
-						  RES(11)			<= IF_WORD(7);
-						  RES(10 DOWNTO  5) <= IF_WORD(30 DOWNTO 25);
-						  RES(4  DOWNTO  1) <= IF_WORD(11 DOWNTO  8);
-						  RES(0)			<= '0';
+			WHEN "010" => 	RES(31 DOWNTO 12) <= (OTHERS => IF_WORD(31));
+					RES(11)		  <= IF_WORD(7);
+					RES(10 DOWNTO  5) <= IF_WORD(30 DOWNTO 25);
+					RES(4  DOWNTO  1) <= IF_WORD(11 DOWNTO  8);
+					RES(0)		  <= '0';
 			--     U
-			WHEN "011" => RES(31)			<= IF_WORD(31);
-						  RES(30 DOWNTO 20) <= IF_WORD(30 DOWNTO 20);
-						  RES(19 DOWNTO 12) <= IF_WORD(19 DOWNTO 12);
-						  RES(11 DOWNTO  0) <= (OTHERS => '0');
-			-- 	   J
-			WHEN "100" => RES(31 DOWNTO 20) <= (OTHERS => IF_WORD(31));
-						  RES(19 DOWNTO 12) <= IF_WORD(19 DOWNTO 12);
-						  RES(11)			<= IF_WORD(20);
-						  RES(10 DOWNTO  5) <= IF_WORD(30 DOWNTO 25);
-						  RES(4  DOWNTO  1) <= IF_WORD(24 DOWNTO 21);
-						  RES(0)			<= '0';
+			WHEN "011" => 	RES(31)		  <= IF_WORD(31);
+				        RES(30 DOWNTO 20) <= IF_WORD(30 DOWNTO 20);
+					RES(19 DOWNTO 12) <= IF_WORD(19 DOWNTO 12);
+					RES(11 DOWNTO  0) <= (OTHERS => '0');
+			--     J
+			WHEN "100" => 	RES(31 DOWNTO 20) <= (OTHERS => IF_WORD(31));
+					RES(19 DOWNTO 12) <= IF_WORD(19 DOWNTO 12);
+					RES(11)		  <= IF_WORD(20);
+					RES(10 DOWNTO  5) <= IF_WORD(30 DOWNTO 25);
+					RES(4  DOWNTO  1) <= IF_WORD(24 DOWNTO 21);
+					RES(0)		  <= '0';
 			
 			WHEN OTHERS => RES <= (OTHERS => 'X');
 			
