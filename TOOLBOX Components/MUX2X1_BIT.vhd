@@ -5,12 +5,12 @@ USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY MUX2X1_BIT IS
 
-	PORT ( 
-			D0  : IN  STD_LOGIC;
-			D1  : IN  STD_LOGIC;
-		    SEL : IN  STD_LOGIC;
-		    O   : OUT STD_LOGIC
-		 );
+	PORT( 
+		D0  : IN  STD_LOGIC;
+		D1  : IN  STD_LOGIC;
+		SEL : IN  STD_LOGIC;
+		O   : OUT STD_LOGIC
+	    );
 		 
 END MUX2X1_BIT;
 
