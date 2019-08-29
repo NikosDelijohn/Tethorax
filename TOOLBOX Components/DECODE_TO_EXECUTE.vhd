@@ -5,20 +5,20 @@ USE WORK.TOOLBOX.ALL;
 
 ENTITY DECODE_TO_EXECUTE IS 
 
-	PORT ( 
-			RS1  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-			RS2  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-			PC_I : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-			IMME : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+	PORT( 
+		RS1  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		RS2  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		PC_I : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		IMME : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 			
-			JALR : IN  STD_LOGIC;
-			JUMP : IN  STD_LOGIC;
-			PC   : IN  STD_LOGIC;
-			IMM  : IN  STD_LOGIC;
+		JALR : IN  STD_LOGIC;
+		JUMP : IN  STD_LOGIC;
+		PC   : IN  STD_LOGIC;
+		IMM  : IN  STD_LOGIC;
 			
-			A    : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-			B    : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
-		 );
+		A    : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+		B    : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	    );
 		 
 END DECODE_TO_EXECUTE;
 
@@ -38,30 +38,30 @@ ARCHITECTURE STRUCTURAL OF DECODE_TO_EXECUTE IS
 	SEL_C <= ((NOT JALR) AND JUMP);
 	
 	MUXA: MUX2X1 
-		  GENERIC MAP ( INSIZE => 32 )
-		  PORT    MAP (
-						D0  => RS1,
-						D1  => PC_I,
-						SEL => SEL_A,
-						O   => A
-					   );
+	        GENERIC MAP( INSIZE => 32 )
+		PORT    MAP(
+				D0  => RS1,
+				D1  => PC_I,
+				SEL => SEL_A,
+				O   => A
+			   );
 					   
 	MUXB: MUX2X1
-		  GENERIC MAP ( INSIZE => 32 )
-		  PORT    MAP ( 
-						D0  => RS2,
-						D1  => IMME,
-						SEL => SEL_B,
-						O   => BUF_B
-					   );
+		GENERIC MAP( INSIZE => 32 )
+		PORT    MAP( 
+				D0  => RS2,
+				D1  => IMME,
+				SEL => SEL_B,
+				O   => BUF_B
+			   );
 	MUXC: MUX2X1 
-		  GENERIC MAP ( INSIZE => 32 )
-		  PORT    MAP (
-						D0  => BUF_B,
-						D1  => "00000000000000000000000000000100",
-						SEL => SEL_C,
-						O   => B
-					   );
+		GENERIC MAP( INSIZE => 32 )
+		PORT    MAP(
+				D0  => BUF_B,
+				D1  => "00000000000000000000000000000100",
+				SEL => SEL_C,
+				O   => B
+			   );
 					   
 END STRUCTURAL;
 		
