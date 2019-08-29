@@ -1,11 +1,11 @@
 -- +===========================================================+
--- |			RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
+-- |		RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
 -- |===========================================================|
--- |student:    Deligiannis Nikos							   |
--- |supervisor: Aristides Efthymiou						       |
+-- |student:    Deligiannis Nikos			       |
+-- |supervisor: Aristides Efthymiou			       |
 -- |===========================================================|
--- |			    UNIVERSITY OF IOANNINA - 2019 			   |
--- |  					 VCAS LABORATORY 					   |
+-- |		UNIVERSITY OF IOANNINA - 2019      	       |
+-- |  		     VCAS LABORATORY			       |
 -- +===========================================================+
 
 
@@ -24,12 +24,12 @@ USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY EXE_LOGIC_MODULE IS
 
-	PORT (
-			A   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-			B   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-			OP  : IN  STD_LOGIC_VECTOR(1  DOWNTO 0);
-			RES : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
-		 );
+	PORT(
+		A   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		B   : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		OP  : IN  STD_LOGIC_VECTOR(1  DOWNTO 0);
+		RES : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	    );
 		 
 END EXE_LOGIC_MODULE;
 
