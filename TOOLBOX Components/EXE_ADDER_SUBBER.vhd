@@ -1,13 +1,12 @@
 -- +===========================================================+
--- |			RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
+-- |		RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
 -- |===========================================================|
--- |student:    Deligiannis Nikos							   |
--- |supervisor: Aristides Efthymiou						       |
+-- |student:    Deligiannis Nikos			       |
+-- |supervisor: Aristides Efthymiou			       |
 -- |===========================================================|
--- |			    UNIVERSITY OF IOANNINA - 2019 			   |
--- |  					 VCAS LABORATORY 					   |
+-- |		UNIVERSITY OF IOANNINA - 2019      	       |
+-- |  		     VCAS LABORATORY			       |
 -- +===========================================================+
-
 
 -- *** 3/5: ARITHMETIC AND LOGIC UNIT (EXE-ALU) MODULE DESIGN ***
 ----------------------------------------------------------------------
@@ -25,12 +24,12 @@ USE WORK.TOOLBOX.ALL;
 
 ENTITY EXE_ADDER_SUBBER IS 
 
-	PORT (
-			A  : IN  STD_LOGIC_VECTOR(32 DOWNTO 0);
-			B  : IN  STD_LOGIC_VECTOR(32 DOWNTO 0);
-			OP : IN  STD_LOGIC; -- OPCODE [0: ADD / 1: SUB]
-			S  : OUT STD_LOGIC_VECTOR(32 DOWNTO 0)
-		 );
+	PORT(
+		A  : IN  STD_LOGIC_VECTOR(32 DOWNTO 0);
+		B  : IN  STD_LOGIC_VECTOR(32 DOWNTO 0);
+		OP : IN  STD_LOGIC; -- OPCODE [0: ADD / 1: SUB]
+		S  : OUT STD_LOGIC_VECTOR(32 DOWNTO 0)
+	    );
 		 
 END EXE_ADDER_SUBBER;
 
@@ -45,39 +44,39 @@ ARCHITECTURE STRUCTURAL OF EXE_ADDER_SUBBER IS
 		LSB: IF I = 0 GENERATE
 		
 			LSBCELL: EXE_ADDER_SUBBER_CELL 
-					 PORT MAP (
-								A  => A(I),
-								B  => B(I),
-								CI => OP,
-								OP => OP,
-								S  => S(I),
-								CO => RIPPLE_CARRY(I+1)
-							  );
+				PORT MAP(
+						A  => A(I),
+						B  => B(I),
+						CI => OP,
+						OP => OP,
+						S  => S(I),
+						CO => RIPPLE_CARRY(I+1)
+					);
 		END GENERATE LSB;
 							  
 		MID: IF I > 0 AND I < 32 GENERATE 
 		
 			MIDCELL: EXE_ADDER_SUBBER_CELL
-					 PORT MAP (
-								A  => A(I),
-								B  => B(I),
-								CI => RIPPLE_CARRY(I),
-								OP => OP,
-								S  => S(I),
-								CO => RIPPLE_CARRY(I+1)
-							   );
+				PORT MAP(
+						A  => A(I),
+						B  => B(I),
+						CI => RIPPLE_CARRY(I),
+						OP => OP,
+						S  => S(I),
+						CO => RIPPLE_CARRY(I+1)
+					);
 		END GENERATE MID;
 		
 		MSB: IF I = 32 GENERATE 
 		
 			MSBCELL: EXE_ADDER_SUBBER_CELL_MSB
-					 PORT MAP (
-								A  => A(I),
-								B  => B(I),
-								CI => RIPPLE_CARRY(I),
-								OP => OP,
-								S  => S(I)
-							  );
+				PORT MAP(
+						A  => A(I),
+						B  => B(I),
+						CI => RIPPLE_CARRY(I),
+						OP => OP,
+						S  => S(I)
+					);
 		END GENERATE MSB;
 	
 	END GENERATE MAIN;
