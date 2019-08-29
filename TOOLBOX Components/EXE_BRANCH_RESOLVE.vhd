@@ -1,13 +1,12 @@
 -- +===========================================================+
--- |			RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
+-- |		RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
 -- |===========================================================|
--- |student:    Deligiannis Nikos							   |
--- |supervisor: Aristides Efthymiou						       |
+-- |student:    Deligiannis Nikos			       |
+-- |supervisor: Aristides Efthymiou			       |
 -- |===========================================================|
--- |			    UNIVERSITY OF IOANNINA - 2019 			   |
--- |  					 VCAS LABORATORY 					   |
+-- |		UNIVERSITY OF IOANNINA - 2019      	       |
+-- |  		     VCAS LABORATORY			       |
 -- +===========================================================+
-
 
 -- *** 3/5: ARITHMETIC AND LOGIC UNIT (EXE-ALU) MODULE DESIGN ***
 ----------------------------------------------------------------------
@@ -36,11 +35,11 @@ USE WORK.TOOLBOX.ALL;
 ENTITY EXE_BRANCH_RESOLVE IS 
 	
 	PORT( 
-			RES  : IN  STD_LOGIC_VECTOR(32 DOWNTO 0);
-			EQLT : IN  STD_LOGIC;
-			INV  : IN  STD_LOGIC;
-			T_NT : OUT STD_LOGIC
-		);
+		RES  : IN  STD_LOGIC_VECTOR(32 DOWNTO 0);
+		EQLT : IN  STD_LOGIC;
+		INV  : IN  STD_LOGIC;
+		T_NT : OUT STD_LOGIC
+	    );
 
 END EXE_BRANCH_RESOLVE;
 
@@ -54,12 +53,12 @@ ARCHITECTURE RTL OF EXE_BRANCH_RESOLVE IS
 		REDUCED_RES <= NOR_REDUCE(RES);
 		
 		MUX: MUX2X1_BIT
-			 PORT MAP(
-						D0  => RES(32),
-						D1  => REDUCED_RES,
-						SEL => EQLT,
-						O   => MUX_RES
-					 );
+			PORT MAP(
+					D0  => RES(32),
+					D1  => REDUCED_RES,
+					SEL => EQLT,
+					O   => MUX_RES
+			        );
 					  
 		T_NT <= MUX_RES XOR INV;
 		
