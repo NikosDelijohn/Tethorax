@@ -1,11 +1,11 @@
 -- +===========================================================+
--- |			RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
+-- |		RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
 -- |===========================================================|
--- |student:    Deligiannis Nikos							   |
--- |supervisor: Aristides Efthymiou						       |
+-- |student:    Deligiannis Nikos			       |
+-- |supervisor: Aristides Efthymiou			       |
 -- |===========================================================|
--- |			    UNIVERSITY OF IOANNINA - 2019 			   |
--- |  					 VCAS LABORATORY 					   |
+-- |		UNIVERSITY OF IOANNINA - 2019      	       |
+-- |  		     VCAS LABORATORY			       |
 -- +===========================================================+
 
 
@@ -24,11 +24,11 @@ USE WORK.TOOLBOX.ALL;
 
 ENTITY ID_ADDER IS
 
-	PORT (
-			PC_VALUE  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-			IMMEDIATE : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-			OUTPUT 	  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
-		 );
+	PORT(
+		PC_VALUE  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		IMMEDIATE : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		OUTPUT 	  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	    );
 		 
 END ID_ADDER;
 
@@ -43,25 +43,25 @@ ARCHITECTURE STRUCTURAL OF ID_ADDER IS
 		OTHER: IF I < 31 GENERATE 
 
 			ADDERS: ADDER_2B
-					PORT MAP( 
-							  A  => PC_VALUE(I),
-							  B  => IMMEDIATE(I),
-							  CI => RIPPLE_CARRY(I),
-							  S  => OUTPUT(I),
-							  CO => RIPPLE_CARRY(I+1)
-							);
+				PORT MAP( 
+						A  => PC_VALUE(I),
+						B  => IMMEDIATE(I),
+						CI => RIPPLE_CARRY(I),
+						S  => OUTPUT(I),
+						CO => RIPPLE_CARRY(I+1)
+					);
 							
-		 END GENERATE OTHER;
-		 
-		 MSB : IF I = 31 GENERATE
+		END GENERATE OTHER;
+		
+		MSB : IF I = 31 GENERATE
 		
 			ADDER: ADDER_2B_MSB
-				   PORT MAP( 
-							  A  => PC_VALUE(I),
-							  B  => IMMEDIATE(I),
-							  CI => RIPPLE_CARRY(I),
-							  S  => OUTPUT(I)
-						   );
+				PORT MAP( 
+						A  => PC_VALUE(I),
+						B  => IMMEDIATE(I),
+						CI => RIPPLE_CARRY(I),
+						S  => OUTPUT(I)
+					);
 						   
 		END GENERATE MSB;			
 		
