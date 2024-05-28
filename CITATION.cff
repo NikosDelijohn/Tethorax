@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use Tethorax, please consider citing as below."
+authors:
+- family-names: "Deligiannis"
+  given-names: "Nikolaos"
+  orcid: "https://orcid.org/0000-0002-7948-3361"
+title: "Tethorax: A RISC-V Base Integer ISA (RV32I) Implementation"
+version: 1.0
+date-released: 2019-5-20
+url: "https://github.com/NikosDelijohn/Tethorax"
